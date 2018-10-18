@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from './auth.service'
+import { AuthService } from './auth.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,6 +9,8 @@ import { AuthService } from './auth.service'
 export class AppComponent {
   title = 'angular';
   constructor(public auth: AuthService) {
-    auth.handleAuthentication();
+  }
+  testFunction(){
+    this.auth.debuggingTest();
   }
 }

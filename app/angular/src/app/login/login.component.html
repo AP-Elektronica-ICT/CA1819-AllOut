@@ -1,31 +1,37 @@
-<!--Form without header-->
-<div class="card">
-  <div class="card-block">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Auth0 - Angular</a>
 
-      <!--Header-->
-      <div class="text-center">
-          <h3>Login</h3>
-          <hr class="mt-2 mb-2">
-      </div>
+      <button
+        class="btn btn-primary btn-margin"
+        routerLink="/">
+          Home
+      </button>
 
-      <!--Body-->
-      <div class="md-form">
-          <i class="fa fa-envelope prefix"></i>
-          <input type="text" id="form2" class="form-control">
-          <label for="form2">Your email</label>
-      </div>
+      <button
+        class="btn btn-primary btn-margin"
+        *ngIf="!auth.isAuthenticated()"
+        (click)="auth.login()">
+          Log In
+      </button>
 
-      <div class="md-form">
-          <i class="fa fa-lock prefix"></i>
-          <input type="password" id="form4" class="form-control">
-          <label for="form4">Your password</label>
-      </div>
+      <button
+        class="btn btn-primary btn-margin"
+        *ngIf="auth.isAuthenticated()"
+        (click)="auth.logout()">
+          Log Out
+      </button>
+      <button
+        class="btn btn-primary btn-margin"
+        (click)="auth.debuggingTest()">
+          Test Functions
+      </button>
 
-      <div class="text-center">
-          <button class="btn btn-deep-purple">Login</button>
-      </div>
-
+    </div>
   </div>
+</nav>
 
-</div>
-<!--/Form without header-->
+<main class="container">
+  <router-outlet></router-outlet>
+</main>

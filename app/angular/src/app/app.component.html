@@ -1,2 +1,14 @@
-
-<router-outlet></router-outlet>
+<div class="container">
+    <nav class="navbar navbar-default">
+      <div class="navbar-header">
+      </div>
+      <ul class="nav navbar-nav">
+        <li>
+          <a routerLink="/dashboard" *ngIf="auth.isAuthenticated()" routerLinkActive="active">Dashboard</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="col-sm-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>

@@ -8,13 +8,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CallbackComponent } from './callback/callback.component';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
+import { NewgameComponent } from './newgame/newgame.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    CallbackComponent
+    CallbackComponent,
+    NewgameComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,9 @@
         <li>
           <a routerLink="/dashboard" *ngIf="auth.isAuthenticated()" routerLinkActive="active">Dashboard</a>
         </li>
+        <li>
+          <a (click)="auth.logout()" routerLink="#" *ngIf="auth.isAuthenticated()" routerLinkActive="active">Logout</a>
+        </li>
       </ul>
     </nav>
     <div class="col-sm-12">

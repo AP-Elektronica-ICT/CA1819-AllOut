@@ -39,20 +39,20 @@ namespace API_
                 context.SaveChanges();
             }
             if (!context.Locations.Any())
-            {
+            {/*
                 var que = new BasicQuestion()
                 {
                     QuestionText = "How much is 2 + 2?",
                     Answer = "4",
                     IsSolved = false,
                     Points = 1000000
-                };
+                };*/
                 var loc = new Location()
                 {
                     LocationName = "AP Ellermansstraat",
                     Latitude = 51.2299036,
                     Longitude = 4.4163052,
-                    Question = que,
+                    //Question = que,
                     IsBoobyTrapped = false
                 };
 

@@ -13123,27 +13123,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Gilian\\.nuget\\packages\\": {},
+    "C:\\Users\\Bas\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Gilian\\Documents\\School\\3EA2_18-19\\Cloud_Applications\\app\\asp.net\\API_\\API_\\API_.csproj",
+      "projectUniqueName": "C:\\Users\\Bas\\Documents\\School\\3EA2\\CA\\app\\asp.net\\API_\\API_\\API_.csproj",
       "projectName": "API_",
-      "projectPath": "C:\\Users\\Gilian\\Documents\\School\\3EA2_18-19\\Cloud_Applications\\app\\asp.net\\API_\\API_\\API_.csproj",
-      "packagesPath": "C:\\Users\\Gilian\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Gilian\\Documents\\School\\3EA2_18-19\\Cloud_Applications\\app\\asp.net\\API_\\API_\\obj\\",
+      "projectPath": "C:\\Users\\Bas\\Documents\\School\\3EA2\\CA\\app\\asp.net\\API_\\API_\\API_.csproj",
+      "packagesPath": "C:\\Users\\Bas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Bas\\Documents\\School\\3EA2\\CA\\app\\asp.net\\API_\\API_\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Gilian\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Bas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -13166,24 +13166,24 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.All": {
+            "target": "Package",
+            "version": "[2.0.3, )"
+          },
           "Microsoft.EntityFrameworkCore.Tools": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.1"
+            "version": "[2.0.1, )"
+          },
+          "Microsoft.NETCore.App": {
+            "target": "Package",
+            "version": "[2.0.0, )",
+            "autoReferenced": true
           },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.1"
-          },
-          "Microsoft.NETCore.App": {
-            "target": "Package",
-            "version": "2.0",
-            "autoReferenced": true
-          },
-          "Microsoft.AspNetCore.All": {
-            "target": "Package",
-            "version": "2.0.3"
+            "version": "[2.0.1, )"
           }
         },
         "imports": [

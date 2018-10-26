@@ -34,8 +34,14 @@ namespace API_
                     GameCode = "X35H0",
                     team = teams
                 };
+                var game1 = new Game()
+                {
+                    GameCode = "X35H1",
+                    team = teams
+                };
 
                 context.Games.Add(game);
+                context.Games.Add(game1);
                 context.SaveChanges();
             }
 

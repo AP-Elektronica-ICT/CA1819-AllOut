@@ -18,6 +18,13 @@ export class MapPage {
 
   @ViewChild('map') mapElement: ElementRef; 
   map: any; 
+  playerPos: any; 
+  userPos: { lat: number, lng: number };
+  deltaLat; 
+  deltaLng; 
+  numDeltas = 100;
+  delay = 10; //milliseconds
+  i = 0;
 
   constructor(public navCtrl: NavController, public geolocation: Geolocation) {
   }
@@ -43,11 +50,55 @@ export class MapPage {
         rotateControl: false,
         fullscreenControl: false
       }
-
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions); 
+      this.updatePlayerMarker(); 
     }, (err) => {
       console.log(err); 
     });
   }
+  updatePlayerMarker() {
+    let watchOptions = {
+      frequency: 1000,
+      timeout: 3000,
+      enableHighAccuracy: false
+    };
 
+    this.geolocation.watchPosition().subscribe((position) => {
+      //check distance between new coordinate and this.playerPos
+      //if distance greater than 30 meters
+      if (!this.playerPos) {
+        this.userPos = { lat: position.coords.latitude, lng: position.coords.longitude };
+        this.playerPos = new google.maps.Marker({
+          map: this.map,
+          animation: google.maps.Animation.Drop,
+          position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+        });
+      } else {
+        this.transition([position.coords.latitude, position.coords.longitude]);
+        //this.playerPos.setPosition(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+      }
+    }, (error) => {
+      console.log('Error getting location', error);
+    });
+  }
+  transition(result) {
+    this.i = 0;
+    this.deltaLat = (result[0] - this.userPos.lat) / this.numDeltas;
+    this.deltaLng = (result[1] - this.userPos.lng) / this.numDeltas;
+    this.moveMarker();
+  }
+  moveMarker() {
+    if (this.userPos) {
+      this.userPos.lat += this.deltaLat;
+      this.userPos.lng += this.deltaLng;
+      var latlng = new google.maps.LatLng(this.userPos.lat, this.userPos.lng);
+      if (this.playerPos) {
+        this.playerPos.setPosition(latlng);
+        if (this.i != this.numDeltas) {
+          this.i++;
+          setTimeout(this.moveMarker, this.delay);
+        }
+      }
+    }
+  }
 }

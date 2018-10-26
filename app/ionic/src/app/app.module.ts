@@ -4,10 +4,12 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Geolocation } from '@ionic-native/geolocation';
+import { BackgroundGeolocation } from '@ionic-native/background-geolocation'; 
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { MapPage } from '../pages/map/map'; 
+import { MapPage } from '../pages/map/map';
+import { LocationTrackerProvider } from '../providers/location-tracker/location-tracker'; 
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { MapPage } from '../pages/map/map';
     StatusBar,
     SplashScreen,
     Geolocation,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    LocationTrackerProvider, 
+    BackgroundGeolocation
   ]
 })
 export class AppModule {}

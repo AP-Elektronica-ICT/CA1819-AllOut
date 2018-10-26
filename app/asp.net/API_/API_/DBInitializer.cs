@@ -41,7 +41,7 @@ namespace API_
 
             if (!context.Locations.Any())
             {
-                var que = new BasicQuestion()
+                var que = new Question()
                 {
                     QuestionText = "How much is 2 + 2?",
                     Answer = "4",
@@ -53,7 +53,7 @@ namespace API_
                     LocationName = "AP Ellermansstraat",
                     Latitude = 51.2299036,
                     Longitude = 4.4163052,
-                    //Question = que,
+                    Question = que,
                     IsBoobyTrapped = false
                 };
 

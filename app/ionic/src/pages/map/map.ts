@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController} from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation'; 
+import { LocationTrackerProvider } from '../../providers/location-tracker/location-tracker'; 
 
 declare var google; 
 /**
@@ -26,12 +27,13 @@ export class MapPage {
   delay = 10; //milliseconds
   i = 0;
 
-  constructor(public navCtrl: NavController, public geolocation: Geolocation) {
+  constructor(public navCtrl: NavController, public geolocation: Geolocation, public locationTrackerProvider: LocationTrackerProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MapPage');
     this.loadMap(); 
+    this.locationTrackerProvider.startTracking(); 
   }
 
   loadMap(){

@@ -46,19 +46,20 @@ export class LocationTrackerProvider {
      enableHighAccuracy: true
    }; 
 
-  //  this.watch = this.geolocation.watchPosition.filter((p: any) => p.code === undefined).subscribe((position: Geoposition) => {
-  //    console.log(position); 
+   this.watch = this.geolocation.watchPosition(options).filter((p: any) => p.code === undefined).subscribe((position: Geoposition) => {
+    console.log(position); 
 
-  //    this.zone.run(() =>{
-  //      this.zone.run(() => {
-  //        this.lat = position.coords.latitude; 
-  //        this.lng = position.coords.longitude; 
-  //      })
-  //    }
-  //  })
+    this.zone.run(() => {
+      this.lat = position.coords.latitude; 
+      this.lng = position.coords.longitude; 
+    })
+   });
   }
   stopTracking(){
+    console.log('stopTracking'); 
 
+    this.backgroundGeolocation.finish(); 
+    this.watch.unsubscribe(); 
   }
 
 }

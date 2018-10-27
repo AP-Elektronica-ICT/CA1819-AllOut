@@ -9,11 +9,6 @@ namespace API_.Data
     {
         public int GameID { get; set; }
         public string GameCode { get; set; }
-        public List<Team> team { get; set; }
-
-        public Game()
-        {
-            team = new List<Team>();
-        }
+        public virtual List<Team> team { get; set; } = new List<Team>();
     }
 }

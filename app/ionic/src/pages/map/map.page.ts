@@ -13,7 +13,7 @@ declare var google;
 
 @Component({
   selector: 'page-map',
-  templateUrl: 'map.html',
+  templateUrl: 'map.page.html',
 })
 export class MapPage {
 

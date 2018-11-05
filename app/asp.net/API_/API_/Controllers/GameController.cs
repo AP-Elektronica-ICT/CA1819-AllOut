@@ -73,7 +73,7 @@ namespace API_.Controllers
         {
             int _id = id - 1;
             List<Game> list = context.Games.Include("team").ToList();
-            return list[id--];
+            return list[_id];
         }
     }
 }

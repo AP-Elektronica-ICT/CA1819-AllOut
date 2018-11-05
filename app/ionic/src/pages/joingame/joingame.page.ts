@@ -1,8 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController} from 'ionic-angular';
-import { Geolocation } from '@ionic-native/geolocation'; 
+import { NavController } from 'ionic-angular';
+import { Geolocation } from '@ionic-native/geolocation';
 
-declare var google; 
+declare var google;
 /**
  * Generated class for the MapPage page.
  *
@@ -11,9 +11,9 @@ declare var google;
  */
 
 @Component({
-  selector: 'page-joingame',
-  templateUrl: 'joingame.page.html',
+    selector: 'page-joingame',
+    templateUrl: 'joingame.page.html'
 })
 export class JoinGamePage {
-
+    
 }

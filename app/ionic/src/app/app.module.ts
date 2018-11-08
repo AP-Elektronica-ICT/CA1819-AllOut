@@ -4,16 +4,20 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Geolocation } from '@ionic-native/geolocation';
+import { BackgroundGeolocation } from '@ionic-native/background-geolocation'; 
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { MapPage } from '../pages/map/map'; 
+import { HomePage } from '../pages/home/home.page';
+import { MapPage } from '../pages/map/map.page';
+import { LocationTrackerProvider } from '../providers/location-tracker/location-tracker'; 
+import { JoinGamePage } from '../pages/joingame/joingame.page';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage, 
-    MapPage
+    MapPage,
+    JoinGamePage
   ],
   imports: [
     BrowserModule,
@@ -23,13 +27,16 @@ import { MapPage } from '../pages/map/map';
   entryComponents: [
     MyApp,
     HomePage, 
-    MapPage
+    MapPage,
+    JoinGamePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Geolocation,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    LocationTrackerProvider, 
+    BackgroundGeolocation
   ]
 })
 export class AppModule {}

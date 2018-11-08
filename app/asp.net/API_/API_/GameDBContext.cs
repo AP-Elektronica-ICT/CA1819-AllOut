@@ -7,15 +7,18 @@ using System.Threading.Tasks;
 
 namespace API_
 {
-    public class DBContext : DbContext
+    public class GameDBContext : DbContext
     {
-        public DBContext(DbContextOptions<DBContext> options) : base(options) {}
+        public GameDBContext(DbContextOptions<GameDBContext> options) : base(options) {
+            
+        }
         
         public DbSet<Location> Locations { get; set; }
         public DbSet<Game> Games { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Game>().ToTable("Game");
             modelBuilder.Entity<Location>().ToTable("Location");
         }
 

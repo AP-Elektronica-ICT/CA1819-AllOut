@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { AlloutProvider, Game } from '../../providers/AlloutAPI/AlloutAPI';
+import { AlloutProvider } from '../../providers/AlloutAPI/AlloutAPI';
 
 @Component({
     selector: 'page-joingame',
@@ -8,14 +8,10 @@ import { AlloutProvider, Game } from '../../providers/AlloutAPI/AlloutAPI';
 })
 
 export class JoinGamePage {
-    games:Game;
-    
     constructor(private _svc:AlloutProvider){
     }
-
+    
     ngOnInit(){
-        this._svc.getAllGames().subscribe(result =>{
-            this.games = result;
-        });
+        this._svc.get
     }
 }

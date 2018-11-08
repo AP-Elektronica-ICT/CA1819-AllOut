@@ -11,21 +11,13 @@ export class GameService {
   constructor(private http : HttpClient) { }
 
   getAllGames(){
-    let headers = new HttpHeaders()
-    .set('Content-Type', 'application/json')
-    .set('Access-Control-Allow-Origin', '*')
-    .set('Access-Control-Allow-Methods', 'GET, PUT, POST');
-    return this.http.get<IGames>("https://localhost:44359/api/v1/game", { headers : headers});
+    return this.http.get<IGame[]>("https://localhost:44359/api/v1/game");
   }
   getGameById(id : number){
     return this.http.get<IGame>("https://localhost:44359/api/v1/game/"+ id);
   }
   postGame(game : IGame){
-    let headers = new HttpHeaders()
-    .set('Content-Type', 'application/json')
-    .set('Access-Control-Allow-Origin', '*')
-    .set('Access-Control-Allow-Methods', 'GET, PUT, POST');
-    return this.http.post("https://localhost:44359/api/v1/game", game, { headers : headers }).subscribe(data => {
+    return this.http.post("https://localhost:44359/api/v1/game", game).subscribe(data => {
       console.log("post game subscribe");
       console.log(data);
     });
@@ -37,7 +29,7 @@ export class GameService {
 }
 
 export interface IGame{
-  gameId: number;
+  gameID: number;
   gameCode: string;
   team: ITeam[];
 }
@@ -46,7 +38,4 @@ export interface ITeam{
   teamName: string;
   totalPoints: number;
   totalBoobyTraps: number;
-}
-export interface IGames{
-  games: IGame[];
 }

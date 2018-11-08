@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
-import { GameService, IGame, IGames } from '../services/game.service';
+import { GameService, IGame } from '../services/game.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,13 +20,13 @@ export class DashboardComponent implements OnInit {
       result => this.game_data = this.MapGames(result)
     );
   }
-  private MapGames(result : IGames) : IGame[]{
+  private MapGames(result : IGame[]) : IGame[]{
     console.log("game");
-    for(var i = 0; i < result.games.length; i++){
+    for(var i = 0; i < result.length; i++){
       var game : IGame = {
-        gameId : result.games[i].gameId,
-        gameCode : result.games[i].gameCode,
-        team : result.games[i].team
+        gameID : result[i].gameID,
+        gameCode : result[i].gameCode,
+        team : result[i].team
       }
       
       this.game_data.push(game);

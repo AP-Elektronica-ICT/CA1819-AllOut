@@ -40,7 +40,8 @@ export class NewgameComponent implements OnInit {
     }
       
   }
-  postGame(){
+  postGame(data){
+    console.log(data);
     console.log("werkt");
   }
 }

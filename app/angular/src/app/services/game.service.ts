@@ -27,7 +27,9 @@ export class GameService {
   }
 
 }
-
+export interface post_IGame{
+  gameCode: string;
+}
 export interface IGame{
   gameID: number;
   gameCode: string;

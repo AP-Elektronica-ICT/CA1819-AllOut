@@ -9,8 +9,10 @@ import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home.page';
 import { MapPage } from '../pages/map/map.page';
-import { LocationTrackerProvider } from '../providers/location-tracker/location-tracker';
 import { JoinGamePage } from '../pages/joingame/joingame.page';
+
+import { LocationTrackerProvider } from '../providers/location-tracker/location-tracker';
+import { AlloutProvider } from '../providers/AlloutAPI/AlloutAPI';
 
 @NgModule({
     declarations: [
@@ -36,6 +38,7 @@ import { JoinGamePage } from '../pages/joingame/joingame.page';
         Geolocation,
         { provide: ErrorHandler, useClass: IonicErrorHandler },
         LocationTrackerProvider,
+        AlloutProvider,
         BackgroundGeolocation
     ]
 })

@@ -11,6 +11,7 @@ import { GameService } from './services/game.service';
 import { AuthGuard } from './auth.guard';
 import { NewgameComponent } from './newgame/newgame.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LocationService } from './services/location.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     MDBBootstrapModule.forRoot()
   ],
-  providers: [AuthService, AuthGuard, GameService],
+  providers: [AuthService, AuthGuard, GameService, LocationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,8 +5,8 @@
     <input type="number" id="amountboobytraps" class="form-control mb-4" placeholder="Booby traps">
     <input type="text" id="timestamp" class="form-control mb-4" placeholder="Tijdsduur">
     <div class="questions_table">
-        <table class="table">
-            <thead>
+      <table class="table">
+          <thead>
               <tr>
                 <th scope="col">Vragen</th>
                 <th scope="col">Aantal punten</th>
@@ -15,26 +15,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">Lange wapper</th>
-                <td>5</td>
-                <td>52</td>
-                <td>49</td>
-              </tr>
-              <tr>
-                <th scope="row">Lange wapper</th>
-                <td>5</td>
-                <td>52</td>
-                <td>49</td>
-              </tr>
-              <tr>
-                  <th scope="row">Lange wapper</th>
-                  <td>5</td>
-                  <td>52</td>
-                  <td>49</td>
+              <tr *ngFor="let row of this.locations">
+                <td>{{row.question.questionText}}</td>
+                <td>{{row.question.points}}</td>
+                <td>{{row.latitude}}</td>
+                <td>{{row.longitude}}</td>
               </tr>
             </tbody>
-          </table>
+      </table>
           <a href="#">Voeg een vraag toe aan deze game.</a>
     </div>
     

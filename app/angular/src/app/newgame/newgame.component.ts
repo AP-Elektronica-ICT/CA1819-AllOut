@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService, IGame, post_IGame } from '../services/game.service';
+import { LocationService, ILocation, IQuestion } from '../services/location.service';
 
 @Component({
   selector: 'app-newgame',
@@ -9,13 +10,25 @@ import { GameService, IGame, post_IGame } from '../services/game.service';
 export class NewgameComponent implements OnInit {
 
   gameCodes = [];
+  locations : ILocation[];
   generatedHash : string;
-  constructor(private gameService: GameService) { }
+
+  constructor(
+    private gameService: GameService,
+    private locationService: LocationService
+  ) { }
 
   ngOnInit() {
     this.gameService.getAllGames().subscribe(
       result => this.gameCodes = this.MapGameCodes(result)
     );
+    this.locationService.getAllLocations().subscribe(
+      result => this.MapLocations(result),
+      // The 2nd callback handles errors.
+      (err) => console.error(err),
+      () => console.log(this.locations)
+    );
+    
     this.generateHash();
   }
   MapGameCodes(result : IGame[]){
@@ -23,6 +36,9 @@ export class NewgameComponent implements OnInit {
       this.gameCodes.push(result[i].gameCode);
     }
     return this.gameCodes;
+  }
+  MapLocations(result : ILocation[]){
+    this.locations = result;
   }
   generateHash() {
     var text = "";

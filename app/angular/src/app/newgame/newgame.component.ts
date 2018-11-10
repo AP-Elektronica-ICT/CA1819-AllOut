@@ -9,12 +9,14 @@ import { GameService, IGame, post_IGame } from '../services/game.service';
 export class NewgameComponent implements OnInit {
 
   gameCodes = [];
+  generatedHash : string;
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
     this.gameService.getAllGames().subscribe(
       result => this.gameCodes = this.MapGameCodes(result)
     );
+    this.generateHash();
   }
   MapGameCodes(result : IGame[]){
     for(var i = 0; i < result.length; i++){
@@ -34,13 +36,14 @@ export class NewgameComponent implements OnInit {
         exists = true;
     }
     if(!exists){
-      return text;
+      this.generatedHash = text;
     } else{
       this.generateHash();
     }
       
   }
   postGame(data){
+    event.preventDefault();
     console.log(data);
     console.log("werkt");
   }

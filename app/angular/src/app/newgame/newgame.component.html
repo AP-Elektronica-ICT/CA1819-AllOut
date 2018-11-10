@@ -1,7 +1,7 @@
-<form class="text-center border border-light p-5" (ngSubmit) = "postGame(form.value)">
+<form class="text-center border border-light p-5" (ngSubmit)="onSubmit(empForm, $event)">
 
     <p class="h4 mb-4">Game aanmaken</p>
-    <input type="string" id="gamecode" class="form-control mb-4" placeholder="Game Code" value="{{this.generateHash()}}">
+    <input type="string" id="gamecode" class="form-control mb-4" placeholder="Game Code" value="{{this.generatedHash}}">
     <input type="number" id="amountboobytraps" class="form-control mb-4" placeholder="Booby traps">
     <input type="text" id="timestamp" class="form-control mb-4" placeholder="Tijdsduur">
     <div class="questions_table">

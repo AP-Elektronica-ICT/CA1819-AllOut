@@ -13305,7 +13305,7 @@
         "dependencies": {
           "WebApiRouteDebugger": {
             "target": "Package",
-            "version": "[1.0.0, )"
+            "version": "1.0.0"
           },
           "Microsoft.AspNet.WebApi.Cors": {
             "target": "Package",

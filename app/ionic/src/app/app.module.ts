@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Geolocation } from '@ionic-native/geolocation';
 import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home.page';
@@ -13,6 +14,7 @@ import { JoinGamePage } from '../pages/joingame/joingame.page';
 
 import { LocationTrackerProvider } from '../providers/location-tracker/location-tracker';
 import { AlloutProvider } from '../providers/AlloutAPI/AlloutAPI';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -23,6 +25,7 @@ import { AlloutProvider } from '../providers/AlloutAPI/AlloutAPI';
     ],
     imports: [
         BrowserModule,
+        HttpClientModule,
         IonicModule.forRoot(MyApp)
     ],
     bootstrap: [IonicApp],

@@ -46,18 +46,16 @@ namespace API_
                 var game = new Game()
                 {
                     GameCode = "X35H0",
-                    team = teams
+                    Team = teams,
+                    StartTime = DateTime.Now,
+                    StopTime = DateTime.Now.AddHours(2)
                 };
-                var game1 = new Game()
-                {
-                    GameCode = "X35H1",
-                    team = teams
-                };
-
                 var game2 = new Game()
                 {
                     GameCode = "A3CD3",
-                    team = teams2
+                    Team = teams2,
+                    StartTime = DateTime.Now,
+                    StopTime = DateTime.Now.AddHours(2)
                 };
                 context.Games.Add(game);
                 context.Games.Add(game2);

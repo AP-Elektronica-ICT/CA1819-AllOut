@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService, IGame, IPostGame } from '../services/game.service';
 import { LocationService, ILocation, IQuestion } from '../services/location.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-newgame',
@@ -20,7 +22,8 @@ export class NewgameComponent implements OnInit {
 
   constructor(
     private gameService: GameService,
-    private locationService: LocationService
+    private locationService: LocationService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -67,13 +70,20 @@ export class NewgameComponent implements OnInit {
       
   }
   postGame(game){
-    event.preventDefault();
+    console.log();
+    //game.value.amountboobytraps
+    //game.value.startdate
+    //game.value.starttime
+    //game.value.enddate
+    //game.value.endtime
+    var curDate = new Date();
     var newGame : IPostGame = {
-      duration : game.value.duration,
-      boobytraps : game.value.amountboobytraps
+      team: null,
+      startTime: curDate,
+      stopTime: curDate
     }
-    console.log(newGame);
     this.gameService.postGame(newGame);
+    this.router.navigate(['/dashboard']);
   }
 }
 

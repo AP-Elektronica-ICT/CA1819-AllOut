@@ -17,7 +17,9 @@ export class GameService {
     return this.http.get<IGame>("https://localhost:44359/api/v1/game/"+ id);
   }
   postGame(game : IPostGame){
-    return this.http.post("https://localhost:44359/api/v1/game", game).subscribe(data => {
+    let headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    return this.http.post("https://localhost:44359/api/v1/game", game, { headers : headers }).subscribe(data => {
       console.log("post game subscribe");
       console.log(data);
     });
@@ -38,7 +40,13 @@ export interface ITeam{
   totalPoints: number;
   totalBoobyTraps: number;
 }
+export interface IPostTeam{
+  teamName: string;
+  totalPoints: number;
+  totalBoobyTraps: number;
+}
 export interface IPostGame{
-  duration: string,
-  boobytraps : number
+  team: IPostTeam[],
+  startTime: Date,
+  stopTime: Date
 }

@@ -13,11 +13,16 @@
 <ion-content>
     <form>
         <ion-item>
+            <ion-label stacked>Game Code</ion-label>
+            <ion-input type="text" name="code" [(ngModel)]="gameCode"></ion-input>
+        </ion-item>
+        <ion-item>
             <ion-label stacked>Teamname</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input type="text" name="team" [(ngModel)]="teamName"></ion-input>
         </ion-item>
         <br>
-        <button ion-button>
+        <button ion-button (click)="joinGame()">
             <ion-icon></ion-icon>Join Game</button>
     </form>
+        <p>{{message}}</p>
 </ion-content>

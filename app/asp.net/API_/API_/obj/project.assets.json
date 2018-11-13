@@ -5061,6 +5061,9 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
+      "WebApiRouteDebugger/1.0.0": {
+        "type": "package"
+      },
       "WindowsAzure.Storage/8.1.4": {
         "type": "package",
         "dependencies": {
@@ -13190,6 +13193,39 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
+    "WebApiRouteDebugger/1.0.0": {
+      "sha512": "HNDpgJE0I9dkT44Ux0c8vGujoPOe/I2wweuk33IhrwzOpw7afI9qLkkfrmTdjA5vpZPOKkHhxP6SgYAta1bMsQ==",
+      "type": "package",
+      "path": "webapiroutedebugger/1.0.0",
+      "files": [
+        ".signature.p7s",
+        "content/Areas/RouteDebugger/Components/ActionSelectSimulator.cs.pp",
+        "content/Areas/RouteDebugger/Components/DictionaryExtensions.cs.pp",
+        "content/Areas/RouteDebugger/Components/HttpParameterBindingExtensions.cs.pp",
+        "content/Areas/RouteDebugger/Components/TypeHelper.cs.pp",
+        "content/Areas/RouteDebugger/Content/rdstyle.css",
+        "content/Areas/RouteDebugger/Controllers/RouteDebuggerController.cs.pp",
+        "content/Areas/RouteDebugger/InspectActionInvoker.cs.pp",
+        "content/Areas/RouteDebugger/InspectActionSelector.cs.pp",
+        "content/Areas/RouteDebugger/InspectControllerSelector.cs.pp",
+        "content/Areas/RouteDebugger/InspectHandler.cs.pp",
+        "content/Areas/RouteDebugger/Models/ActionSelectionInfo.cs.pp",
+        "content/Areas/RouteDebugger/Models/ActionSelectionLog.cs.pp",
+        "content/Areas/RouteDebugger/Models/ControllerSelectionInfo.cs.pp",
+        "content/Areas/RouteDebugger/Models/HttpParameterDescriptionInfo.cs.pp",
+        "content/Areas/RouteDebugger/Models/InspectData.cs.pp",
+        "content/Areas/RouteDebugger/Models/RouteDataInfo.cs.pp",
+        "content/Areas/RouteDebugger/Models/RouteInfo.cs.pp",
+        "content/Areas/RouteDebugger/RequestHelper.cs.pp",
+        "content/Areas/RouteDebugger/RouteDebuggerAreaRegistration.cs.pp",
+        "content/Areas/RouteDebugger/RouteDebuggerConfig.cs.pp",
+        "content/Areas/RouteDebugger/Scripts/detect.js",
+        "content/Areas/RouteDebugger/Views/RouteDebugger/Index.cshtml.pp",
+        "content/Areas/RouteDebugger/Views/Web.config",
+        "webapiroutedebugger.1.0.0.nupkg.sha512",
+        "webapiroutedebugger.nuspec"
+      ]
+    },
     "WindowsAzure.Storage/8.1.4": {
       "sha512": "W6ZZ0/o7+3Qb77mRAQyLjPudHG3OMeeQ4p9yY13PUdJArmRCx2cLMm5F4tpIjJXxzHC0ew0oK7DMDGILMdfCnw==",
       "type": "package",
@@ -13219,31 +13255,32 @@
       "Microsoft.AspNetCore.All >= 2.0.3",
       "Microsoft.EntityFrameworkCore.Tools >= 2.0.1",
       "Microsoft.NETCore.App >= 2.0.0",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.1"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.1",
+      "WebApiRouteDebugger >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bas\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Users\\Gilian\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bas\\Documents\\School\\3EA2\\CA\\app\\asp.net\\API_\\API_\\API_.csproj",
+      "projectUniqueName": "C:\\Users\\Gilian\\Documents\\School\\3EA2_18-19\\Cloud_Applications\\app\\asp.net\\API_\\API_\\API_.csproj",
       "projectName": "API_",
-      "projectPath": "C:\\Users\\Bas\\Documents\\School\\3EA2\\CA\\app\\asp.net\\API_\\API_\\API_.csproj",
-      "packagesPath": "C:\\Users\\Bas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bas\\Documents\\School\\3EA2\\CA\\app\\asp.net\\API_\\API_\\obj\\",
+      "projectPath": "C:\\Users\\Gilian\\Documents\\School\\3EA2_18-19\\Cloud_Applications\\app\\asp.net\\API_\\API_\\API_.csproj",
+      "packagesPath": "C:\\Users\\Gilian\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Gilian\\Documents\\School\\3EA2_18-19\\Cloud_Applications\\app\\asp.net\\API_\\API_\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Bas\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Users\\Gilian\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -13266,28 +13303,32 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
+          "WebApiRouteDebugger": {
+            "target": "Package",
+            "version": "1.0.0"
+          },
           "Microsoft.AspNet.WebApi.Cors": {
             "target": "Package",
-            "version": "[5.2.6, )"
-          },
-          "Microsoft.AspNetCore.All": {
-            "target": "Package",
-            "version": "[2.0.3, )"
+            "version": "5.2.6"
           },
           "Microsoft.EntityFrameworkCore.Tools": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.0.1, )"
-          },
-          "Microsoft.NETCore.App": {
-            "target": "Package",
-            "version": "[2.0.0, )",
-            "autoReferenced": true
+            "version": "2.0.1"
           },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.0.1, )"
+            "version": "2.0.1"
+          },
+          "Microsoft.NETCore.App": {
+            "target": "Package",
+            "version": "2.0",
+            "autoReferenced": true
+          },
+          "Microsoft.AspNetCore.All": {
+            "target": "Package",
+            "version": "2.0.3"
           }
         },
         "imports": [

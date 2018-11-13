@@ -17,7 +17,6 @@ C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\
 C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\API_\bin\Debug\netcoreapp2.0\API_.pdb
 C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.csprojResolveAssemblyReference.cache
 C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.csproj.CoreCompileInputs.cache
-C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
 C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.AssemblyInfoInputs.cache
 C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.AssemblyInfo.cs
 C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.dll
@@ -34,3 +33,4 @@ C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\API_\API_\obj\Debug\netcoreapp
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.dll
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.pdb
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs

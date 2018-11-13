@@ -9,8 +9,8 @@ namespace API_.Data
     {
         public int GameID { get; set; }
         public string GameCode { get; set; }
-        public string Duration { get; set; }
-        public int StartingBoobytraps { get; set; }
-        public virtual List<Team> team { get; set; } = new List<Team>();
+        public virtual List<Team> Team { get; set; } = new List<Team>();
+        public DateTime StartTime { get; set; }
+        public DateTime StopTime { get; set; }
     }
 }

@@ -1,7 +1,8 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LocationTrackerProvider } from '../../providers/location-tracker/location-tracker';
+import * as API from '../../providers/AlloutAPI/AlloutAPI';
 
 declare var google;
 /**
@@ -26,8 +27,26 @@ export class MapPage {
     numDeltas = 100;
     delay = 10; //milliseconds
     i = 0;
+    locations:API.Location[];
+    constructor(public navCtrl: NavController, public API:API.AlloutProvider, public geolocation: Geolocation, public locationTrackerProvider: LocationTrackerProvider) {
+    }
 
-    constructor(public navCtrl: NavController, public geolocation: Geolocation, public locationTrackerProvider: LocationTrackerProvider) {
+    ngOnInit(){
+        this.API.getAllLocations().subscribe(result =>{
+            this.locations = result;
+        });
+    }
+
+    addLocationMarkers(){
+        try{
+            for (let loc of this.locations){
+                let ll = {lat:loc.latitude, lng:loc.longitude};
+                let marker = new google.maps.Marker({position: ll, map: this.map, title: loc.locationName});
+            }
+        }catch{
+            console.log("Can't add markers.")
+        }
+        
     }
 
     ionViewDidLoad() {
@@ -54,6 +73,7 @@ export class MapPage {
             }
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
             this.updatePlayerMarker();
+            this.addLocationMarkers();
         }, (err) => {
             console.log(err);
         });

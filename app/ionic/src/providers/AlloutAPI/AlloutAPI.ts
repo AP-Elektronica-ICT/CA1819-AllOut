@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
+import { DateTime } from "ionic-angular";
 @Injectable()
 
 export class AlloutProvider {
@@ -9,28 +10,28 @@ export class AlloutProvider {
         this.url = "https://localhost:44359/api/v1/"
     };
 
+    putGame(id:number, game:Game){
+        return this._http.put(this.url + "game/" + id, game);
+    }
+
     putLocation(id:number, location:Location): Observable<Location>{
-        return this._http.post<Location>(this.url + "/location/" + id, location);
+        return this._http.post<Location>(this.url + "location/" + id, location);
     }
 
     getLocation(id:number): Observable<Location>{
         return this._http.get<Location>(this.url + "location/" + id);
     }
 
-    getAllLocations(): Observable<Location>{
-        return this._http.get<Location>(this.url + "location");
-    }
-
-    putGame(id:number, game:Game): Observable<Game>{
-        return this._http.post<Game>(this.url + "/Game/", game);
+    getAllLocations(): Observable<Location[]>{
+        return this._http.get<Location[]>(this.url + "location/");
     }
 
     getGame(id:number): Observable<Game>{
         return this._http.get<Game>(this.url + "game/" + id);
     }
 
-    getAllGames(): Observable<Game>{
-        return this._http.get<Game>(this.url + "game");
+    getAllGames(): Observable<Game[]>{
+        return this._http.get<Game[]>(this.url + "game/");
     }
 }
 
@@ -45,6 +46,8 @@ export interface Game {
     gameID: number;
     gameCode: string;
     team: Team[];
+    startTime: DateTime,
+    stopTime: DateTime;
 }
 
 export interface Question {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GameService, IGame, post_IGame } from '../services/game.service';
+import { GameService, IGame, IPostGame } from '../services/game.service';
 import { LocationService, ILocation, IQuestion } from '../services/location.service';
 
 @Component({
@@ -12,6 +12,11 @@ export class NewgameComponent implements OnInit {
   gameCodes = [];
   locations : ILocation[];
   generatedHash : string;
+  possibleTimes = ['120:00','60:00','30:00'];
+  submitted = false;
+  gameCode : string;
+  gameDuration : string;
+  gameBoobytraps : number;
 
   constructor(
     private gameService: GameService,
@@ -22,6 +27,7 @@ export class NewgameComponent implements OnInit {
     this.gameService.getAllGames().subscribe(
       result => this.gameCodes = this.MapGameCodes(result)
     );
+    this.generateHash();
     this.locationService.getAllLocations().subscribe(
       result => this.MapLocations(result),
       // The 2nd callback handles errors.
@@ -29,7 +35,7 @@ export class NewgameComponent implements OnInit {
       () => console.log(this.locations)
     );
     
-    this.generateHash();
+    
   }
   MapGameCodes(result : IGame[]){
     for(var i = 0; i < result.length; i++){
@@ -52,15 +58,22 @@ export class NewgameComponent implements OnInit {
         exists = true;
     }
     if(!exists){
-      this.generatedHash = text;
+      this.gameCode = text;
     } else{
       this.generateHash();
     }
+    console.log("HASH Generated:");
+    console.log(this.generatedHash);
       
   }
-  postGame(data){
+  postGame(game){
     event.preventDefault();
-    console.log(data);
-    console.log("werkt");
+    var newGame : IPostGame = {
+      duration : game.value.duration,
+      boobytraps : game.value.amountboobytraps
+    }
+    console.log(newGame);
+    this.gameService.postGame(newGame);
   }
 }
+

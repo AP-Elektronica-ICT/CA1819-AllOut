@@ -12,6 +12,7 @@ import { AuthGuard } from './auth.guard';
 import { NewgameComponent } from './newgame/newgame.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LocationService } from './services/location.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { LocationService } from './services/location.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     MDBBootstrapModule.forRoot()
   ],
   providers: [AuthService, AuthGuard, GameService, LocationService],

@@ -16,7 +16,7 @@ export class GameService {
   getGameById(id : number){
     return this.http.get<IGame>("https://localhost:44359/api/v1/game/"+ id);
   }
-  postGame(game : IGame){
+  postGame(game : IPostGame){
     return this.http.post("https://localhost:44359/api/v1/game", game).subscribe(data => {
       console.log("post game subscribe");
       console.log(data);
@@ -26,9 +26,6 @@ export class GameService {
     return this.http.delete("https://localhost:44359/api/v1/game"+id);
   }
 
-}
-export interface post_IGame{
-  gameCode: string;
 }
 export interface IGame{
   gameID: number;
@@ -40,4 +37,8 @@ export interface ITeam{
   teamName: string;
   totalPoints: number;
   totalBoobyTraps: number;
+}
+export interface IPostGame{
+  duration: string,
+  boobytraps : number
 }

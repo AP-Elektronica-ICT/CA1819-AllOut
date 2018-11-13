@@ -17,21 +17,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.gameService.getAllGames().subscribe(
-      result => this.game_data = this.MapGames(result)
+      result => this.MapGames(result)
     );
   }
-  private MapGames(result : IGame[]) : IGame[]{
-    console.log("game");
-    for(var i = 0; i < result.length; i++){
-      var game : IGame = {
-        gameID : result[i].gameID,
-        gameCode : result[i].gameCode,
-        team : result[i].team
-      }
-      
-      this.game_data.push(game);
-    }
-    return this.game_data;
+  private MapGames(result : IGame[]){
+      this.game_data = result;
   }
   debuggingTest(){
     console.log(this.game_data);

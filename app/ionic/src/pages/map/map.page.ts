@@ -31,28 +31,22 @@ export class MapPage {
     constructor(public navCtrl: NavController, public API:API.AlloutProvider, public geolocation: Geolocation, public locationTrackerProvider: LocationTrackerProvider) {
     }
 
-    ngOnInit(){
-        this.API.getAllLocations().subscribe(result =>{
-            this.locations = result;
-        });
-    }
-
-    addLocationMarkers(){
-        try{
-            for (let loc of this.locations){
-                let ll = {lat:loc.latitude, lng:loc.longitude};
-                let marker = new google.maps.Marker({position: ll, map: this.map, title: loc.locationName});
-            }
-        }catch{
-            console.log("Can't add markers.")
-        }
-        
-    }
-
     ionViewDidLoad() {
         console.log('ionViewDidLoad MapPage');
         this.loadMap();
         this.locationTrackerProvider.startTracking();
+        this.getLocations(); 
+    }
+
+    getLocations(){
+        this.API.getAllLocations().subscribe(result =>{
+            this.locations = result;
+
+            for (let loc of this.locations){
+                let ll = {lat:loc.latitude, lng:loc.longitude};
+                let marker = new google.maps.Marker({position: ll, map: this.map, title: loc.locationName});
+            }
+        });
     }
 
     loadMap() {
@@ -73,7 +67,6 @@ export class MapPage {
             }
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
             this.updatePlayerMarker();
-            this.addLocationMarkers();
         }, (err) => {
             console.log(err);
         });
@@ -85,7 +78,7 @@ export class MapPage {
             enableHighAccuracy: false
         };
 
-        this.geolocation.watchPosition().subscribe((position) => {
+        this.geolocation.watchPosition(watchOptions).subscribe((position) => {
             //check distance between new coordinate and this.playerPos
             //if distance greater than 30 meters
             if (!this.playerPos) {

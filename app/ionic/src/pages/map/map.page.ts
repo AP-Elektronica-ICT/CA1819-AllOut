@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LocationTrackerProvider } from '../../providers/location-tracker/location-tracker';
+import { HomePage } from '../../pages/home/home.page';  
 import * as API from '../../providers/AlloutAPI/AlloutAPI';
 
 declare var google;
@@ -39,14 +40,24 @@ export class MapPage {
     }
 
     getLocations(){
+        console.log("get them all!"); 
         this.API.getAllLocations().subscribe(result =>{
             this.locations = result;
-
-            for (let loc of this.locations){
-                let ll = {lat:loc.latitude, lng:loc.longitude};
-                let marker = new google.maps.Marker({position: ll, map: this.map, title: loc.locationName});
+            try {
+                for (let loc of this.locations){
+                    let ll = {lat:loc.latitude, lng:loc.longitude};
+                    let marker = new google.maps.Marker({position: ll, map: this.map, title: loc.locationName});
+                }
+                
+            } catch{
+                console.log("Can't add markers!"); 
             }
         });
+    }
+    quitGame(){
+        //quit game code here!
+        console.log("QUIT GAME"); 
+        this.navCtrl.pop(); 
     }
 
     loadMap() {

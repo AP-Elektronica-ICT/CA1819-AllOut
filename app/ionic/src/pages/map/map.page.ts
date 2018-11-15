@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LocationTrackerProvider } from '../../providers/location-tracker/location-tracker';
+import { HomePage } from '../../pages/home/home.page';  
 import * as API from '../../providers/AlloutAPI/AlloutAPI';
 
 declare var google;
@@ -31,28 +32,32 @@ export class MapPage {
     constructor(public navCtrl: NavController, public API:API.AlloutProvider, public geolocation: Geolocation, public locationTrackerProvider: LocationTrackerProvider) {
     }
 
-    ngOnInit(){
-        this.API.getAllLocations().subscribe(result =>{
-            this.locations = result;
-        });
-    }
-
-    addLocationMarkers(){
-        try{
-            for (let loc of this.locations){
-                let ll = {lat:loc.latitude, lng:loc.longitude};
-                let marker = new google.maps.Marker({position: ll, map: this.map, title: loc.locationName});
-            }
-        }catch{
-            console.log("Can't add markers.")
-        }
-        
-    }
-
     ionViewDidLoad() {
         console.log('ionViewDidLoad MapPage');
         this.loadMap();
         this.locationTrackerProvider.startTracking();
+        this.getLocations(); 
+    }
+
+    getLocations(){
+        console.log("get them all!"); 
+        this.API.getAllLocations().subscribe(result =>{
+            this.locations = result;
+            try {
+                for (let loc of this.locations){
+                    let ll = {lat:loc.latitude, lng:loc.longitude};
+                    let marker = new google.maps.Marker({position: ll, map: this.map, title: loc.locationName});
+                }
+                
+            } catch{
+                console.log("Can't add markers!"); 
+            }
+        });
+    }
+    quitGame(){
+        //quit game code here!
+        console.log("QUIT GAME"); 
+        this.navCtrl.pop(); 
     }
 
     loadMap() {
@@ -73,7 +78,6 @@ export class MapPage {
             }
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
             this.updatePlayerMarker();
-            this.addLocationMarkers();
         }, (err) => {
             console.log(err);
         });
@@ -85,7 +89,7 @@ export class MapPage {
             enableHighAccuracy: false
         };
 
-        this.geolocation.watchPosition().subscribe((position) => {
+        this.geolocation.watchPosition(watchOptions).subscribe((position) => {
             //check distance between new coordinate and this.playerPos
             //if distance greater than 30 meters
             if (!this.playerPos) {

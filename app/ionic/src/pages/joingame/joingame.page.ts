@@ -6,7 +6,7 @@ import { AlloutProvider, Game, Team } from '../../providers/AlloutAPI/AlloutAPI'
     selector: 'page-joingame',
     templateUrl: 'joingame.page.html'
 })
-
+ 
 export class JoinGamePage {
     games:Game[];
     teamNames:string[];

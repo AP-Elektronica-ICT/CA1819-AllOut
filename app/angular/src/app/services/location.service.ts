@@ -7,13 +7,15 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class LocationService {
+  url:string = "http://localhost:33324/api/v1/location";
 
   constructor(private http : HttpClient) { }
+
   getAllLocations(){
-    return this.http.get<ILocation[]>("https://localhost:44359/api/v1/location");
+    return this.http.get<ILocation[]>(this.url);
   }
   getLocation(id : number){
-    return this.http.get<ILocation>("https://localhost:44359/api/v1/location/"+ id);
+    return this.http.get<ILocation>(this.url + id);
   }
 }
 

@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
   }
   private MapGames(result : IGame[]){
       this.game_data = result;
+      this.debuggingTest();
   }
   debuggingTest(){
     console.log(this.game_data);

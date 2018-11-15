@@ -54,6 +54,16 @@ export class MapPage {
             }
         });
     }
+
+    addLocationMarkers(){
+        try{
+            for (let loc of this.locations){
+                let ll = {lat:loc.latitude, lng:loc.longitude};
+                let marker = new google.maps.Marker({position: ll, map: this.map, title: loc.locationName});
+            }
+        }catch{
+            console.log("Can't add markers.")
+        }
     quitGame(){
         //quit game code here!
         console.log("QUIT GAME"); 

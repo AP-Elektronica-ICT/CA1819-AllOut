@@ -11,14 +11,11 @@ import { Router } from '@angular/router';
 })
 export class NewgameComponent implements OnInit {
 
-  gameCodes = [];
   locations : ILocation[];
-  generatedHash : string;
-  possibleTimes = ['120:00','60:00','30:00'];
-  submitted = false;
   gameCode : string;
-  gameDuration : string;
-  gameBoobytraps : number;
+  amountBoobytraps : number;
+  startDate : Date;
+  endDate : Date;
 
   constructor(
     private gameService: GameService,
@@ -27,48 +24,20 @@ export class NewgameComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.gameService.getAllGames().subscribe(
-      result => this.gameCodes = this.MapGameCodes(result)
-    );
-    this.generateHash();
-    this.locationService.getAllLocations().subscribe(
-      result => this.MapLocations(result),
+    //this.gameService.getAllGames().subscribe(
+    //  result => this.gameCodes = this.MapGameCodes(result)
+    //);
+    //this.generateHash();
+    //this.locationService.getAllLocations().subscribe(
+    //  result => this.MapLocations(result),
       // The 2nd callback handles errors.
-      (err) => console.error(err),
-      () => console.log(this.locations)
-    );
-    
-    
+    //  (err) => console.error(err),
+    //  () => console.log(this.locations)
+    //);
   }
-  MapGameCodes(result : IGame[]){
-    for(var i = 0; i < result.length; i++){
-      this.gameCodes.push(result[i].gameCode);
-    }
-    return this.gameCodes;
-  }
-  MapLocations(result : ILocation[]){
-    this.locations = result;
-  }
-  generateHash() {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    var exists = false;
-    for (var i = 0; i < 5; i++)
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
-    
-    for(var j = 0; j < this.gameCodes.length; j++){
-      if(text == this.gameCodes[j])
-        exists = true;
-    }
-    if(!exists){
-      this.gameCode = text;
-    } else{
-      this.generateHash();
-    }
-    console.log("HASH Generated:");
-    console.log(this.generatedHash);
-      
-  }
+  //MapLocations(result : ILocation[]){
+  //  this.locations = result;
+  //}
   postGame(game){
     console.log();
     //game.value.amountboobytraps

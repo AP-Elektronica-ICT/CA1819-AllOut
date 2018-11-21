@@ -33,6 +33,9 @@ export class AlloutProvider {
     getAllGames(): Observable<Game[]> {
         return this._http.get<Game[]>(this.url + "game/");
     }
+    getLocationPoints(id:number): Observable<Location[]>{
+        return this._http.get<Location[]>(this.url + "location/" + id);
+    }
 }
 
 export interface Team {

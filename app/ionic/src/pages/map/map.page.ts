@@ -43,10 +43,18 @@ export class MapPage {
         console.log("get them all!"); 
         this.API.getAllLocations().subscribe(result =>{
             this.locations = result;
+            console.log(this.locations); 
             try {
                 for (let loc of this.locations){
+                    console.log(loc.question.points); 
                     let ll = {lat:loc.latitude, lng:loc.longitude};
-                    let marker = new google.maps.Marker({position: ll, map: this.map, title: loc.locationName});
+                    let marker = new google.maps.Marker({
+                        position: ll, 
+                        map: this.map, 
+                        label: loc.question.points.toString(), 
+                        title: loc.locationName, 
+                        icon: "../../assets/icon/newMarker.png"
+                    });
                 }
                 
             } catch{
@@ -96,9 +104,7 @@ export class MapPage {
     }
     updatePlayerMarker() {
         let watchOptions = {
-            frequency: 1000,
-            timeout: 3000,
-            enableHighAccuracy: false
+            enableHighAccuracy: true
         };
 
         this.geolocation.watchPosition(watchOptions).subscribe((position) => {
@@ -109,7 +115,8 @@ export class MapPage {
                 this.playerPos = new google.maps.Marker({
                     map: this.map,
                     animation: google.maps.Animation.Drop,
-                    position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+                    position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude), 
+                    icon: "../../assets/icon/newMarker.png"
                 });
             } else {
                 this.transition([position.coords.latitude, position.coords.longitude]);
@@ -127,6 +134,7 @@ export class MapPage {
     }
     moveMarker() {
         if (this.userPos) {
+            console.log(this.userPos); 
             this.userPos.lat += this.deltaLat;
             this.userPos.lng += this.deltaLng;
             var latlng = new google.maps.LatLng(this.userPos.lat, this.userPos.lng);

@@ -64,7 +64,6 @@ namespace API_.Controllers
             List<Location> list = context.Locations.Include("Question").ToList();
             return list[_id];
         }
-
         [Route("game/{id}")]
         [HttpPut]
         public IActionResult updateGame(int id, [FromBody]Game update)

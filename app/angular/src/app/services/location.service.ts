@@ -1,0 +1,39 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { HttpHeaders } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class LocationService {
+  url:string = "http://localhost:33324/api/v1/location";
+
+  constructor(private http : HttpClient) { }
+
+  getAllLocations(){
+    return this.http.get<ILocation[]>(this.url);
+  }
+  getLocation(id : number){
+    return this.http.get<ILocation>(this.url + id);
+  }
+}
+
+export interface IQuestion {
+  questionID: number;
+  questionType: number;
+  questionText: string;
+  points: number;
+  isSolved: boolean;
+  answer: string;
+}
+
+export interface ILocation {
+  locationID: number;
+  locationName: string;
+  latitude: number;
+  longitude: number;
+  question: IQuestion;
+  isBoobyTrapped: boolean;
+  victorTeamID: number;
+}

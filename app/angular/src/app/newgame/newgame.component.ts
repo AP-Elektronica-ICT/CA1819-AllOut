@@ -16,7 +16,8 @@ export class NewgameComponent implements OnInit {
   amountBoobytraps : number;
   startDate : Date;
   endDate : Date;
-
+  region : string;
+  
   constructor(
     private gameService: GameService,
     private locationService: LocationService,
@@ -39,20 +40,19 @@ export class NewgameComponent implements OnInit {
   //  this.locations = result;
   //}
   postGame(game){
-    console.log();
-    //game.value.amountboobytraps
-    //game.value.startdate
-    //game.value.starttime
-    //game.value.enddate
-    //game.value.endtime
     var curDate = new Date();
     var newGame : IPostGame = {
       team: null,
-      startTime: curDate,
-      stopTime: curDate
+      startTime: this.startDate,
+      stopTime: this.endDate
     }
     this.gameService.postGame(newGame);
     this.router.navigate(['/dashboard']);
+  }
+  fillEndDate(date : Date){
+    this.endDate = new Date(date.toString());
+    this.endDate = date;
+    this.endDate.setHours(this.endDate.getHours() + 2);
   }
 }
 

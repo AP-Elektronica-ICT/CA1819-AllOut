@@ -5,11 +5,19 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './auth.guard';
 import { CallbackComponent } from './callback/callback.component';
 import { NewgameComponent } from './newgame/newgame.component';
+import { NewquestionlistComponent } from './newquestionlist/newquestionlist.component';
 
 const routes: Routes = [
   { 
     path: 'dashboard', 
     component: DashboardComponent,
+    canActivate: [
+      AuthGuard
+    ]
+   },
+   { 
+    path: 'newquestionlist', 
+    component: NewquestionlistComponent,
     canActivate: [
       AuthGuard
     ]

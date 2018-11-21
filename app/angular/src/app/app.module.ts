@@ -13,6 +13,7 @@ import { NewgameComponent } from './newgame/newgame.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LocationService } from './services/location.service';
 import { FormsModule } from '@angular/forms';
+import { NewquestionlistComponent } from './newquestionlist/newquestionlist.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     DashboardComponent,
     CallbackComponent,
-    NewgameComponent
+    NewgameComponent,
+    NewquestionlistComponent
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,5 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Auth0 - Angular</a>
-
-      <button
-        class="btn btn-primary btn-margin"
-        routerLink="/">
-          Home
-      </button>
+      <h2>Allout Antwerpen: configuratiepaneel</h2>
 
       <button
         class="btn btn-primary btn-margin"
@@ -15,23 +7,7 @@
         (click)="auth.login()">
           Log In
       </button>
-
-      <button
-        class="btn btn-primary btn-margin"
-        *ngIf="auth.isAuthenticated()"
-        (click)="auth.logout()"
-        routerLink="/dashboard">
-          Log Out
-      </button>
-      <button
-        class="btn btn-primary btn-margin"
-        (click)="auth.debuggingTest()">
-          Test Functions
-      </button>
-
-    </div>
   </div>
-</nav>
 
 <main class="container">
   <router-outlet></router-outlet>

@@ -64,6 +64,8 @@ export class MapPage {
         }catch{
             console.log("Can't add markers.")
         }
+    }
+    
     quitGame(){
         //quit game code here!
         console.log("QUIT GAME"); 

@@ -10,7 +10,6 @@ namespace AlloutAPI.Data
     {
         public int LocationID { get; set; }
         public string LocationName { get; set; }
-        //public string Area { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public virtual Question Question { get; set; }

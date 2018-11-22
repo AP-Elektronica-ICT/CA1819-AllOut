@@ -15,7 +15,6 @@ namespace AlloutAPI
         
         public DbSet<Location> Locations { get; set; }
         public DbSet<GameLogic> Games { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<GameLogic>().ToTable("Game");

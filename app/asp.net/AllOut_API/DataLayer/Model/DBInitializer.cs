@@ -17,24 +17,28 @@ namespace AlloutAPI
                 var teams2 = new List<Team>();
                 var team1 = new Team()
                 {
+                    GameID = 1,
                     TeamName = "Kwizmasterz",
                     TotalPoints = 0,
                     TotalBoobyTraps = 2
                 };
                 var team2 = new Team()
                 {
+                    GameID = 1,
                     TeamName = "Xes&Nettet",
                     TotalPoints = 0,
                     TotalBoobyTraps = 2
                 };
                 var team3 = new Team()
                 {
+                    GameID = 2,
                     TeamName = "Didugetit",
                     TotalPoints = 0,
                     TotalBoobyTraps = 2
                 };
                 var team4 = new Team()
                 {
+                    GameID = 2,
                     TeamName = "Deminuendos",
                     TotalPoints = 0,
                     TotalBoobyTraps = 2
@@ -64,34 +68,38 @@ namespace AlloutAPI
 
             if (!context.Locations.Any())
             {
-                var que = new Question()
+                var que = new Question();
+                var que2 = new Question();
+                var loc = new Location();
+                var loc2 = new Location();
+                que = new Question()
                 {
                     QuestionText = "How much is 2 + 2?",
                     Answer = "4",
                     IsSolved = false,
                     Points = 1000
                 };
-                var que2 = new Question()
+                que2 = new Question()
                 {
                     QuestionText = "Wat is de luchtsnelheid van een onbeladen zwaluw?",
                     Answer = "Een Afrikaanse of een Europese zwaluw?",
                     IsSolved = false,
                     Points = 10000000
                 };
-                var loc = new Location()
+                loc = new Location()
                 {
                     LocationName = "AP Ellermansstraat",
                     Latitude = 51.2299036,
                     Longitude = 4.4163052,
-                    Question = que2,
+                    Question = que,
                     IsBoobyTrapped = false
                 };
-                var loc2 = new Location()
+                loc2 = new Location()
                 {
                     LocationName = "AP Noord",
                     Latitude = 51.2289238,
                     Longitude = 4.4153827,
-                    Question = que,
+                    Question = que2,
                     IsBoobyTrapped = false
                 };
                 context.Locations.Add(loc);

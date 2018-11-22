@@ -15,42 +15,46 @@ namespace AllOut_API.Controllers
     {
         private readonly DBContext context;
         private readonly GameLogicFacade gameLogicFacade;
-
+        
         public GameController(DBContext context)
         {
             this.context = context;
             this.gameLogicFacade = new GameLogicFacade(context);
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         [Route("{id}")]
         [HttpPut]
-        public IActionResult updateGame(int id, [FromBody]GameLogic update)
+        public IActionResult UpdateGame(int id, [FromBody]GameLogic update)
         {
-            return Created("", gameLogicFacade.updateGame(id, update));
+            return Created("", gameLogicFacade.UpdateGame(id, update));
         }
 
         [HttpPost]
-        public IActionResult postGame([FromBody] GameLogic newGame)
+        public IActionResult PostGame([FromBody] GameLogic newGame = null)
         {
-            return Created("", gameLogicFacade.postGame(newGame));
+            if (newGame != null)
+                gameLogicFacade.PostGame(newGame);
+            return Created("", gameLogicFacade.PostGame(newGame));
+        }
+
+        [Route("team")]
+        [HttpPost]
+        public IActionResult PostTeam([FromBody] Team newTeam)
+        {
+            return Created("", gameLogicFacade.PostTeam(newTeam));
         }
 
         [HttpGet]
-        public List<GameLogic> getGames()
+        public List<GameLogic> GetGames()
         {
-            return gameLogicFacade.getGames();
+            return gameLogicFacade.GetGames();
         }
 
         [Route("{id}")] 
         [HttpGet]
-        public GameLogic getGame(int id)
+        public GameLogic GetGameById(int id)
         {
-            return gameLogicFacade.getGame(id);
+            return gameLogicFacade.GetGameById(id);
         }
     }
 }

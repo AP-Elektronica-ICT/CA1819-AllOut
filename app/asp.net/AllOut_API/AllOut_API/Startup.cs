@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AlloutAPI;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Allout_API
 {
@@ -28,6 +29,7 @@ namespace Allout_API
             services.AddDbContext<DBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             
+
             services.AddCors(options =>
             {
             //    options.AddPolicy("CorsPolicy",
@@ -41,7 +43,10 @@ namespace Allout_API
                     options.Conventions.AuthorizeFolder("/Account/Manage");
                     options.Conventions.AuthorizePage("/Account/Logout");
                 });
-
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "AlloutAPI", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,6 +79,15 @@ namespace Allout_API
                     template: "{controller}/{action=Index}/{id?}");
             });
 
+            app.UseMvc();
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "AlloutAPI");
+            });
 
             DBInitializer.Initialize(context);
         }

@@ -15,9 +15,9 @@ namespace BusinessLayer
             this.context = context;
         }
 
-        public GameLogic updateGame(int id, GameLogic update)
+        public GameLogic UpdateGame(int id, GameLogic update)
         {
-            var result = context.Games.SingleOrDefault(g => g.GameLogicID == id);
+            GameLogic result = context.Games.SingleOrDefault(g => g.GameLogicID == id);
             if (result != null)
             {
                 result.GameCode = update.GameCode;
@@ -30,7 +30,7 @@ namespace BusinessLayer
             return update;
         }
         
-        public GameLogic postGame(GameLogic newGame)
+        public GameLogic PostGame(GameLogic newGame)
         {
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             var stringChars = new char[5];
@@ -48,13 +48,22 @@ namespace BusinessLayer
 
             return newGame;
         }
-        
-        public List<GameLogic> getGames()
+
+        public Team PostTeam(Team newTeam)
+        {
+            GameLogic result = context.Games.SingleOrDefault(g => g.GameLogicID == newTeam.GameID);
+            result.Team.Add(newTeam);
+            context.SaveChanges();
+
+            return newTeam;
+        }
+
+        public List<GameLogic> GetGames()
         {
             return context.Games.Include("Team").ToList();
         }
         
-        public GameLogic getGame(int id)
+        public GameLogic GetGameById(int id)
         {
             int _id = id - 1;
             List<GameLogic> list = context.Games.Include("Team").ToList();

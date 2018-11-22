@@ -16,7 +16,7 @@ namespace BusinessLayer
             this.context = context;
         }
         
-        public Location putLocation(int id, Location newLocation)
+        public Location PutLocation(int id, Location newLocation)
         {
             var result = context.Locations.SingleOrDefault(g => g.LocationID == id);
             if (result != null)
@@ -27,7 +27,7 @@ namespace BusinessLayer
             return newLocation;
         }
         
-        public Location postGame(Location newLocation)
+        public Location PostGame(Location newLocation)
         {
             newLocation.LocationID = context.Games.Count();
             context.Locations.Add(newLocation);
@@ -36,12 +36,12 @@ namespace BusinessLayer
             return newLocation;
         }
 
-        public List<Location> getLocations()
+        public List<Location> GetLocations()
         {
             return context.Locations.Include("Question").ToList();
         }
         
-        public Location getLocation(int id)
+        public Location GetLocationById(int id)
         {
             int _id = id - 1;
             List<Location> list = context.Locations.Include("Question").ToList();

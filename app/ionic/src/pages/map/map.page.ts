@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Toast } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LocationTrackerProvider } from '../../providers/location-tracker/location-tracker';
 import { HomePage } from '../../pages/home/home.page';  
@@ -29,7 +29,7 @@ export class MapPage {
     delay = 10; //milliseconds
     i = 0;
     locations:API.Location[];
-    constructor(public navCtrl: NavController, public API:API.AlloutProvider, public geolocation: Geolocation, public locationTrackerProvider: LocationTrackerProvider) {
+    constructor(public navCtrl: NavController, public API:API.AlloutProvider, public geolocation: Geolocation, public locationTrackerProvider: LocationTrackerProvider, private toastCtrl: Toast) {
     }
 
     ionViewDidLoad() {
@@ -55,13 +55,31 @@ export class MapPage {
                         title: loc.locationName, 
                         icon: "../../assets/icon/newMarker.png"
                     });
-                    console.log(this.calcDistance(this.playerPos.latitude, marker.latitude, this.playerPos.longitude, marker.longitude)); 
+                    console.log(this.calcDistance(this.playerPos.latitude, marker.latitude, this.playerPos.longitude, marker.longitude));
+                    marker.addListener('click', function(){
+                        var distance = this.calcDistance(marker.latitude, this.userPos.latitude, marker.longitude, this.userPos.longitude); 
+                        if(distance <= 100){
+                            
+                        }
+                        else{
+                            var m = "You are currently " + distance + "meters from this point. You need to be within 100 meters!"; 
+                            this.showToast(m); 
+                        }
+                    })
                 }
                 
             } catch{
                 console.log("Can't add markers!"); 
             }
         });
+    }
+    showToast(m: any){
+        let toast = this.toastCtrl.create({
+            message: m, 
+            duration: 5000, 
+            position: 'top'
+        }); 
+        toast.present; 
     }
 
     addLocationMarkers(){
@@ -98,6 +116,7 @@ export class MapPage {
                 fullscreenControl: false
             }
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+
             this.updatePlayerMarker();
         }, (err) => {
             console.log(err);

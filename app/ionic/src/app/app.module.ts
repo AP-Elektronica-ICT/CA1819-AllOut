@@ -11,7 +11,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home.page';
 import { MapPage } from '../pages/map/map.page';
 import { JoinGamePage } from '../pages/joingame/joingame.page';
-import { QuestionPage } from '../pages/question/question.page'; 
+import { QuestionPage } from '../pages/question/question'; 
 
 import { LocationTrackerProvider } from '../providers/location-tracker/location-tracker';
 import { AlloutProvider } from '../providers/AlloutAPI/AlloutAPI';

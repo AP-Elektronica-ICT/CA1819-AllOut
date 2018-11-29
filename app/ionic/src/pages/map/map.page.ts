@@ -1,9 +1,10 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
-import { NavController, Toast } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LocationTrackerProvider } from '../../providers/location-tracker/location-tracker';
 import { HomePage } from '../../pages/home/home.page';  
 import * as API from '../../providers/AlloutAPI/AlloutAPI';
+import { QuestionPage } from '../question/question';
 
 declare var google;
 /**
@@ -29,7 +30,7 @@ export class MapPage {
     delay = 10; //milliseconds
     i = 0;
     locations:API.Location[];
-    constructor(public navCtrl: NavController, public API:API.AlloutProvider, public geolocation: Geolocation, public locationTrackerProvider: LocationTrackerProvider, private toastCtrl: Toast) {
+    constructor(public navCtrl: NavController, public API:API.AlloutProvider, public geolocation: Geolocation, public locationTrackerProvider: LocationTrackerProvider, private toastCtrl: ToastController) {
     }
 
     ionViewDidLoad() {
@@ -59,7 +60,9 @@ export class MapPage {
                     marker.addListener('click', function(){
                         var distance = this.calcDistance(marker.latitude, this.userPos.latitude, marker.longitude, this.userPos.longitude); 
                         if(distance <= 100){
-                            
+                            this.navCtrl.push(QuestionPage, {
+                                data: loc.locationID
+                            }); 
                         }
                         else{
                             var m = "You are currently " + distance + "meters from this point. You need to be within 100 meters!"; 

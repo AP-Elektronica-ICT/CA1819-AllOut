@@ -1,4 +1,5 @@
 ﻿using AlloutAPI.Data;
+using DataLayer.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,47 +66,61 @@ namespace AlloutAPI
                 context.Games.Add(game2);
                 context.SaveChanges();
             }
-
-            if (!context.Locations.Any())
+            if (!context.Areas.Any())
             {
-                var que = new Question();
-                var que2 = new Question();
-                var loc = new Location();
-                var loc2 = new Location();
-                que = new Question()
+                
+                    var que = new Question();
+                    var que2 = new Question();
+                    var loc = new Location();
+                    var loc2 = new Location();
+                    que = new Question()
+                    {
+                        QuestionText = "How much is 2 + 2?",
+                        Answer = "4",
+                        IsSolved = false,
+                        Points = 1000
+                    };
+                    que2 = new Question()
+                    {
+                        QuestionText = "Wat is de luchtsnelheid van een onbeladen zwaluw?",
+                        Answer = "Een Afrikaanse of een Europese zwaluw?",
+                        IsSolved = false,
+                        Points = 10000000
+                    };
+                    loc = new Location()
+                    {
+                        LocationName = "AP Ellermansstraat",
+                        Latitude = 51.2299036,
+                        Longitude = 4.4163052,
+                        Question = que,
+                        IsBoobyTrapped = false
+                    };
+                    loc2 = new Location()
+                    {
+                        LocationName = "AP Noord",
+                        Latitude = 51.2289238,
+                        Longitude = 4.4153827,
+                        Question = que2,
+                        IsBoobyTrapped = false
+                    };
+
+                //context.Locations.Add(loc);
+                //context.Locations.Add(loc2);
+                //var area1 = new Area();
+                var area1 = new Area();
+                area1.Name = "Antwerpen";
+                var locations = new List<Location>();
+                if (!locations.Any())
                 {
-                    QuestionText = "How much is 2 + 2?",
-                    Answer = "4",
-                    IsSolved = false,
-                    Points = 1000
-                };
-                que2 = new Question()
-                {
-                    QuestionText = "Wat is de luchtsnelheid van een onbeladen zwaluw?",
-                    Answer = "Een Afrikaanse of een Europese zwaluw?",
-                    IsSolved = false,
-                    Points = 10000000
-                };
-                loc = new Location()
-                {
-                    LocationName = "AP Ellermansstraat",
-                    Latitude = 51.2299036,
-                    Longitude = 4.4163052,
-                    Question = que,
-                    IsBoobyTrapped = false
-                };
-                loc2 = new Location()
-                {
-                    LocationName = "AP Noord",
-                    Latitude = 51.2289238,
-                    Longitude = 4.4153827,
-                    Question = que2,
-                    IsBoobyTrapped = false
-                };
-                context.Locations.Add(loc);
-                context.Locations.Add(loc2);
+                    locations.Add(loc);
+                    locations.Add(loc2);
+                    area1.Locations = locations;
+                }
+                context.Areas.Add(area1);
                 context.SaveChanges();
             }
+            
+            
         }
     }
 }

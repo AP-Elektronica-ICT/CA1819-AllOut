@@ -15,37 +15,46 @@ namespace BusinessLayer
         {
             this.context = context;
         }
-        
-        public Location PutLocation(int id, Location newLocation)
+
+        public Location putLocation(int a_id, int l_id, Location newLocation)
         {
-            var result = context.Locations.SingleOrDefault(g => g.LocationID == id);
+            var result = context.Areas.SingleOrDefault(g => g.AreaID == a_id);
             if (result != null)
             {
-                result = newLocation;
+                var result2 = result.Locations.SingleOrDefault(e => e.LocationID == l_id);
+                if (result != null)
+                {
+                    result2 = newLocation;
+                }
                 context.SaveChanges();
             }
             return newLocation;
         }
-        
-        public Location PostGame(Location newLocation)
+
+        public Location postLocation(int a_id, Location newLocation)
         {
-            newLocation.LocationID = context.Games.Count();
-            context.Locations.Add(newLocation);
+            var result = context.Areas.SingleOrDefault(g => g.AreaID == a_id);
+            if (result != null)
+            {
+                result.Locations.Add(newLocation);
+                context.SaveChanges();
+            }
             context.SaveChanges();
 
             return newLocation;
         }
 
-        public List<Location> GetLocations()
+        public List<Location> getLocations(int a_id)
         {
-            return context.Locations.Include("Question").ToList();
+            var result = context.Areas.SingleOrDefault(g => g.AreaID == a_id);
+            return result.Locations.ToList();
         }
-        
-        public Location GetLocationById(int id)
+
+        public Location getLocation(int a_id, int l_id)
         {
-            int _id = id - 1;
-            List<Location> list = context.Locations.Include("Question").ToList();
-            return list[_id];
+            var area = context.Areas.SingleOrDefault(a => a.AreaID == a_id);
+            var locations = area.Locations.SingleOrDefault(l => l.LocationID == l_id);
+            return locations;
         }
     }
 }

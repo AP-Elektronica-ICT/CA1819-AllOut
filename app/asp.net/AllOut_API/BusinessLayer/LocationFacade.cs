@@ -33,7 +33,7 @@ namespace BusinessLayer
 
         public Location postLocation(int a_id, Location newLocation)
         {
-            var result = context.Areas.SingleOrDefault(g => g.AreaID == a_id);
+            var result = context.Areas.SingleOrDefault(a => a.AreaID == a_id);
             if (result != null)
             {
                 result.Locations.Add(newLocation);
@@ -46,7 +46,7 @@ namespace BusinessLayer
 
         public List<Location> getLocations(int a_id)
         {
-            var result = context.Areas.SingleOrDefault(g => g.AreaID == a_id);
+            var result = context.Areas.SingleOrDefault(a => a.AreaID == a_id);
             return result.Locations.ToList();
         }
 

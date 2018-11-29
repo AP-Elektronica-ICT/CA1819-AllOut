@@ -1,5 +1,4 @@
 ﻿using AlloutAPI.Data;
-using DataLayer.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -107,15 +106,14 @@ namespace AlloutAPI
                 //context.Locations.Add(loc);
                 //context.Locations.Add(loc2);
                 //var area1 = new Area();
-                var area1 = new Area();
-                area1.Name = "Antwerpen";
                 var locations = new List<Location>();
-                if (!locations.Any())
+                locations.Add(loc);
+                locations.Add(loc2);
+                var area1 = new Area()
                 {
-                    locations.Add(loc);
-                    locations.Add(loc2);
-                    area1.Locations = locations;
-                }
+                    Name = "Antwerpen",
+                    Locations = locations
+                };
                 context.Areas.Add(area1);
                 context.SaveChanges();
             }

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataLayer.Model
+namespace AlloutAPI.Data
 {
     public class Area
     {

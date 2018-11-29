@@ -1,5 +1,4 @@
 ﻿using AlloutAPI.Data;
-using DataLayer.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

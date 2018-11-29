@@ -11,7 +11,7 @@ import { GameService } from './services/game.service';
 import { AuthGuard } from './auth.guard';
 import { NewgameComponent } from './newgame/newgame.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LocationService } from './services/location.service';
+import { AreaService } from './services/area.service';
 import { FormsModule } from '@angular/forms';
 import { NewquestionlistComponent } from './newquestionlist/newquestionlist.component';
 
@@ -31,7 +31,7 @@ import { NewquestionlistComponent } from './newquestionlist/newquestionlist.comp
     FormsModule,
     MDBBootstrapModule.forRoot()
   ],
-  providers: [AuthService, AuthGuard, GameService, LocationService],
+  providers: [AuthService, AuthGuard, GameService, AreaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

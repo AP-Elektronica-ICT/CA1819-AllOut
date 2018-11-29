@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService, IGame, IPostGame } from '../services/game.service';
-import { LocationService, ILocation, IQuestion } from '../services/location.service';
+import { AreaService, IArea, Question } from '../services/area.service';
 import { Router } from '@angular/router';
 
 
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class NewgameComponent implements OnInit {
 
-  locations : ILocation[];
+  areas : IArea[];
   gameCode : string;
   amountBoobytraps : number;
   startDate : Date;
@@ -20,26 +20,16 @@ export class NewgameComponent implements OnInit {
   
   constructor(
     private gameService: GameService,
-    private locationService: LocationService,
+    private areaService: AreaService,
     private router: Router
   ) { }
 
   ngOnInit() {
-    //this.gameService.getAllGames().subscribe(
-    //  result => this.gameCodes = this.MapGameCodes(result)
-    //);
-    //this.generateHash();
-    //this.locationService.getAllLocations().subscribe(
-    //  result => this.MapLocations(result),
-      // The 2nd callback handles errors.
-    //  (err) => console.error(err),
-    //  () => console.log(this.locations)
-    //);
+    this.areaService.getAllAreas().subscribe(
+      result => this.areas = result
+    );
   }
-  //MapLocations(result : ILocation[]){
-  //  this.locations = result;
-  //}
-  postGame(game){
+  postGame(){
     var curDate = new Date();
     var newGame : IPostGame = {
       team: null,

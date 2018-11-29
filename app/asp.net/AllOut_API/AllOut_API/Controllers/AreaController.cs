@@ -20,28 +20,24 @@ namespace AllOut_API.Controllers
             this.context = context;
             this.areaFacade = new AreaFacade(context);
         }
-
-        [Route("{id}")]
-        [HttpPut]
-        public IActionResult UpdateGame(int id, [FromBody]Area update)
-        {
-            return Created("", areaFacade.UpdateArea(id, update));
-        }
-
         [HttpPost]
-        public IActionResult PostGame([FromBody] Area newArea = null)
+        public IActionResult PostArea([FromBody] Area newArea = null)
         {
             if (newArea != null)
                 areaFacade.PostArea(newArea);
             return Created("", areaFacade.PostArea(newArea));
         }
-
         [HttpGet]
         public List<Area> GetAreas()
         {
             return areaFacade.GetAreas();
         }
-
+        [Route("{id}")]
+        [HttpPut]
+        public IActionResult UpdateArea(int id, [FromBody]Area update)
+        {
+            return Created("", areaFacade.UpdateArea(id, update));
+        }
         [Route("{id}")]
         [HttpGet]
         public Area GetAreaById(int id)

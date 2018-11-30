@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlloutProvider, Game, Team } from '../../providers/AlloutAPI/AlloutAPI';
+import { MapPage } from '../map/map.page';
 
 @Component({
     selector: 'page-joingame',
@@ -22,7 +23,7 @@ export class JoinGamePage {
     message:string;
     nameTaken:boolean;
 
-    constructor(private api:AlloutProvider){
+    constructor(private api:AlloutProvider, private navCtrl: NavController){
     }
 
     joinGame(){
@@ -57,6 +58,7 @@ export class JoinGamePage {
             
             this.api.teamName = this.teamName;
             this.message = "Succesfully joined the game!"
+            this.navCtrl.push(MapPage);
         }
     }
 

@@ -32,5 +32,4 @@ export class QuestionPage {
     });
     console.log(this.question + " has " + this.questionPoints + " points on it."); 
   }
-
 }

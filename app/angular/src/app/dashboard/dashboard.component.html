@@ -12,12 +12,17 @@
   </thead>
   <tbody>
     <tr *ngFor="let row of game_data; index as i">
-      <td>{{row.gameLocationID}}</td>
+      <td>{{row.gameLogicID}}</td>
       <td>{{row.gameCode}}</td>
       <td>{{row.team.length}}</td>
+<<<<<<< HEAD
       <td><button (click)="startGame(i+1)">Start Game</button></td>
       <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
       <td><a href="#"><i class="fa fa-times-circle" aria-hidden="true"></i></a></td>
+=======
+      <td><a href="/editgame/{{row.gameLogicID}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+      <td><a href="/deletegame/{{row.gameLogicID}}"><i class="fa fa-times-circle" aria-hidden="true"></i></a></td>
+>>>>>>> master
     </tr>
   </tbody>
 </table>
@@ -33,11 +38,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of game_data; index as i">
-      <td>{{row.gameID}}</td>
-      <td>{{row.gameCode}}</td>
-      <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-      <td><a href="#"><i class="fa fa-times-circle" aria-hidden="true"></i></a></td>
+    <tr *ngFor="let row of areas; index as i">
+      <td>{{row.areaID}}</td>
+      <td>{{row.name}}</td>
+      <td><a href="/editarea/{{row.areaID}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+      <td><a href="/deletearea/{{row.areaID}}"><i class="fa fa-times-circle" aria-hidden="true"></i></a></td>
     </tr>
   </tbody>
 </table>

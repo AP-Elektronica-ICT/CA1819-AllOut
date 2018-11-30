@@ -29,6 +29,20 @@ const routes: Routes = [
       AuthGuard
     ]
    },
+   { 
+    path: 'editgame/:id', 
+    component: NewgameComponent,
+    canActivate: [
+      AuthGuard
+    ]
+   },
+   { 
+    path: 'deletegame/:id', 
+    component: NewgameComponent,
+    canActivate: [
+      AuthGuard
+    ]
+   },
    {
     path: 'callback', 
       component: CallbackComponent,

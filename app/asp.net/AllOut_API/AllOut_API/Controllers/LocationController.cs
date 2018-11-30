@@ -21,36 +21,30 @@ namespace AllOut_API.Controllers
             this.context = context;
             this.locationFacade = new LocationFacade(context);
         }
-        
+
         [HttpPut]
-        public IActionResult PutLocation(int id, [FromBody]Location newLocation)
+        public IActionResult putLocation(int a_id, int l_id, [FromBody]Location newLocation)
         {
-            return Created("", locationFacade.PutLocation(id, newLocation));
+            return Created("", locationFacade.putLocation(a_id, l_id, newLocation));
         }
 
         [HttpPost]
-        public IActionResult PostLocation([FromBody] Location newLocation)
+        public IActionResult postLocation(int a_id, [FromBody] Location newLocation)
         {
-            newLocation.LocationID = context.Games.Count();
-            context.Locations.Add(newLocation);
-            context.SaveChanges();
-
-            return Created("", newLocation);
+            return Created("", locationFacade.postLocation(a_id, newLocation));
         }
 
         [HttpGet]
-        public List<Location> GetLocations()
+        public List<Location> getLocations(int a_id)
         {
-            return context.Locations.Include("Question").ToList();
+            return locationFacade.getLocations(a_id);
         }
 
         [Route("{id}")]
         [HttpGet]
-        public Location GetLocationById(int id)
+        public Location getLocation(int a_id, int l_id)
         {
-            int _id = id - 1;
-            List<Location> list = context.Locations.Include("Question").ToList();
-            return list[_id];
+            return locationFacade.getLocation(a_id, l_id);
         }
     }
 }

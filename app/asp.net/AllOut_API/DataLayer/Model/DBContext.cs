@@ -13,11 +13,13 @@ namespace AlloutAPI
             
         }
         
-        public DbSet<Location> Locations { get; set; }
+        public DbSet<Area> Areas { get; set; }
         public DbSet<GameLogic> Games { get; set; }
+        public DbSet<Location> Locations { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<GameLogic>().ToTable("Game");
+            modelBuilder.Entity<Area>().ToTable("Area");
             modelBuilder.Entity<Location>().ToTable("Location");
         }
 

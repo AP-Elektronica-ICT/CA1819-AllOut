@@ -30,3 +30,21 @@ app/asp\.net/AllOut_API/DataLayer/bin/Debug/netcoreapp2\.0/
 app/asp\.net/AllOut_API/DataLayer/obj/Debug/netcoreapp2\.0/
 
 app/asp\.net/AllOut_API/\.vs/AllOut_API/v15/
+
+app/asp\.net/AllOut_API/\.vs/
+
+app/asp\.net/AllOut_API/AllOut_API/bin/Debug/
+
+app/asp\.net/AllOut_API/AllOut_API/obj/
+
+app/asp\.net/AllOut_API/BusinessLayer/bin/Debug/
+
+app/asp\.net/AllOut_API/BusinessLayer/obj/
+
+app/asp\.net/AllOut_API/DataLayer/bin/
+
+app/asp\.net/AllOut_API/DataLayer/obj/
+
+app/asp\.net/AllOut_API/Services/obj/
+
+app/asp\.net/AllOut_API/UnitTesting/obj/

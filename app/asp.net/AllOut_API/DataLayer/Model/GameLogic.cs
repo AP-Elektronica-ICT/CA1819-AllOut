@@ -11,10 +11,8 @@ namespace AlloutAPI.Data
         public string GameCode { get; set; }
         public int AreaID { get; set; }
         public virtual List<Team> Team { get; set; } = new List<Team>();
-        public string StartTime { get; set; }
-        public string StopTime { get; set; }
-        public bool HasStarted { get; set; }
-        public int StartingTraps { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime StopTime { get; set; }
         public Area Area { get; set; }
     }
 }

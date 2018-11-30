@@ -20,6 +20,8 @@ import { LocationService } from './services/location.service';
 import { QuestionComponent } from './question/question.component';
 import { AgmCoreModule } from '@agm/core';
 import { NewLocationComponent } from './newlocation/newlocation.component';
+import { EditGameComponent } from './edit-game/edit-game.component';
+import { EditQuestionListComponent } from './edit-question-list/edit-question-list.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +30,7 @@ import { NewLocationComponent } from './newlocation/newlocation.component';
     DashboardComponent,
     CallbackComponent,
     NewgameComponent,
-    NewquestionlistComponent,
-    AreaComponent,
-    LocationComponent,
-    QuestionComponent,
-    NewLocationComponent,
-    QuestionComponent,
-    NewLocationComponent
+    NewquestionlistComponent
   ],
   imports: [
     BrowserModule,

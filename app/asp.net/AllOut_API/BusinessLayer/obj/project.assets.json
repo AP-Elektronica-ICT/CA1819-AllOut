@@ -2530,10 +2530,10 @@
       "path": "microsoft.netcore.platforms/2.0.0",
       "files": [
         "LICENSE.TXT",
+        "Microsoft.NETCore.Platforms.2.0.0.nupkg.sha512",
+        "Microsoft.NETCore.Platforms.nuspec",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
-        "microsoft.netcore.platforms.2.0.0.nupkg.sha512",
-        "microsoft.netcore.platforms.nuspec",
         "runtime.json",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -5001,7 +5001,12 @@
     ]
   },
   "packageFolders": {
+<<<<<<< master
     "C:\\Users\\Gilian\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\Bas\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+>>>>>>> Area toegevoegd fix
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -5010,18 +5015,33 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
+<<<<<<< master
       "projectUniqueName": "C:\\Users\\Gilian\\Documents\\School\\3EA2_18-19\\Cloud Applications\\app\\asp.net\\AllOut_API\\BusinessLayer\\BusinessLayer.csproj",
       "projectName": "BusinessLayer",
       "projectPath": "C:\\Users\\Gilian\\Documents\\School\\3EA2_18-19\\Cloud Applications\\app\\asp.net\\AllOut_API\\BusinessLayer\\BusinessLayer.csproj",
       "packagesPath": "C:\\Users\\Gilian\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Gilian\\Documents\\School\\3EA2_18-19\\Cloud Applications\\app\\asp.net\\AllOut_API\\BusinessLayer\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\Bas\\Documents\\School\\3EA2\\CA\\app\\asp.net\\AllOut_API\\BusinessLayer\\BusinessLayer.csproj",
+      "projectName": "BusinessLayer",
+      "projectPath": "C:\\Users\\Bas\\Documents\\School\\3EA2\\CA\\app\\asp.net\\AllOut_API\\BusinessLayer\\BusinessLayer.csproj",
+      "packagesPath": "C:\\Users\\Bas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Bas\\Documents\\School\\3EA2\\CA\\app\\asp.net\\AllOut_API\\BusinessLayer\\obj\\",
+>>>>>>> Area toegevoegd fix
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
+<<<<<<< master
         "C:\\Users\\Gilian\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+=======
+        "C:\\Users\\Bas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+>>>>>>> Area toegevoegd fix
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -5033,8 +5053,13 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
+<<<<<<< master
             "C:\\Users\\Gilian\\Documents\\School\\3EA2_18-19\\Cloud Applications\\app\\asp.net\\AllOut_API\\DataLayer\\DataLayer.csproj": {
               "projectPath": "C:\\Users\\Gilian\\Documents\\School\\3EA2_18-19\\Cloud Applications\\app\\asp.net\\AllOut_API\\DataLayer\\DataLayer.csproj"
+=======
+            "C:\\Users\\Bas\\Documents\\School\\3EA2\\CA\\app\\asp.net\\AllOut_API\\DataLayer\\DataLayer.csproj": {
+              "projectPath": "C:\\Users\\Bas\\Documents\\School\\3EA2\\CA\\app\\asp.net\\AllOut_API\\DataLayer\\DataLayer.csproj"
+>>>>>>> Area toegevoegd fix
             }
           }
         }

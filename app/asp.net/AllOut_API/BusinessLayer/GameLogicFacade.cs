@@ -24,7 +24,7 @@ namespace BusinessLayer
                 result.StartTime = update.StartTime;
                 result.StopTime = update.StopTime;
                 result.Team = update.Team;
-                result.AreaID = update.AreaID;
+                result.Area = update.Area;
 
                 context.SaveChanges();
             }

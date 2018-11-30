@@ -99,21 +99,17 @@ namespace AlloutAPI
                 {
                     GameCode = "X35H0",
                     Team = teams,
-                    StartTime = DateTime.Now.ToString(),
-                    StopTime = DateTime.Now.AddHours(2).ToString(),
-                    StartingTraps = 2,
-                    HasStarted = false,
-                    AreaID = 1
+                    StartTime = DateTime.Now,
+                    StopTime = DateTime.Now.AddHours(2),
+                    Area = area1
                 };
                 var game2 = new GameLogic()
                 {
                     GameCode = "A3CD3",
                     Team = teams2,
-                    StartTime = DateTime.Now.ToString(),
-                    StopTime = DateTime.Now.AddHours(2).ToString(),
-                    StartingTraps = 2,
-                    HasStarted = false,
-                    AreaID = 1
+                    StartTime = DateTime.Now,
+                    StopTime = DateTime.Now.AddHours(2),
+                    Area = area1
                 };
                 context.Games.Add(game);
                 context.Games.Add(game2);

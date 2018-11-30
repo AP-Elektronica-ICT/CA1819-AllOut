@@ -1,5 +1,9 @@
 {
   "version": 1,
+<<<<<<< master
   "dgSpecHash": "qpO7VZ61cpN1R5XSL6vrExmqElzK+xtQoPhg5qBrToQDPzUYlJMRMKW/2AsiGfx41gSbY2medZ0nYh05MaInvQ==",
+=======
+  "dgSpecHash": "NmHWhE2elDmh5P1yB9bMu/z54eAUFBXl+V0LtsuaPmgI4xieV8jP/LGVEChVTonHyQTT+7OY502uok++QC4QXA==",
+>>>>>>> Area toegevoegd fix
   "success": true
 }

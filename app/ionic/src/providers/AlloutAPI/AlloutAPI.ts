@@ -6,16 +6,17 @@ import { DateTime } from "ionic-angular";
 
 export class AlloutProvider {
     url: string;
+    game:Game;
+    teamName:string;
+
     constructor(private _http: HttpClient) {
         this.url = "http://localhost:33324/api/v1/"
     };
 
-    putGame(id: number, game: Game) {
-        return this._http.put(this.url + "game/" + id, game);
-    }
-
-    postLocation(id: number, location: Location): Observable<Location> {
-        return this._http.post<Location>(this.url + "location/" + id, location);
+    postTeam(team: Team) {
+        console.log(this.url + "game/team")
+        console.log(JSON.stringify(team))
+        return this._http.post(this.url + "game/team", team);
     }
 
     getLocation(id: number): Observable<Location> {
@@ -40,13 +41,14 @@ export class AlloutProvider {
 
 export interface Team {
     teamID: number;
+    gameID: number;
     teamName: string;
     totalPoints: number;
     totalBoobyTraps: number;
 }
 
 export interface Game {
-    gameID: number;
+    gameLogicID: number;
     gameCode: string;
     team: Team[];
     startTime: DateTime,

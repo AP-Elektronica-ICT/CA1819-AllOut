@@ -21,12 +21,11 @@ namespace AllOut_API.Controllers
             this.context = context;
             this.gameLogicFacade = new GameLogicFacade(context);
         }
-
-        [Route("{id}")]
+        
         [HttpPut]
-        public IActionResult UpdateGame(int id, [FromBody]GameLogic update)
+        public IActionResult UpdateGame([FromBody]GameLogic update)
         {
-            return Created("", gameLogicFacade.UpdateGame(id, update));
+            return Created("", gameLogicFacade.UpdateGame(update));
         }
 
         [HttpPost]
@@ -34,7 +33,7 @@ namespace AllOut_API.Controllers
         {
             if (newGame != null)
                 gameLogicFacade.PostGame(newGame);
-            return Created("", gameLogicFacade.PostGame(newGame));
+            return Created("", newGame);
         }
 
         [Route("team")]

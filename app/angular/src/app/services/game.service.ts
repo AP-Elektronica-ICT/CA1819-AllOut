@@ -13,16 +13,19 @@ export class GameService {
   getAllGames(){
     return this.http.get<IGame[]>(this.url);
   }
+  putGame(game:IGame){
+    let headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    console.log(game);
+    return this.http.put(this.url, JSON.stringify(game), {headers: headers});
+  }
   getGameById(id : number){
     return this.http.get<IGame>(this.url + id);
   }
   postGame(game : IPostGame){
     let headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
-    return this.http.post(this.url, game, { headers : headers }).subscribe(data => {
-      console.log("post game subscribe");
-      console.log(data);
-    });
+    return this.http.post(this.url, game, { headers : headers });
   }
   deleteGame(id : number){
     return this.http.delete(this.url + id);
@@ -35,6 +38,8 @@ export interface IGame {
   team: ITeam[];
   startTime: string;
   stopTime: string;
+  hasStarted: boolean;
+  startingTraps: number;
 }
 
 export interface ITeam {

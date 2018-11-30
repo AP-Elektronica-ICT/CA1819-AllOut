@@ -15,15 +15,23 @@ namespace BusinessLayer
             this.context = context;
         }
 
-        public GameLogic UpdateGame(int id, GameLogic update)
+        public GameLogic UpdateGame(GameLogic update)
         {
-            GameLogic result = context.Games.SingleOrDefault(g => g.GameLogicID == id);
+            GameLogic result = context.Games.SingleOrDefault(g => g.GameLogicID == update.GameLogicID);
             if (result != null)
             {
-                result.GameCode = update.GameCode;
-                result.StartTime = update.StartTime;
-                result.StopTime = update.StopTime;
-                result.Team = update.Team;
+                if (result.GameCode == update.GameCode)
+                    result.GameCode = update.GameCode;
+                if (result.StartTime == update.StartTime)
+                    result.StartTime = update.StartTime;
+                if (result.StopTime == update.StopTime)
+                    result.StopTime = update.StopTime;
+                if (result.Team == update.Team)
+                    result.Team = update.Team;
+                if (result.HasStarted == update.HasStarted)
+                    result.HasStarted = update.HasStarted;
+                if (result.StartingTraps == update.StartingTraps)
+                    result.StartingTraps = update.StartingTraps;
 
                 context.SaveChanges();
             }

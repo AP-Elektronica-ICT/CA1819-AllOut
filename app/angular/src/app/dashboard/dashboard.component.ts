@@ -27,4 +27,19 @@ export class DashboardComponent implements OnInit {
   debuggingTest(){
     console.log(this.game_data);
   }
+  startGame(id:number){
+    console.log("Index given: " + id)
+    let gameUpdate:IGame;
+    for (let i of this.game_data){
+      if (i.gameLogicID == id){
+        console.log(i.gameLogicID + " = " + id)
+        gameUpdate = i;
+        gameUpdate.startTime = Date.now().toString();
+        gameUpdate.hasStarted = true;
+      }
+    }
+    this.gameService.putGame(gameUpdate).subscribe(result =>{
+      console.log(result);
+    });
+  }
 }

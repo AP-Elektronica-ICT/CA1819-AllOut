@@ -18,7 +18,7 @@ namespace AlloutAPI
                 var team1 = new Team()
                 {
                     GameID = 1,
-                    TeamName = "Kwizmasterz",
+                    TeamName = "Master8",
                     TotalPoints = 0,
                     TotalBoobyTraps = 2
                 };
@@ -51,15 +51,19 @@ namespace AlloutAPI
                 {
                     GameCode = "X35H0",
                     Team = teams,
-                    StartTime = DateTime.Now,
-                    StopTime = DateTime.Now.AddHours(2)
+                    StartTime = DateTime.Now.ToString(),
+                    StopTime = DateTime.Now.AddHours(2).ToString(),
+                    StartingTraps = 2,
+                    HasStarted = false
                 };
                 var game2 = new GameLogic()
                 {
                     GameCode = "A3CD3",
                     Team = teams2,
-                    StartTime = DateTime.Now,
-                    StopTime = DateTime.Now.AddHours(2)
+                    StartTime = DateTime.Now.ToString(),
+                    StopTime = DateTime.Now.AddHours(2).ToString(),
+                    StartingTraps = 2,
+                    HasStarted = false
                 };
                 context.Games.Add(game);
                 context.Games.Add(game2);

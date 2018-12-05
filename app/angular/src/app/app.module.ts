@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AreaService } from './services/area.service';
 import { FormsModule } from '@angular/forms';
 import { NewquestionlistComponent } from './newquestionlist/newquestionlist.component';
+import { AreaComponent } from './area/area.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NewquestionlistComponent } from './newquestionlist/newquestionlist.comp
     DashboardComponent,
     CallbackComponent,
     NewgameComponent,
-    NewquestionlistComponent
+    NewquestionlistComponent,
+    AreaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService, IGame, IPostGame } from '../services/game.service';
-import { AreaService, IArea, Question } from '../services/area.service';
+import { AreaService, IArea } from '../services/area.service';
 import { Router } from '@angular/router';
 
 

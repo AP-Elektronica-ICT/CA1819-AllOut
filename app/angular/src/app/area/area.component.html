@@ -1,0 +1,25 @@
+<form>
+    <div class="form-group">
+      <label>Naam:</label>
+      <input type="input" name="listName" class="form-control mb-4" [(ngModel)]="listName">
+    </div>
+    <table class="table">
+        <thead class="black white-text">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Locatie naam</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of locations; index as i">
+            <td>{{row.locationID}}</td>
+            <a routerLink="/location/{{row.locationID}}">
+                <td>{{row.locationName}}</td>
+            </a>
+          </tr>
+        </tbody>
+      </table>
+    <div class="form-group">
+        <input class="btn btn-info btn-block" type="submit" value="Bijwerken" (click)="postList(); $event.preventDefault()">
+    </div>
+  </form>

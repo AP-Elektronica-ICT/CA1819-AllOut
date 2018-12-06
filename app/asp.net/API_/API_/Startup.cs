@@ -26,7 +26,8 @@ namespace API_
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DBContext>(options =>
+            
+            services.AddDbContext<GameDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -35,13 +36,20 @@ namespace API_
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
+            services.AddCors(options =>
+            {
+                //options.AddPolicy("CorsPolicy",
+                //    builder => builder.AllowAnyOrigin()
+                //    .AllowAnyMethod()
+                //    .AllowAnyOrigin());
+            });
             services.AddMvc()
                 .AddRazorPagesOptions(options =>
                 {
                     options.Conventions.AuthorizeFolder("/Account/Manage");
                     options.Conventions.AuthorizePage("/Account/Logout");
                 });
+           
 
             // Register no-op EmailSender used by account confirmation and password reset during development
             // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=532713
@@ -49,7 +57,7 @@ namespace API_
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, DBContext context)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, GameDBContext context)
         {
             if (env.IsDevelopment())
             {
@@ -61,6 +69,11 @@ namespace API_
             {
                 app.UseExceptionHandler("/Error");
             }
+            app.UseCors(builder =>
+                builder.AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin()
+            );
 
             app.UseStaticFiles();
 
@@ -72,6 +85,7 @@ namespace API_
                     name: "default",
                     template: "{controller}/{action=Index}/{id?}");
             });
+            
 
             DBInitializer.Initialize(context);
         }

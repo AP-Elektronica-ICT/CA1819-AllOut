@@ -1,44 +1,46 @@
-<form class="text-center border border-light p-5">
-
-    <p class="h4 mb-4">Game aanmaken</p>
-    <input type="text" id="gameid" class="form-control mb-4" placeholder="Game id">
-    <input type="number" id="amountboobytraps" class="form-control mb-4" placeholder="Booby traps">
-    <input type="text" id="timestamp" class="form-control mb-4" placeholder="Tijdsduur">
+<form>
+  <div class="form-group">
+    <label>Aantal Boobytraps:</label>
+    <input type="number" name="amountBoobytraps" class="form-control mb-4" [(ngModel)]="amountBoobytraps">
+  </div>
+  <div class="form-group">
+    <label>Regio:</label>
+    <select name="region" class="form-control mb-4" [(ngModel)]="region">
+      <option *ngFor="let value of this.areas" value="{{value.AreaID}}">{{value.name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Startdatum</label>
+    <input type="datetime-local" (ngModelChange)="fillEndDate($event)" class="form-control" name="startDate" placeholder="00:00:00" [(ngModel)]="startDate">
+  </div>
+  <div class="form-group">
+    <label>Einddatum</label>
+    <input type="datetime-local" class="form-control" name="endDate" placeholder="00:00:00" [(ngModel)]="endDate">
+  </div>
+  <!-- <div class="form-group">
     <div class="questions_table">
         <table class="table">
             <thead>
-              <tr>
-                <th scope="col">Vragen</th>
-                <th scope="col">Aantal punten</th>
-                <th scope="col">lat</th>
-                <th scope="col">lng</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Lange wapper</th>
-                <td>5</td>
-                <td>52</td>
-                <td>49</td>
-              </tr>
-              <tr>
-                <th scope="row">Lange wapper</th>
-                <td>5</td>
-                <td>52</td>
-                <td>49</td>
-              </tr>
-              <tr>
-                  <th scope="row">Lange wapper</th>
-                  <td>5</td>
-                  <td>52</td>
-                  <td>49</td>
-              </tr>
-            </tbody>
-          </table>
-          <a href="#">Voeg een vraag toe aan deze game.</a>
-    </div>
-    
-    <button class="btn btn-info btn-block" type="submit">Aanmaken</button>
-
+                <tr>
+                  <th scope="col">Vragen</th>
+                  <th scope="col">Aantal punten</th>
+                  <th scope="col">lat</th>
+                  <th scope="col">lng</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let row of this.locations">
+                  <td>{{row.question.questionText}}</td>
+                  <td>{{row.question.points}}</td>
+                  <td>{{row.latitude}}</td>
+                  <td>{{row.longitude}}</td>
+                </tr>
+              </tbody>
+        </table>
+            <a href="#">Voeg een vraag toe aan deze game.</a>
+      </div>
+  </div> -->
+  <div class="form-group">
+      <input class="btn btn-info btn-block" type="submit" value="Aanmaken" (click)="postGame(); $event.preventDefault()">
+  </div>
 </form>
-<!-- Default form contact -->

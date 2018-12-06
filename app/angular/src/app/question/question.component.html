@@ -1,0 +1,26 @@
+<h2>Question bijwerken</h2>
+<form *ngIf="this.questionID">
+    <div class="form-group">
+      <label>Question ID:</label>
+      <input type="input" name="questionID" class="form-control mb-4" [(ngModel)]="questionID">
+    </div>
+    <div class="form-group">
+        <label>Type:</label>
+        <input type="input" name="questionType" class="form-control mb-4" [(ngModel)]="questionType">
+    </div>
+    <div class="form-group">
+        <label>Punten:</label>
+        <input type="input" name="questionPoints" class="form-control mb-4" [(ngModel)]="questionPoints">
+    </div>
+    <div class="form-group">
+        <label>Vraag:</label>
+        <input type="input" name="questionText" class="form-control mb-4" [(ngModel)]="questionText">
+    </div>
+    <div class="form-group">
+        <label>Antwoord:</label>
+        <input type="input" name="questionAnswer" class="form-control mb-4" [(ngModel)]="questionAnswer">
+    </div>
+    <div class="form-group">
+        <input class="btn btn-info btn-block" type="submit" value="Bijwerken" (click)="postList(); $event.preventDefault()">
+    </div>
+  </form>

@@ -11,27 +11,32 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Allout: antwerpen</td>
-      <td>4</td>
+    <tr *ngFor="let row of game_data; index as i">
+      <td>{{row.gameLogicID}}</td>
+      <td>{{row.gameCode}}</td>
+      <td>{{row.team.length}}</td>
+      <td><button (click)="startGame(i+1)">Start Game</button></td>
       <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
       <td><a href="#"><i class="fa fa-times-circle" aria-hidden="true"></i></a></td>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Allout: antwerpen</td>
-        <td>4</td>
-        <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-        <td><a href="#"><i class="fa fa-times-circle" aria-hidden="true"></i></a></td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Allout: antwerpen</td>
-        <td>4</td>
-        <td><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-        <td><a href="#"><i class="fa fa-times-circle" aria-hidden="true"></i></a></td>
     </tr>
   </tbody>
 </table>
 <a routerLink="/newgame">Maak een nieuwe game aan.</a>
+
+<table class="table">
+  <thead class="black white-text">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Vragenlijst naam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of areas; index as i">
+      <td>{{row.areaID}}</td>
+      <a routerLink="/area/{{row.areaID}}">
+          <td>{{row.name}}</td>
+      </a>
+    </tr>
+  </tbody>
+</table>
+<a routerLink="/newquestionlist">Maak een nieuwe vragenlijst aan.</a>

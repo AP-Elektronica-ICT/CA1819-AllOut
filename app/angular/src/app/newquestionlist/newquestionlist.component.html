@@ -1,0 +1,9 @@
+<form>
+  <div class="form-group">
+    <label>Naam:</label>
+    <input type="input" name="listName" class="form-control mb-4" [(ngModel)]="listName">
+  </div>
+  <div class="form-group">
+      <input class="btn btn-info btn-block" type="submit" value="Aanmaken" (click)="postList(); $event.preventDefault()">
+  </div>
+</form>

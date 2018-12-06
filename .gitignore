@@ -1,0 +1,4 @@
+
+*.ide-wal
+
+app/asp\.net/AllOut_API/\.vs/AllOut_API/v15/\.suo

@@ -6,3 +6,11 @@ app/asp\.net/AllOut_API/\.vs/AllOut_API/v15/\.suo
 *.ide
 
 *.ide-shm
+
+app/asp\.net/AllOut_API/\.vs/AllOut_API/v15/Server/sqlite3/
+
+*.cache
+
+*.props
+
+*.targets

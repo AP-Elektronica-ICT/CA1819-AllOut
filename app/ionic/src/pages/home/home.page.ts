@@ -15,6 +15,9 @@ export class HomePage {
 
     }
     id = 25; 
+    question = "Hoe hoog is de kathedraal?"; 
+    answer = "123"; 
+    questionPoints = "10"; 
 
     public toMap(event) {
         this.navCtrl.push(MapPage);
@@ -24,7 +27,10 @@ export class HomePage {
     }
     public toQuestion(event) {
         this.navCtrl.push(QuestionPage, {
-            data: this.id
+            data: this.id, 
+            question: this.question, 
+            answer: this.answer, 
+            questionPoints: this.questionPoints
         }); 
     }
 }

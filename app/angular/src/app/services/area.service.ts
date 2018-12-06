@@ -7,7 +7,7 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AreaService {
-  url:string = "http://localhost:33324/api/v1/area/";
+  url:string = "https://alloutapi20181129084115.azurewebsites.net/api/v1/area/";
 
   constructor(private http : HttpClient) { }
 
@@ -25,7 +25,7 @@ export class AreaService {
   }
 }
 
-export interface Question {
+export interface IQuestion {
   questionID: number;
   questionType: number;
   questionText: string;
@@ -34,19 +34,19 @@ export interface Question {
   answer: string;
 }
 
-export interface Location {
+export interface ILocation {
   locationID: number;
   locationName: string;
   latitude: number;
   longitude: number;
-  question: Question;
+  question: IQuestion;
   isBoobyTrapped: boolean;
   victorTeamID: number;
 }
 
 export interface IArea {
   areaID: number;
-  locations: Location[];
+  locations: ILocation[];
   name: string;
 }
 export interface post_IArea{

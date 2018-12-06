@@ -14,6 +14,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AreaService } from './services/area.service';
 import { FormsModule } from '@angular/forms';
 import { NewquestionlistComponent } from './newquestionlist/newquestionlist.component';
+import { AreaComponent } from './area/area.component';
+import { LocationComponent } from './location/location.component';
+import { LocationService } from './services/location.service';
+import { QuestionComponent } from './question/question.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,10 @@ import { NewquestionlistComponent } from './newquestionlist/newquestionlist.comp
     DashboardComponent,
     CallbackComponent,
     NewgameComponent,
-    NewquestionlistComponent
+    NewquestionlistComponent,
+    AreaComponent,
+    LocationComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +38,7 @@ import { NewquestionlistComponent } from './newquestionlist/newquestionlist.comp
     FormsModule,
     MDBBootstrapModule.forRoot()
   ],
-  providers: [AuthService, AuthGuard, GameService, AreaService],
+  providers: [AuthService, AuthGuard, GameService, AreaService, LocationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

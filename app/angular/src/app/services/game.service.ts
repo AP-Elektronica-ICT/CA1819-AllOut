@@ -9,7 +9,7 @@ import { HttpHeaders } from '@angular/common/http';
 export class GameService {
 
   constructor(private http : HttpClient) { }
-  url:string = "http://localhost:33324/api/v1/game";
+  url:string = "https://alloutapi20181129084115.azurewebsites.net/api/v1/game/";
   getAllGames(){
     return this.http.get<IGame[]>(this.url);
   }

@@ -10,7 +10,7 @@ export class AlloutProvider {
     teamName:string;
 
     constructor(private _http: HttpClient) {
-        this.url = "https://alloutapi20181129084115.azurewebsites.net/api/v1/"
+        this.url = "http://localhost:33324/api/v1/"
     };
 
     postTeam(team: Team) {
@@ -39,6 +39,22 @@ export class AlloutProvider {
     }
 }
 
+export interface Location {
+    locationID: number;
+    locationName: string;
+    latitude: number;
+    longitude: number;
+    question: Question;
+    isBoobyTrapped: boolean;
+    victorTeamID: number;
+}
+
+export interface Area {
+    areaID: number;
+    locations: Location[];
+    name: string;
+}
+
 export interface Team {
     teamID: number;
     gameID: number;
@@ -51,8 +67,10 @@ export interface Game {
     gameLogicID: number;
     gameCode: string;
     team: Team[];
-    startTime: DateTime,
-    stopTime: DateTime;
+    startTime: string;
+    stopTime: string;
+    hasStarted: boolean;
+    startingTraps: number;
 }
 
 export interface Question {
@@ -62,14 +80,4 @@ export interface Question {
     points: number;
     isSolved: boolean;
     answer: string;
-}
-
-export interface Location {
-    locationID: number;
-    locationName: string;
-    latitude: number;
-    longitude: number;
-    question: Question;
-    isBoobyTrapped: boolean;
-    victorTeamID: number;
 }

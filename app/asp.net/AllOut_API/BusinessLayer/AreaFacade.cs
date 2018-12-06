@@ -15,9 +15,9 @@ namespace BusinessLayer
         {
             this.context = context;
         }
-        public Area UpdateArea(int id, Area update)
+        public Area UpdateArea(Area update)
         {
-            Area result = context.Areas.SingleOrDefault(g => g.AreaID == id);
+            Area result = context.Areas.SingleOrDefault(g => g.AreaID == update.AreaID);
             if (result != null)
             {
                 result.Name = update.Name;

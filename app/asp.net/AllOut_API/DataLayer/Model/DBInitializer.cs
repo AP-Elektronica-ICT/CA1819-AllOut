@@ -54,7 +54,8 @@ namespace AlloutAPI
                     StartTime = DateTime.Now.ToString(),
                     StopTime = DateTime.Now.AddHours(2).ToString(),
                     StartingTraps = 2,
-                    HasStarted = false
+                    HasStarted = false,
+                    AreaID = 1
                 };
                 var game2 = new GameLogic()
                 {
@@ -63,7 +64,8 @@ namespace AlloutAPI
                     StartTime = DateTime.Now.ToString(),
                     StopTime = DateTime.Now.AddHours(2).ToString(),
                     StartingTraps = 2,
-                    HasStarted = false
+                    HasStarted = false,
+                    AreaID = 1
                 };
                 context.Games.Add(game);
                 context.Games.Add(game2);

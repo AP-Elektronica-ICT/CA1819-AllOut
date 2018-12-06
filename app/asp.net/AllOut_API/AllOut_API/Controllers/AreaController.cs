@@ -32,11 +32,10 @@ namespace AllOut_API.Controllers
         {
             return areaFacade.GetAreas();
         }
-        [Route("{id}")]
         [HttpPut]
-        public IActionResult UpdateArea(int id, [FromBody]Area update)
+        public IActionResult UpdateArea([FromBody]Area update)
         {
-            return Created("", areaFacade.UpdateArea(id, update));
+            return Created("", areaFacade.UpdateArea(update));
         }
         [Route("{id}")]
         [HttpGet]

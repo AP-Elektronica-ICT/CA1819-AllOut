@@ -14,3 +14,17 @@ app/asp\.net/AllOut_API/\.vs/AllOut_API/v15/Server/sqlite3/
 *.props
 
 *.targets
+
+app/asp\.net/AllOut_API/\.vs/config/applicationhost\.config
+
+app/asp\.net/AllOut_API/AllOut_API/bin/Debug/netcoreapp2\.0/
+
+app/asp\.net/AllOut_API/AllOut_API/obj/Debug/netcoreapp2\.0/
+
+app/asp\.net/AllOut_API/BusinessLayer/bin/Debug/netcoreapp2\.0/
+
+app/asp\.net/AllOut_API/BusinessLayer/obj/Debug/netcoreapp2\.0/
+
+app/asp\.net/AllOut_API/DataLayer/bin/Debug/netcoreapp2\.0/
+
+app/asp\.net/AllOut_API/DataLayer/obj/Debug/netcoreapp2\.0/

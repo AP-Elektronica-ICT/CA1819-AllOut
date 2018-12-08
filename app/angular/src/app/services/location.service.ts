@@ -10,6 +10,7 @@ export class LocationService {
   url: string = "http://localhost:33324/api/v1/location/";
   //url:string = "https://alloutapi20181206110549.azurewebsites.net/api/v1/location/";
 
+
   constructor(private http : HttpClient) { }
 
   getAllLocations(){

@@ -7,7 +7,8 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class LocationService {
-  url:string = "https://alloutapi20181206110549.azurewebsites.net/api/v1/location/";
+  url: string = "http://localhost:33324/api/v1/location/";
+  //url:string = "https://alloutapi20181206110549.azurewebsites.net/api/v1/location/";
 
   constructor(private http : HttpClient) { }
 
@@ -16,6 +17,9 @@ export class LocationService {
   }
   getLocationById(id : number){
     return this.http.get<ILocation>(this.url + id);
+  }
+  updateLocation(loc : ILocation){
+    return this.http.put<ILocation>(this.url, loc);
   }
   postLocation(name : ILocation){
     return this.http.post<ILocation>(this.url, name);

@@ -16,15 +16,15 @@ namespace BusinessLayer
             this.context = context;
         }
 
-        public Location putLocation(int l_id, Location newLocation)
+        public Location putLocation(Location newLocation)
         {
-            Location result = context.Locations.SingleOrDefault(l => l.LocationID == l_id);
+            Location result = context.Locations.SingleOrDefault(l => l.LocationID == newLocation.LocationID);
             if (result != null)
             {
                 result.LocationName = newLocation.LocationName;
                 result.Latitude = newLocation.Latitude;
                 result.Longitude = newLocation.Longitude;
-                result.Question = newLocation.Question;
+                //result.Question = newLocation.Question;
                 result.IsBoobyTrapped = newLocation.IsBoobyTrapped;
 
                 context.SaveChanges();

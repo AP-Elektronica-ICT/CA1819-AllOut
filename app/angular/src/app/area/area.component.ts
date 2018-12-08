@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AreaService, ILocation, IArea } from '../services/area.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-area',
@@ -9,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AreaComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private areaService : AreaService) { }
+  constructor(private route: ActivatedRoute, private areaService : AreaService, private router: Router) { }
 
   listName : string;
   areaID : number;
@@ -28,6 +29,17 @@ export class AreaComponent implements OnInit {
         this.listName = this.area.name;
       });
     
+  }
+  updateArea(){
+    var updateArea : IArea = {
+      areaID : this.areaID,
+      name : this.listName
+    }
+    this.areaService.updateArea(updateArea).subscribe(
+      result => {
+        this.router.navigate['/dashboard']
+      }
+    );
   }
 
 }

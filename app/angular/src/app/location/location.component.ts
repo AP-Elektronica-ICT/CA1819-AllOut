@@ -33,4 +33,11 @@ export class LocationComponent implements OnInit {
     addQuestion(){
       this.router.navigate(["/newquestion/"+ this.locationID]);
     }
+    updateLocation(){
+      this.location.latitude = this.lat;
+      this.location.longitude = this.lng;
+      this.location.locationName = this.locationName;
+      console.log(this.location);
+      this.locationservice.updateLocation(this.location).subscribe();
+    }
   }

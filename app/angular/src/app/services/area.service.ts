@@ -7,7 +7,8 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AreaService {
-  url:string = "https://alloutapi20181206110549.azurewebsites.net/api/v1/area/";
+  url: string = "http://localhost:33324/api/v1/area/";
+  //url:string = "https://alloutapi20181206110549.azurewebsites.net/api/v1/area/";
 
   constructor(private http : HttpClient) { }
 
@@ -17,11 +18,11 @@ export class AreaService {
   getAreaById(id : number){
     return this.http.get<IArea>(this.url + id);
   }
-  postArea(name : post_IArea){
-    return this.http.post<post_IArea>(this.url, name).subscribe(data => {
-      console.log("post area subscribe");
-      console.log(data);
-    });
+  updateArea(area : IArea){
+    return this.http.put<ILocation>(this.url, area);
+  }
+  postArea(name : IArea){
+    return this.http.post<IArea>(this.url, name);
   }
 }
 
@@ -45,10 +46,7 @@ export interface ILocation {
 }
 
 export interface IArea {
-  areaID: number;
-  locations: ILocation[];
+  areaID?: number;
+  locations ?: ILocation[];
   name: string;
-}
-export interface post_IArea{
-  name : string;
 }

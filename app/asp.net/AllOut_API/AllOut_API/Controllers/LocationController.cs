@@ -23,9 +23,9 @@ namespace AllOut_API.Controllers
         }
 
         [HttpPut]
-        public IActionResult putLocation(int l_id, [FromBody]Location newLocation)
+        public IActionResult putLocation([FromBody]Location newLocation)
         {
-            return Created("", locationFacade.putLocation(l_id, newLocation));
+            return Created("", locationFacade.putLocation(newLocation));
         }
 
         [HttpPost]

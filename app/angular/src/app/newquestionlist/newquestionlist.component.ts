@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AreaService, post_IArea} from '../services/area.service';
+import { AreaService, IArea} from '../services/area.service';
 import {Router} from "@angular/router";
 
 @Component({
@@ -16,10 +16,10 @@ export class NewquestionlistComponent implements OnInit {
 
   }
   postList(){
-    var area : post_IArea = {
+    var area : IArea = {
       name : this.listName
     }
-    this.areaService.postArea(area);
+    this.areaService.postArea(area).subscribe();
     console.log("postlist");
     this.router.navigate(["/dashboard"]);
   }

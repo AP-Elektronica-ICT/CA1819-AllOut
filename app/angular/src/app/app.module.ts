@@ -19,6 +19,8 @@ import { LocationComponent } from './location/location.component';
 import { LocationService } from './services/location.service';
 import { QuestionComponent } from './question/question.component';
 import { NewLocationComponent } from './newlocation/newlocation.component';
+import { AgmCoreModule } from '@agm/core';
+//http://maps.google.com/maps/api/js?key=AIzaSyDq6h3hme2-NyxtUUEx2O-G_cRoN0YChsg
 
 @NgModule({
   declarations: [
@@ -31,14 +33,17 @@ import { NewLocationComponent } from './newlocation/newlocation.component';
     AreaComponent,
     LocationComponent,
     QuestionComponent,
-    NewLocationComponent
+    NewLocationComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDq6h3hme2-NyxtUUEx2O-G_cRoN0YChsg'
+    })
   ],
   providers: [AuthService, AuthGuard, GameService, AreaService, LocationService],
   bootstrap: [AppComponent]

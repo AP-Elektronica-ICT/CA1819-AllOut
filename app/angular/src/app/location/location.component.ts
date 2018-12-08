@@ -14,8 +14,8 @@ export class LocationComponent implements OnInit {
 
   locationID : number;
   location : ILocation;
-  latitude : number;
-  longitude : number;
+  lat : number;
+  lng : number;
   locationName : string;
 
   ngOnInit() {
@@ -26,8 +26,8 @@ export class LocationComponent implements OnInit {
       result => {
         this.location = result;
         this.locationName = result.locationName;
-        this.latitude = result.latitude;
-        this.longitude = result.longitude;
+        this.lat = result.latitude;
+        this.lng = result.longitude;
       });
     }
     addQuestion(){

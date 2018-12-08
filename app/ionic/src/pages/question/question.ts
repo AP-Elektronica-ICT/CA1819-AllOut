@@ -15,21 +15,26 @@ import * as API from '../../providers/AlloutAPI/AlloutAPI';
 })
 export class QuestionPage {
   id: number; 
-  question: String; 
+  question: string; 
   questionPoints: number; 
+  answer: string; 
 
 
   constructor(public navCtrl: NavController, public API:API.AlloutProvider, public navParams: NavParams) {
     this.id = navParams.get('data'); 
+    this.question = navParams.get('question'); 
+    this.questionPoints = navParams.get('questionPoints'); 
+    this.answer = navParams.get('answer'); 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad QuestionPage');
     console.log(this.id); 
+    /*
     this.API.getLocation(this.id).subscribe(result =>{
       this.question = result.question.questionText; 
       this.questionPoints = result.question.points;
-    });
+    });*/
     console.log(this.question + " has " + this.questionPoints + " points on it."); 
   }
 }

@@ -23,28 +23,28 @@ namespace AllOut_API.Controllers
         }
 
         [HttpPut]
-        public IActionResult putLocation(int a_id, int l_id, [FromBody]Location newLocation)
+        public IActionResult putLocation(int l_id, [FromBody]Location newLocation)
         {
-            return Created("", locationFacade.putLocation(a_id, l_id, newLocation));
+            return Created("", locationFacade.putLocation(l_id, newLocation));
         }
 
         [HttpPost]
-        public IActionResult postLocation(int a_id, [FromBody] Location newLocation)
+        public IActionResult postLocation([FromBody] Location newLocation)
         {
-            return Created("", locationFacade.postLocation(a_id, newLocation));
+            return Created("", locationFacade.postLocation(newLocation));
         }
 
         [HttpGet]
-        public List<Location> getLocations(int a_id)
+        public List<Location> getLocations()
         {
-            return locationFacade.getLocations(a_id);
+            return locationFacade.getLocations();
         }
 
         [Route("{id}")]
         [HttpGet]
-        public Location getLocation(int a_id, int l_id)
+        public Location getLocation(int id)
         {
-            return locationFacade.getLocation(a_id, l_id);
+            return locationFacade.getLocation(id);
         }
     }
 }

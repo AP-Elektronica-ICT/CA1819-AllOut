@@ -16,24 +16,25 @@ namespace BusinessLayer
             this.context = context;
         }
 
-        public Location putLocation(int a_id, int l_id, Location newLocation)
+        public Location putLocation(int l_id, Location newLocation)
         {
-            var result = context.Areas.SingleOrDefault(g => g.AreaID == a_id);
+            Location result = context.Locations.SingleOrDefault(l => l.LocationID == l_id);
             if (result != null)
             {
-                var result2 = result.Locations.SingleOrDefault(e => e.LocationID == l_id);
-                if (result != null)
-                {
-                    result2 = newLocation;
-                }
+                result.LocationName = newLocation.LocationName;
+                result.Latitude = newLocation.Latitude;
+                result.Longitude = newLocation.Longitude;
+                result.Question = newLocation.Question;
+                result.IsBoobyTrapped = newLocation.IsBoobyTrapped;
+
                 context.SaveChanges();
             }
             return newLocation;
         }
 
-        public Location postLocation(int a_id, Location newLocation)
+        public Location postLocation(Location newLocation)
         {
-            var result = context.Areas.SingleOrDefault(a => a.AreaID == a_id);
+            var result = context.Areas.SingleOrDefault();
             if (result != null)
             {
                 result.Locations.Add(newLocation);
@@ -44,17 +45,16 @@ namespace BusinessLayer
             return newLocation;
         }
 
-        public List<Location> getLocations(int a_id)
+        public List<Location> getLocations()
         {
-            var result = context.Areas.SingleOrDefault(a => a.AreaID == a_id);
-            return result.Locations.ToList();
+            var result = context.Locations.Include(l => l.Question);
+            return result.ToList();
         }
 
-        public Location getLocation(int a_id, int l_id)
+        public Location getLocation(int id)
         {
-            var area = context.Areas.SingleOrDefault(a => a.AreaID == a_id);
-            var locations = area.Locations.SingleOrDefault(l => l.LocationID == l_id);
-            return locations;
+            var location = context.Locations.Include(l => l.Question).SingleOrDefault(l => l.LocationID == id);
+            return location;
         }
     }
 }

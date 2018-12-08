@@ -9,6 +9,7 @@ namespace AlloutAPI.Data
     {
         public int GameLogicID { get; set; }
         public string GameCode { get; set; }
+        public int AreaID { get; set; }
         public virtual List<Team> Team { get; set; } = new List<Team>();
         public string StartTime { get; set; }
         public string StopTime { get; set; }

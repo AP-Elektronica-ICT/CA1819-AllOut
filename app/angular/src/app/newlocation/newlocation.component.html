@@ -1,0 +1,18 @@
+<h2>Locatie bijwerken</h2>
+<form>
+    <div class="form-group">
+      <label>Naam:</label>
+      <input type="input" name="locationName" class="form-control mb-4" [(ngModel)]="locationName">
+    </div>
+    <div class="form-group">
+        <label>Latitude:</label>
+        <input type="input" name="latitude" class="form-control mb-4" [(ngModel)]="latitude">
+    </div>
+    <div class="form-group">
+        <label>Longitude:</label>
+        <input type="input" name="longitude" class="form-control mb-4" [(ngModel)]="longitude">
+    </div>
+    <div class="form-group">
+        <input class="btn btn-info btn-block" type="submit" value="Bijwerken" (click)="addLocation(); $event.preventDefault()">
+    </div>
+  </form>

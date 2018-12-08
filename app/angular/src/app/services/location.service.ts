@@ -18,10 +18,7 @@ export class LocationService {
     return this.http.get<ILocation>(this.url + id);
   }
   postLocation(name : ILocation){
-    return this.http.post<ILocation>(this.url, name).subscribe(data => {
-      console.log("post location subscribe");
-      console.log(data);
-    });
+    return this.http.post<ILocation>(this.url, name);
   }
 }
 
@@ -39,7 +36,7 @@ export interface ILocation {
   locationName: string;
   latitude: number;
   longitude: number;
-  question: IQuestion;
-  isBoobyTrapped: boolean;
-  victorTeamID: number;
+  question?: IQuestion;
+  isBoobyTrapped?: boolean;
+  victorTeamID?: number;
 }

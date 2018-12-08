@@ -18,6 +18,7 @@ import { AreaComponent } from './area/area.component';
 import { LocationComponent } from './location/location.component';
 import { LocationService } from './services/location.service';
 import { QuestionComponent } from './question/question.component';
+import { NewLocationComponent } from './newlocation/newlocation.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { QuestionComponent } from './question/question.component';
     NewquestionlistComponent,
     AreaComponent,
     LocationComponent,
-    QuestionComponent
+    QuestionComponent,
+    NewLocationComponent
   ],
   imports: [
     BrowserModule,

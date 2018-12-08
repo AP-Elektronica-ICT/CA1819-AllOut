@@ -7,7 +7,7 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AreaService {
-  url:string = "https://alloutapi20181129084115.azurewebsites.net/api/v1/area/";
+  url:string = "https://alloutapi20181206110549.azurewebsites.net/api/v1/area/";
 
   constructor(private http : HttpClient) { }
 

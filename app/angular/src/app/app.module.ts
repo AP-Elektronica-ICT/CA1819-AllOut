@@ -20,7 +20,6 @@ import { LocationService } from './services/location.service';
 import { QuestionComponent } from './question/question.component';
 import { NewLocationComponent } from './newlocation/newlocation.component';
 import { AgmCoreModule } from '@agm/core';
-//http://maps.google.com/maps/api/js?key=AIzaSyDq6h3hme2-NyxtUUEx2O-G_cRoN0YChsg
 
 @NgModule({
   declarations: [

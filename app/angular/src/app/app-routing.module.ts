@@ -6,8 +6,6 @@ import { AuthGuard } from './auth.guard';
 import { CallbackComponent } from './callback/callback.component';
 import { NewgameComponent } from './newgame/newgame.component';
 import { NewquestionlistComponent } from './newquestionlist/newquestionlist.component';
-import { EditGameComponent } from './edit-game/edit-game.component';
-import { NewLocationComponent } from './new-location/new-location.component';
 import { AreaComponent } from './area/area.component';
 import { LocationComponent } from './location/location.component';
 import { QuestionComponent } from './question/question.component';

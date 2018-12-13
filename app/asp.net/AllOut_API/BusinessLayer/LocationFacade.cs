@@ -32,6 +32,7 @@ namespace BusinessLayer
             return newLocation;
         }
 
+<<<<<<< master
         public Location postLocation(Location newLocation)
         {
             var result = context.Areas.SingleOrDefault();
@@ -43,6 +44,8 @@ namespace BusinessLayer
             return newLocation;
         }
 
+=======
+>>>>>>> Locatie kan nu toegevoegd worden aan area
         public List<Location> getLocations()
         {
             var result = context.Locations.Include(l => l.Question);

@@ -1,9 +1,13 @@
 {
   "version": 1,
 <<<<<<< master
+<<<<<<< master
   "dgSpecHash": "qpO7VZ61cpN1R5XSL6vrExmqElzK+xtQoPhg5qBrToQDPzUYlJMRMKW/2AsiGfx41gSbY2medZ0nYh05MaInvQ==",
 =======
   "dgSpecHash": "NmHWhE2elDmh5P1yB9bMu/z54eAUFBXl+V0LtsuaPmgI4xieV8jP/LGVEChVTonHyQTT+7OY502uok++QC4QXA==",
 >>>>>>> Area toegevoegd fix
+=======
+  "dgSpecHash": "E5oDoIIdu5eq/fm+auqlqPB6IdYqhf27TnYzw5pTzm21bgLtfiTpNwVsJdtniiKmM2hk/KdWbORGvrreGOVztQ==",
+>>>>>>> Locatie kan nu toegevoegd worden aan area
   "success": true
 }

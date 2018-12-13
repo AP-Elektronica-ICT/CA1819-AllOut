@@ -24,9 +24,12 @@ C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\bin\Debu
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\bin\Debug\netcoreapp2.0\BusinessLayer.pdb
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\bin\Debug\netcoreapp2.0\DataLayer.pdb
 <<<<<<< master
+<<<<<<< master
 =======
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\obj\Debug\netcoreapp2.0\AllOut_API.csprojResolveAssemblyReference.cache
 >>>>>>> Area toegevoegd fix
+=======
+>>>>>>> Locatie kan nu toegevoegd worden aan area
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\obj\Debug\netcoreapp2.0\AllOut_API.csproj.CoreCompileInputs.cache
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\obj\Debug\netcoreapp2.0\AllOut_API.AssemblyInfoInputs.cache
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\obj\Debug\netcoreapp2.0\AllOut_API.AssemblyInfo.cs
@@ -34,6 +37,10 @@ C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\obj\Debu
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\obj\Debug\netcoreapp2.0\AllOut_API.dll
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\obj\Debug\netcoreapp2.0\AllOut_API.pdb
 <<<<<<< master
+<<<<<<< master
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\obj\Debug\netcoreapp2.0\AllOut_API.csprojAssemblyReference.cache
 =======
 >>>>>>> Area toegevoegd fix
+=======
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\obj\Debug\netcoreapp2.0\AllOut_API.csprojAssemblyReference.cache
+>>>>>>> Locatie kan nu toegevoegd worden aan area

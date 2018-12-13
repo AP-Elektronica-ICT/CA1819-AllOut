@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import * as API from '../../providers/AlloutAPI/AlloutAPI';
+import { AlloutProvider, Game, Team } from '../../providers/AlloutAPI/AlloutAPI';
 
 /**
  * Generated class for the QuestionPage page.
@@ -19,8 +19,16 @@ export class QuestionPage {
   questionPoints: number; 
   answer: string; 
 
+  team:Team = {
+    teamID: 0,
+    gameID: 0,
+    teamName: "",
+    totalBoobyTraps: 0,
+    totalPoints: 0
+};
 
-  constructor(public navCtrl: NavController, public API:API.AlloutProvider, public navParams: NavParams) {
+
+  constructor(public navCtrl: NavController, public API:AlloutProvider, public navParams: NavParams) {
     this.id = navParams.get('data'); 
     this.question = navParams.get('question'); 
     this.questionPoints = navParams.get('questionPoints'); 
@@ -38,7 +46,15 @@ export class QuestionPage {
     console.log(this.question + " has " + this.questionPoints + " points on it."); 
   }
 
-  checkAnswer(){
-
+  checkAnswer(answer: any){
+    this.API.getLocation(this.id).subscribe(result =>{
+      if(answer == result.question.answer){
+        this.API.changeQuestionAnswered(this.id, true); 
+        console.log("it was true"); 
+      }
+      else{
+        console.log("it was false"); 
+      }
+    })
   }
 }

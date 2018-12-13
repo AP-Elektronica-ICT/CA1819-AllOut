@@ -20,9 +20,6 @@ namespace BusinessLayer
             if (result != null)
             {
                 result.IsSolved = newQuestion.IsSolved;
-                result.Points = newQuestion.Points;
-                result.QuestionText = newQuestion.QuestionText;
-                result.QuestionType = newQuestion.QuestionType;
 
                 context.SaveChanges();
             }

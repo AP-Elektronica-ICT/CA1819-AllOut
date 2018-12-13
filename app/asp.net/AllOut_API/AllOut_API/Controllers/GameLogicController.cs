@@ -36,12 +36,12 @@ namespace AllOut_API.Controllers
             return Created("", newGame);
         }
 
-        [Route("team")]
+        /*[Route("team")]
         [HttpPost]
         public IActionResult PostTeam([FromBody] Team newTeam)
         {
             return Created("", gameLogicFacade.PostTeam(newTeam));
-        }
+        }*/
 
         [HttpGet]
         public List<GameLogic> GetGames()

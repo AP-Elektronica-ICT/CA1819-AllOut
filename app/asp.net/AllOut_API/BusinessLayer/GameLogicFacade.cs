@@ -49,7 +49,7 @@ namespace BusinessLayer
 
             return newGame;
         }
-
+        /*
         public Team PostTeam(Team newTeam)
         {
             GameLogic result = context.Games.SingleOrDefault(g => g.GameLogicID == newTeam.GameID);
@@ -57,11 +57,16 @@ namespace BusinessLayer
             context.SaveChanges();
 
             return newTeam;
+        }*/
+
+        public Team PutTeamScore(Team team)
+        {
+            return team; 
         }
 
         public List<GameLogic> GetGames()
         {
-            return context.Games.Include("Team").Include("Area").ToList();
+            return context.Games.Include(t => t.Team).ToList(); 
         }
         
         public GameLogic GetGameById(int id)

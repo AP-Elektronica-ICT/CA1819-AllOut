@@ -16,8 +16,8 @@ export class NewgameComponent implements OnInit {
   amountBoobytraps : number;
   startDate : Date;
   endDate : Date;
-  region : string;
-  
+  selected_area : IArea;
+
   constructor(
     private gameService: GameService,
     private areaService: AreaService,
@@ -34,15 +34,20 @@ export class NewgameComponent implements OnInit {
     var newGame : IPostGame = {
       team: null,
       startTime: this.startDate,
-      stopTime: this.endDate
+      stopTime: this.endDate,
+      area: this.selected_area
     }
     this.gameService.postGame(newGame);
-    this.router.navigate(['/dashboard']);
+    //this.router.navigate(['/dashboard']);
   }
   fillEndDate(date : Date){
     this.endDate = new Date(date.toString());
     this.endDate = date;
-    this.endDate.setHours(this.endDate.getHours() + 2);
+  }
+  selectArea(event){
+    this.areaService.getAreaById(event).subscribe(
+      result => this.selected_area = result
+    );
   }
 }
 

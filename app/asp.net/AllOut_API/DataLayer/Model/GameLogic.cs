@@ -15,5 +15,6 @@ namespace AlloutAPI.Data
         public string StopTime { get; set; }
         public bool HasStarted { get; set; }
         public int StartingTraps { get; set; }
+        public Area Area { get; set; }
     }
 }

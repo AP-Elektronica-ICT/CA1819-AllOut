@@ -23,7 +23,7 @@ namespace BusinessLayer
                 result.Points = newQuestion.Points;
                 result.QuestionText = newQuestion.QuestionText;
                 result.QuestionType = newQuestion.QuestionType;
-
+                result.Answer = newQuestion.Answer;
                 context.SaveChanges();
             }
             return newQuestion;
@@ -31,7 +31,8 @@ namespace BusinessLayer
 
         public Question postQuestion(Question newQuestion)
         {
-            
+            context.Questions.Add(newQuestion);
+            context.SaveChanges();
             return newQuestion;
         }
 

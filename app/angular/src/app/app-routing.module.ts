@@ -27,13 +27,27 @@ const routes: Routes = [
     ]
    },
    { 
+    path: 'addquestion/:id', 
+    component: NewquestionlistComponent,
+    canActivate: [
+      AuthGuard
+    ]
+   },
+   { 
+    path: 'newgame', 
+    component: NewgameComponent,
+    canActivate: [
+      AuthGuard
+    ]
+   },
+   {
     path: 'area/:id', 
     component: AreaComponent,
     canActivate: [
       AuthGuard
     ]
    },
-   { 
+   {
     path: 'location/:id', 
     component: LocationComponent,
     canActivate: [
@@ -60,7 +74,14 @@ const routes: Routes = [
     canActivate: [
       AuthGuard
     ]
-  },
+   },
+   { 
+    path: 'newlocation', 
+    component: NewLocationComponent,
+    canActivate: [
+      AuthGuard
+    ]
+   },
    {
     path: 'callback', 
       component: CallbackComponent,

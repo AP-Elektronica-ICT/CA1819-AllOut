@@ -27,6 +27,7 @@ export class AreaComponent implements OnInit {
         this.area = result;
         this.locations = result.locations;
         this.listName = this.area.name;
+        console.log(result);
       });
     
   }
@@ -37,7 +38,7 @@ export class AreaComponent implements OnInit {
     }
     this.areaService.updateArea(updateArea).subscribe(
       result => {
-        this.router.navigate['/dashboard']
+       
       }
     );
   }

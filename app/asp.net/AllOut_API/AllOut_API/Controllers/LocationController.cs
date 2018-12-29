@@ -27,12 +27,7 @@ namespace AllOut_API.Controllers
         {
             return Created("", locationFacade.putLocation(newLocation));
         }
-
-        [HttpPost]
-        public IActionResult postLocation([FromBody] Location newLocation)
-        {
-            return Created("", locationFacade.postLocation(newLocation));
-        }
+        
 
         [HttpGet]
         public List<Location> getLocations()

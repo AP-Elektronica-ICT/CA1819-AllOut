@@ -26,23 +26,9 @@ namespace BusinessLayer
                 result.Longitude = newLocation.Longitude;
                 //result.Question = newLocation.Question;
                 result.IsBoobyTrapped = newLocation.IsBoobyTrapped;
-                result.VictorTeamID = newLocation.VictorTeamID;
 
                 context.SaveChanges();
             }
-            return result;
-        }
-
-        public Location postLocation(Location newLocation)
-        {
-            var result = context.Areas.SingleOrDefault();
-            if (result != null)
-            {
-                result.Locations.Add(newLocation);
-                context.SaveChanges();
-            }
-            context.SaveChanges();
-
             return newLocation;
         }
 

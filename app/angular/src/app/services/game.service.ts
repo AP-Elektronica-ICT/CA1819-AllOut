@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { HttpHeaders } from '@angular/common/http';
+import { IArea } from './area.service';
 
 @Injectable({
   providedIn: 'root'
@@ -56,5 +57,6 @@ export interface IPostTeam{
 export interface IPostGame{
   team: IPostTeam[],
   startTime: Date,
-  stopTime: Date
+  stopTime: Date,
+  area: IArea
 }

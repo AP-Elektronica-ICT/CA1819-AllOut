@@ -10,6 +10,7 @@ using BusinessLayer;
 
 namespace AllOut_API.Controllers
 {
+    [Route("api/v1/question/")]
     public class QuestionController : Controller
     {
         private readonly DBContext context;
@@ -27,13 +28,15 @@ namespace AllOut_API.Controllers
         }
 
         [HttpPost]
-        public IActionResult postQuestion([FromBody] Question newQuestion)
+        public IActionResult postQuestion([FromBody] Question newQuestion = null)
         {
-            return Created("", questionFacade.postQuestion(newQuestion));
+            if (newQuestion != null)
+                questionFacade.postQuestion(newQuestion);
+            return Created("", newQuestion);
         }
 
         [HttpGet]
-        public List<Question> getLocations()
+        public List<Question> getQuestions()
         {
             return questionFacade.getQuestions();
         }

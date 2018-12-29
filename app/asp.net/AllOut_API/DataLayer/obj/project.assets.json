@@ -817,15 +817,6 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.Web.Infrastructure/1.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
-        }
-      },
       "Microsoft.Win32.Registry/4.5.0": {
         "type": "package",
         "dependencies": {
@@ -942,24 +933,6 @@
             "assetType": "native",
             "rid": "win-x86"
           }
-        }
-      },
-      "Swagger.Net/0.5.4": {
-        "type": "package",
-        "dependencies": {
-          "WebActivator": "1.5.1"
-        },
-        "compile": {
-          "lib/net45/Swagger.Net.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Swagger.Net.dll": {}
-        }
-      },
-      "Swagger.Net.UI/1.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Swagger.Net": "0.5.4"
         }
       },
       "Swashbuckle.AspNetCore/4.0.1": {
@@ -1586,18 +1559,6 @@
         },
         "compile": {
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
-        }
-      },
-      "WebActivator/1.5.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Web.Infrastructure": "1.0.0"
-        },
-        "compile": {
-          "lib/net40/WebActivator.dll": {}
-        },
-        "runtime": {
-          "lib/net40/WebActivator.dll": {}
         }
       }
     }
@@ -2576,17 +2537,6 @@
         "runtime.json"
       ]
     },
-    "Microsoft.Web.Infrastructure/1.0.0": {
-      "sha512": "Bk+FleE3WkOCB707+eD9npx38gvHCA4FikXSW1ETDa+A0IPrhPTWpu/nLGAGxkkXePVRB+nwjDY1ZOs5aE6YBg==",
-      "type": "package",
-      "path": "microsoft.web.infrastructure/1.0.0",
-      "files": [
-        ".signature.p7s",
-        "lib/net40/Microsoft.Web.Infrastructure.dll",
-        "microsoft.web.infrastructure.1.0.0.nupkg.sha512",
-        "microsoft.web.infrastructure.nuspec"
-      ]
-    },
     "Microsoft.Win32.Registry/4.5.0": {
       "sha512": "nt8HW2YtCF3xGObHXtCAn5tzuZpjy5YMPftzyrjF6Ek5RyLUFU4cSw4yGWV2+dyftDXjDpytdLPrgSttC9ZePA==",
       "type": "package",
@@ -2868,45 +2818,6 @@
         "runtimes/win-x86/native/sni.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
-      ]
-    },
-    "Swagger.Net/0.5.4": {
-      "sha512": "x2kPreC4tc0NWBXglmHt7n9JdVkhu+BDiL2t1f2pq5tY+GxqjoJXApArzwDwCMu4noTaw+ZXmkbyhQ6KzsDhHg==",
-      "type": "package",
-      "path": "swagger.net/0.5.4",
-      "files": [
-        ".signature.p7s",
-        "content/App_Start/SwaggerNet.cs.pp",
-        "lib/net45/Swagger.Net.dll",
-        "lib/net45/Swagger.Net.pdb",
-        "lib/net45/Swagger.Net.xml",
-        "swagger.net.0.5.4.nupkg.sha512",
-        "swagger.net.nuspec"
-      ]
-    },
-    "Swagger.Net.UI/1.1.0": {
-      "sha512": "CODyuENhIcM6RC/63hzSezc/PhnSKqdQ+wtATKJ3sj7ZXyMByBknAHi5ovYQ9YzNtYeMsnRoyex0x5YbJ1mIYA==",
-      "type": "package",
-      "path": "swagger.net.ui/1.1.0",
-      "files": [
-        ".signature.p7s",
-        "content/SwaggerUI/css/screen.css",
-        "content/SwaggerUI/images/pet_store_api.png",
-        "content/SwaggerUI/images/wordnik_api.png",
-        "content/SwaggerUI/index.html",
-        "content/SwaggerUI/lib/.DS_Store",
-        "content/SwaggerUI/lib/backbone-min.js",
-        "content/SwaggerUI/lib/handlebars.runtime-1.0.0.beta.6.js",
-        "content/SwaggerUI/lib/jquery.ba-bbq.min.js",
-        "content/SwaggerUI/lib/jquery.min.js",
-        "content/SwaggerUI/lib/jquery.slideto.min.js",
-        "content/SwaggerUI/lib/jquery.wiggle.min.js",
-        "content/SwaggerUI/lib/swagger.js",
-        "content/SwaggerUI/lib/underscore-min.js",
-        "content/SwaggerUI/swagger-ui.js",
-        "content/SwaggerUI/swagger-ui.min.js",
-        "swagger.net.ui.1.1.0.nupkg.sha512",
-        "swagger.net.ui.nuspec"
       ]
     },
     "Swashbuckle.AspNetCore/4.0.1": {
@@ -5060,17 +4971,6 @@
         "system.threading.tasks.4.0.11.nupkg.sha512",
         "system.threading.tasks.nuspec"
       ]
-    },
-    "WebActivator/1.5.1": {
-      "sha512": "kUuBZwuXFVGO8qP+dba6Vz3VKbZUFuAOkgp5mjJQw4T7gJ6fEuHmksnPF0bmGb9FPYU1ZlAVigOvot0PdeowyA==",
-      "type": "package",
-      "path": "webactivator/1.5.1",
-      "files": [
-        ".signature.p7s",
-        "lib/net40/WebActivator.dll",
-        "webactivator.1.5.1.nupkg.sha512",
-        "webactivator.nuspec"
-      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -5078,7 +4978,6 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.1.4",
       "Microsoft.NETCore.App >= 2.0.0",
       "Newtonsoft.Json >= 11.0.2",
-      "Swagger.Net.UI >= 1.1.0",
       "Swashbuckle.AspNetCore >= 4.0.1"
     ]
   },
@@ -5126,10 +5025,6 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "Swagger.Net.UI": {
-            "target": "Package",
-            "version": "1.1.0"
-          },
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
             "target": "Package",
@@ -5156,37 +5051,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.Web.Infrastructure 1.0.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.Web.Infrastructure",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Swagger.Net 0.5.4' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Swagger.Net",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'WebActivator 1.5.1' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
-      "libraryId": "WebActivator",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.0"
-      ]
-    }
-  ]
+  }
 }

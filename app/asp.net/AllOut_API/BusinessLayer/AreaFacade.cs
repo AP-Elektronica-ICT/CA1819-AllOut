@@ -15,15 +15,33 @@ namespace BusinessLayer
         {
             this.context = context;
         }
-        public Area UpdateArea(Area update)
+        public Area UpdateArea(Area updateArea)
         {
-            Area result = context.Areas.SingleOrDefault(g => g.AreaID == update.AreaID);
+            Area result = context.Areas.Include(a => a.Locations).SingleOrDefault(a => a.AreaID == updateArea.AreaID);
             if (result != null)
             {
-                result.Name = update.Name;
+                result.Name = updateArea.Name;
+                if(updateArea.Locations != null)
+                {
+                    for(int i = 0; i < updateArea.Locations.Count; i++)
+                    {
+                        if(i < result.Locations.Count)
+                        {
+                            result.Locations[i].LocationName = updateArea.Locations[i].LocationName;
+                            result.Locations[i].Latitude = updateArea.Locations[i].Latitude;
+                            result.Locations[i].Longitude = updateArea.Locations[i].Longitude;
+                            result.Locations[i].IsBoobyTrapped = updateArea.Locations[i].IsBoobyTrapped;
+                            result.Locations[i].VictorTeamID = updateArea.Locations[i].VictorTeamID;
+                        }
+                        else
+                        {
+                            result.Locations.Add(updateArea.Locations[i]);
+                        }
+                    }
+                }
                 context.SaveChanges();
             }
-            return update;
+            return updateArea;
         }
 
         public Area PostArea(Area newArea)

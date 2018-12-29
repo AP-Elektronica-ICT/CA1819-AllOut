@@ -15,3 +15,20 @@ C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\AllOu
 C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\AllOut_API\UnitTesting\bin\Debug\netcoreapp2.0\AllOut_API.pdb
 C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\AllOut_API\UnitTesting\bin\Debug\netcoreapp2.0\BusinessLayer.pdb
 C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\AllOut_API\UnitTesting\bin\Debug\netcoreapp2.0\DataLayer.pdb
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\UnitTesting\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\UnitTesting\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\UnitTesting\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\UnitTesting\bin\Debug\netcoreapp2.0\UnitTesting.deps.json
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\UnitTesting\bin\Debug\netcoreapp2.0\UnitTesting.runtimeconfig.json
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\UnitTesting\bin\Debug\netcoreapp2.0\UnitTesting.runtimeconfig.dev.json
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\UnitTesting\bin\Debug\netcoreapp2.0\UnitTesting.dll
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\UnitTesting\bin\Debug\netcoreapp2.0\AllOut_API.dll
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\UnitTesting\bin\Debug\netcoreapp2.0\BusinessLayer.dll
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\UnitTesting\bin\Debug\netcoreapp2.0\DataLayer.dll
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\UnitTesting\bin\Debug\netcoreapp2.0\AllOut_API.pdb
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\UnitTesting\bin\Debug\netcoreapp2.0\BusinessLayer.pdb
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\UnitTesting\bin\Debug\netcoreapp2.0\DataLayer.pdb
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\UnitTesting\obj\Debug\netcoreapp2.0\UnitTesting.csprojResolveAssemblyReference.cache
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\UnitTesting\obj\Debug\netcoreapp2.0\UnitTesting.csproj.CoreCompileInputs.cache
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\UnitTesting\obj\Debug\netcoreapp2.0\UnitTesting.AssemblyInfoInputs.cache
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\UnitTesting\obj\Debug\netcoreapp2.0\UnitTesting.AssemblyInfo.cs

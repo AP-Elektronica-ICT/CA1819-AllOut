@@ -61,7 +61,7 @@ namespace BusinessLayer
 
         public List<GameLogic> GetGames()
         {
-            return context.Games.Include("Team").Include("Area").ToList();
+            return context.Games.Include("Team").ToList();
         }
         
         public GameLogic GetGameById(int id)

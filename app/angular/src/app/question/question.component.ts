@@ -31,10 +31,11 @@ export class QuestionComponent implements OnInit {
     );
   }
   updateQuestion(){
-    var updateQuestion : IQuestion ={
+    /*
+    let updateQuestion : IQuestion ={
       questionText : this.questionText,
       questionType : this.questionType,
-    }
+      
+    }*/
   }
-
 }

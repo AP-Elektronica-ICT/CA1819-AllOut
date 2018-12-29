@@ -10,7 +10,7 @@ import { MapPage } from '../map/map.page';
  
 export class JoinGamePage {
     games:Game[];
-    gameCode:string;
+    gameCode:string='X35H0';
     teamName:string;
     team:Team = {
         teamID: 0,
@@ -54,11 +54,10 @@ export class JoinGamePage {
             this.team.totalPoints = 0;
             this.api.postTeam(this.team).subscribe(result =>{
                 console.log(result);
+                this.navCtrl.push(MapPage);
+                this.api.teamName = this.teamName;
+                this.message = "Succesfully joined the game!"
             });
-            
-            this.api.teamName = this.teamName;
-            this.message = "Succesfully joined the game!"
-            this.navCtrl.push(MapPage);
         }
     }
 

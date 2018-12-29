@@ -8,7 +8,14 @@ export class AlloutProvider {
     url: string;
     game:Game;
     teamName:string;
-
+    headers = {
+        headers:{
+            'If-Modified-Since':'Mon, 26 Jul 1997 05:00:00 GMT',
+            'content-type':'application/json',
+            'cache-control':'no-cache',
+            'pragma':'no-cache'
+        }
+    }
     constructor(private _http: HttpClient) {
         this.url = "http://localhost:33324/api/v1/"
     };
@@ -20,22 +27,23 @@ export class AlloutProvider {
     }
 
     getLocation(id: number): Observable<Location> {
-        return this._http.get<Location>(this.url + "location/" + id);
+        return this._http.get<Location>(this.url + "location/" + id, this.headers);
     }
 
     getAllLocations(): Observable<Location[]> {
-        return this._http.get<Location[]>(this.url + "location/");
+        return this._http.get<Location[]>(this.url + "location/", this.headers);
     }
 
     getGame(id: number): Observable<Game> {
-        return this._http.get<Game>(this.url + "game/" + id);
+        return this._http.get<Game>(this.url + "game/" + id, this.headers);
     }
 
     getAllGames(): Observable<Game[]> {
-        return this._http.get<Game[]>(this.url + "game/");
+        return this._http.get<Game[]>(this.url + "game/", this.headers);
     }
+
     getLocationPoints(id:number): Observable<Location[]>{
-        return this._http.get<Location[]>(this.url + "location/" + id);
+        return this._http.get<Location[]>(this.url + "location/" + id, this.headers);
     }
 }
 

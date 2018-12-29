@@ -18,7 +18,10 @@ C:\Users\Bas\Documents\School\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\ob
 C:\Users\Bas\Documents\School\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\obj\Debug\netcoreapp2.0\DataLayer.dll
 C:\Users\Bas\Documents\School\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\obj\Debug\netcoreapp2.0\DataLayer.pdb
 C:\Users\Bas\Documents\School\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\obj\Debug\netcoreapp2.0\DataLayer.csprojAssemblyReference.cache
+<<<<<<< master
 <<<<<<< HEAD
+=======
+>>>>>>> Area toegevoegd fix
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\bin\Debug\netcoreapp2.0\DataLayer.deps.json
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\bin\Debug\netcoreapp2.0\DataLayer.dll
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\bin\Debug\netcoreapp2.0\DataLayer.pdb
@@ -28,6 +31,7 @@ C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\obj\Debug
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\obj\Debug\netcoreapp2.0\DataLayer.AssemblyInfo.cs
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\obj\Debug\netcoreapp2.0\DataLayer.dll
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\obj\Debug\netcoreapp2.0\DataLayer.pdb
+<<<<<<< master
 =======
 C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\DataLayer\bin\Debug\netcoreapp2.0\DataLayer.deps.json
 C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\DataLayer\bin\Debug\netcoreapp2.0\DataLayer.dll
@@ -42,3 +46,8 @@ C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOu
 C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\DataLayer\obj\Debug\netcoreapp2.0\DataLayer.pdb
 >>>>>>> master
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\obj\Debug\netcoreapp2.0\DataLayer.csprojAssemblyReference.cache
+<<<<<<< master
+=======
+>>>>>>> Area toegevoegd fix
+=======
+>>>>>>> Locatie kan nu toegevoegd worden aan area

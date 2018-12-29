@@ -9,7 +9,6 @@ import { NewquestionlistComponent } from './newquestionlist/newquestionlist.comp
 import { AreaComponent } from './area/area.component';
 import { LocationComponent } from './location/location.component';
 import { QuestionComponent } from './question/question.component';
-import { NewLocationComponent } from './newlocation/newlocation.component';
 
 const routes: Routes = [
   { 
@@ -55,8 +54,8 @@ const routes: Routes = [
     ]
    },
    { 
-    path: 'newlocation/:id', 
-    component: NewLocationComponent,
+    path: 'editgame/:id', 
+    component: NewgameComponent,
     canActivate: [
       AuthGuard
     ]

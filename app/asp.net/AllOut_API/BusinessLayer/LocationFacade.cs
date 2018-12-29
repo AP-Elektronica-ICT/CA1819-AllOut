@@ -16,15 +16,15 @@ namespace BusinessLayer
             this.context = context;
         }
 
-        public Location putLocation(Location newLocation)
+        public Location putLocation(int l_id, Location newLocation)
         {
-            Location result = context.Locations.SingleOrDefault(l => l.LocationID == newLocation.LocationID);
+            Location result = context.Locations.SingleOrDefault(l => l.LocationID == l_id);
             if (result != null)
             {
                 result.LocationName = newLocation.LocationName;
                 result.Latitude = newLocation.Latitude;
                 result.Longitude = newLocation.Longitude;
-                //result.Question = newLocation.Question;
+                result.Question = newLocation.Question;
                 result.IsBoobyTrapped = newLocation.IsBoobyTrapped;
 
                 context.SaveChanges();
@@ -32,6 +32,20 @@ namespace BusinessLayer
             return newLocation;
         }
 
+<<<<<<< master
+        public Location postLocation(Location newLocation)
+        {
+            var result = context.Areas.SingleOrDefault();
+            if (result != null)
+            {
+                result.Locations.Add(newLocation);
+                context.SaveChanges();
+            }
+            return newLocation;
+        }
+
+=======
+>>>>>>> Locatie kan nu toegevoegd worden aan area
         public List<Location> getLocations()
         {
             var result = context.Locations.Include(l => l.Question);

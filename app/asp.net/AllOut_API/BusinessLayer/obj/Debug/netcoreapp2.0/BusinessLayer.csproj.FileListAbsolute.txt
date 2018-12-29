@@ -21,7 +21,10 @@ C:\Users\Bas\Documents\School\School\3EA2\CA\app\asp.net\AllOut_API\BusinessLaye
 C:\Users\Bas\Documents\School\School\3EA2\CA\app\asp.net\AllOut_API\BusinessLayer\bin\Debug\netcoreapp2.0\DataLayer.dll
 C:\Users\Bas\Documents\School\School\3EA2\CA\app\asp.net\AllOut_API\BusinessLayer\bin\Debug\netcoreapp2.0\DataLayer.pdb
 C:\Users\Bas\Documents\School\School\3EA2\CA\app\asp.net\AllOut_API\BusinessLayer\obj\Debug\netcoreapp2.0\BusinessLayer.csproj.CopyComplete
+<<<<<<< master
 <<<<<<< HEAD
+=======
+>>>>>>> Area toegevoegd fix
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\BusinessLayer\bin\Debug\netcoreapp2.0\BusinessLayer.deps.json
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\BusinessLayer\bin\Debug\netcoreapp2.0\BusinessLayer.dll
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\BusinessLayer\bin\Debug\netcoreapp2.0\BusinessLayer.pdb
@@ -34,6 +37,7 @@ C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\BusinessLayer\obj\D
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\BusinessLayer\obj\Debug\netcoreapp2.0\BusinessLayer.csproj.CopyComplete
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\BusinessLayer\obj\Debug\netcoreapp2.0\BusinessLayer.dll
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\BusinessLayer\obj\Debug\netcoreapp2.0\BusinessLayer.pdb
+<<<<<<< master
 =======
 C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\BusinessLayer\bin\Debug\netcoreapp2.0\BusinessLayer.deps.json
 C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\BusinessLayer\bin\Debug\netcoreapp2.0\BusinessLayer.dll
@@ -48,3 +52,8 @@ C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOu
 C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud Applications\app\asp.net\AllOut_API\BusinessLayer\obj\Debug\netcoreapp2.0\BusinessLayer.pdb
 >>>>>>> master
 C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\BusinessLayer\obj\Debug\netcoreapp2.0\BusinessLayer.csprojAssemblyReference.cache
+<<<<<<< master
+=======
+>>>>>>> Area toegevoegd fix
+=======
+>>>>>>> Locatie kan nu toegevoegd worden aan area

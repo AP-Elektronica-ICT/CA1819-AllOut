@@ -1,0 +1,16 @@
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\bin\Release\netcoreapp2.0\AllOut_API.deps.json
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\bin\Release\netcoreapp2.0\AllOut_API.runtimeconfig.json
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\bin\Release\netcoreapp2.0\AllOut_API.runtimeconfig.dev.json
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\bin\Release\netcoreapp2.0\AllOut_API.dll
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\bin\Release\netcoreapp2.0\AllOut_API.pdb
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\bin\Release\netcoreapp2.0\BusinessLayer.dll
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\bin\Release\netcoreapp2.0\DataLayer.dll
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\bin\Release\netcoreapp2.0\BusinessLayer.pdb
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\bin\Release\netcoreapp2.0\DataLayer.pdb
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\obj\Release\netcoreapp2.0\AllOut_API.csprojResolveAssemblyReference.cache
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\obj\Release\netcoreapp2.0\AllOut_API.csproj.CoreCompileInputs.cache
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\obj\Release\netcoreapp2.0\AllOut_API.AssemblyInfoInputs.cache
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\obj\Release\netcoreapp2.0\AllOut_API.AssemblyInfo.cs
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\obj\Release\netcoreapp2.0\AllOut_API.csproj.CopyComplete
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\obj\Release\netcoreapp2.0\AllOut_API.dll
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\AllOut_API\obj\Release\netcoreapp2.0\AllOut_API.pdb

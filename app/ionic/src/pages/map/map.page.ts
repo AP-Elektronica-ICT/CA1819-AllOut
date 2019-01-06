@@ -49,25 +49,17 @@ export class MapPage {
                 for (let loc of this.locations){
                     console.log(loc.question.points); 
                     let ll = {lat:loc.latitude, lng:loc.longitude};
-                    let marker = new google.maps.Marker({
+                    var marker = new google.maps.Marker({
                         position: ll, 
                         map: this.map, 
                         label: loc.question.points.toString(), 
                         title: loc.locationName, 
-                        icon: "../../assets/icon/newMarker.png"
+                        icon: "../../assets/icon/monumentMarker.png"
                     });
-                    console.log(this.calcDistance(this.playerPos.latitude, marker.latitude, this.playerPos.longitude, marker.longitude));
+                    //console.log(this.calcDistance(this.playerPos.latitude, marker.latitude, this.playerPos.longitude, marker.longitude));
+                    console.log(ll); 
                     marker.addListener('click', function(){
-                        var distance = this.calcDistance(marker.latitude, this.userPos.latitude, marker.longitude, this.userPos.longitude); 
-                        if(distance <= 100){
-                            this.navCtrl.push(QuestionPage, {
-                                data: loc.locationID
-                            }); 
-                        }
-                        else{
-                            var m = "You are currently " + distance + "meters from this point. You need to be within 100 meters!"; 
-                            this.showToast(m); 
-                        }
+                        this.markerClick(ll.lat, ll.lng, loc.locationID); 
                     })
                 }
                 
@@ -76,6 +68,20 @@ export class MapPage {
             }
         });
     }
+    markerClick(lLat: any, lLong: any, loc: any){
+        console.log(this.userPos); 
+        var distance = this.calcDistance(lLat, this.userPos.lat, lLong, this.userPos.lng); 
+        if(distance <= 100){
+            this.navCtrl.push(QuestionPage, {
+                data: loc
+            }); 
+        }
+        else{
+            var m = "You are currently " + distance + "meters from this point. You need to be within 100 meters!"; 
+            this.showToast(m); 
+        }
+    }
+
     showToast(m: any){
         let toast = this.toastCtrl.create({
             message: m, 
@@ -83,17 +89,6 @@ export class MapPage {
             position: 'top'
         }); 
         toast.present; 
-    }
-
-    addLocationMarkers(){
-        try{
-            for (let loc of this.locations){
-                let ll = {lat:loc.latitude, lng:loc.longitude};
-                let marker = new google.maps.Marker({position: ll, map: this.map, title: loc.locationName});
-            }
-        }catch{
-            console.log("Can't add markers.")
-        }
     }
     
     quitGame(){
@@ -157,6 +152,7 @@ export class MapPage {
                     position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude), 
                     icon: "../../assets/icon/newMarker.png"
                 });
+                console.log(this.userPos); 
             } else {
                 this.transition([position.coords.latitude, position.coords.longitude]);
                 //this.playerPos.setPosition(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));

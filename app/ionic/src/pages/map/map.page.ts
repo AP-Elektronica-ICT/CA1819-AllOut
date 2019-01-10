@@ -2,9 +2,10 @@ import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LocationTrackerProvider } from '../../providers/location-tracker/location-tracker';
-import { HomePage } from '../../pages/home/home.page';  
+import { HomePage } from '../../pages/home/home.page';
 import * as API from '../../providers/AlloutAPI/AlloutAPI';
 import { QuestionPage } from '../question/question';
+import * as rxjs from "rxjs/Rx";
 
 declare var google;
 /**
@@ -22,6 +23,7 @@ export class MapPage {
 
     @ViewChild('map') mapElement: ElementRef;
     map: any;
+    mapSubscription: rxjs.Subscription;
     playerPos: any;
     userPos: { lat: number, lng: number };
     deltaLat;
@@ -29,77 +31,70 @@ export class MapPage {
     numDeltas = 100;
     delay = 10; //milliseconds
     i = 0;
-    locations:API.Location[];
-    constructor(public navCtrl: NavController, public API:API.AlloutProvider, public geolocation: Geolocation, public locationTrackerProvider: LocationTrackerProvider, private toastCtrl: ToastController) {
+    locations: API.Location[];
+    constructor(public navCtrl: NavController, public API: API.AlloutProvider, public geolocation: Geolocation, public locationTrackerProvider: LocationTrackerProvider, private toastCtrl: ToastController) {
     }
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad MapPage');
         this.loadMap();
         this.locationTrackerProvider.startTracking();
-        this.getLocations(); 
     }
 
-    getLocations(){
-        console.log("get them all!"); 
-        this.API.getAllLocations().subscribe(result =>{
+    getLocations() {
+        this.API.getAllLocations().subscribe(result => {
             this.locations = result;
-            console.log(this.locations); 
-            try {
-                for (let loc of this.locations){
-                    console.log(loc.question.points); 
-                    let ll = {lat:loc.latitude, lng:loc.longitude};
-                    let marker = new google.maps.Marker({
-                        position: ll, 
-                        map: this.map, 
-                        label: loc.question.points.toString(), 
-                        title: loc.locationName, 
-                        icon: "../../assets/icon/newMarker.png"
-                    });
-                    console.log(this.calcDistance(this.playerPos.latitude, marker.latitude, this.playerPos.longitude, marker.longitude));
-                    marker.addListener('click', function(){
-                        var distance = this.calcDistance(marker.latitude, this.userPos.latitude, marker.longitude, this.userPos.longitude); 
-                        if(distance <= 100){
-                            this.navCtrl.push(QuestionPage, {
-                                data: loc.locationID
-                            }); 
-                        }
-                        else{
-                            var m = "You are currently " + distance + "meters from this point. You need to be within 100 meters!"; 
-                            this.showToast(m); 
-                        }
-                    })
-                }
-                
-            } catch{
-                console.log("Can't add markers!"); 
-            }
+            console.log(this.locations);
+            this.addLocationMarkers();
+            setTimeout(() => this.getLocations(), 5000);
         });
     }
-    showToast(m: any){
+    showToast(m: any) {
         let toast = this.toastCtrl.create({
-            message: m, 
-            duration: 5000, 
+            message: m,
+            duration: 5000,
             position: 'top'
-        }); 
-        toast.present; 
+        });
+        toast.present;
     }
 
-    addLocationMarkers(){
-        try{
-            for (let loc of this.locations){
-                let ll = {lat:loc.latitude, lng:loc.longitude};
-                let marker = new google.maps.Marker({position: ll, map: this.map, title: loc.locationName});
+    addLocationMarkers() {
+        for (let loc of this.locations) {
+            if (loc.victorTeamID == -1) {
+                console.log(loc.question.points);
+                let ll = { lat: loc.latitude, lng: loc.longitude };
+                let marker = new google.maps.Marker({
+                    position: ll,
+                    map: this.map,
+                    label: loc.question.points.toString(),
+                    title: loc.locationName,
+                    icon: "../../assets/icon/newMarker.png"
+                });
+                try {
+                    console.log(this.calcDistance(this.playerPos.latitude, marker.latitude, this.playerPos.longitude, marker.longitude));
+                    marker.addListener('click', function(){
+                    var distance = this.calcDistance(marker.latitude, this.userPos.latitude, marker.longitude, this.userPos.longitude); 
+                    if(distance <= 100){
+                        this.navCtrl.push(QuestionPage, {
+                            data: loc.locationID
+                        }); 
+                    }
+                    else{
+                        var m = "You are currently " + distance + "meters from this point. You need to be within 100 meters!"; 
+                        this.showToast(m); 
+                    }
+                })
+                } catch (error) {
+                    
+                }
             }
-        }catch{
-            console.log("Can't add markers.")
         }
     }
-    
-    quitGame(){
+
+    quitGame() {
         //quit game code here!
-        console.log("QUIT GAME"); 
-        this.navCtrl.pop(); 
+        console.log("QUIT GAME");
+        this.navCtrl.pop();
     }
 
     loadMap() {
@@ -119,27 +114,26 @@ export class MapPage {
                 fullscreenControl: false
             }
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
-            this.updatePlayerMarker();
+            this.getLocations();
         }, (err) => {
             console.log(err);
         });
     }
-    calcDistance(lat1: any, lat2: any, lon1: any, lon2: any){
+    calcDistance(lat1: any, lat2: any, lon1: any, lon2: any) {
         var R = 6371e3; // metres
         var φ1 = lat1.toRadians();
         var φ2 = lat2.toRadians();
-        var Δφ = (lat2-lat1) * ((Math.PI)/180); 
+        var Δφ = (lat2 - lat1) * ((Math.PI) / 180);
 
-        var Δλ = (lon2-lon1) * ((Math.PI)/180);
+        var Δλ = (lon2 - lon1) * ((Math.PI) / 180);
 
-        var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
-                Math.cos(φ1) * Math.cos(φ2) *
-                Math.sin(Δλ/2) * Math.sin(Δλ/2);
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        var a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+            Math.cos(φ1) * Math.cos(φ2) *
+            Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
         var d = R * c;
-        return d; 
+        return d;
     }
     updatePlayerMarker() {
         let watchOptions = {
@@ -173,7 +167,7 @@ export class MapPage {
     }
     moveMarker() {
         if (this.userPos) {
-            console.log(this.userPos); 
+            console.log(this.userPos);
             this.userPos.lat += this.deltaLat;
             this.userPos.lng += this.deltaLng;
             var latlng = new google.maps.LatLng(this.userPos.lat, this.userPos.lng);

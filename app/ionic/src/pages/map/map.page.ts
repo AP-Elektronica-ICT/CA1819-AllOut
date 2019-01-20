@@ -44,12 +44,35 @@ export class MapPage {
     getLocations() {
         this.API.getAllLocations().subscribe(result => {
             this.locations = result;
-            console.log(this.locations);
-            this.addLocationMarkers();
-            setTimeout(() => this.getLocations(), 5000);
+            console.log(this.locations); 
+                    marker.addListener('click', function(){
+                        console.log(this.userPos); 
+                        var distance = this.calcDistance(ll.lat, this.userPos.lat, ll.lng, this.userPos.lng); 
+                        if(distance <= 100){
+                            this.navCtrl.push(QuestionPage, {
+                                data: loc
+                            }); 
+                        }
+                        else{
+                            var m = "You are currently " + distance + "meters from this point. You need to be within 100 meters!"; 
+                            this.showToast(m); 
+                        }
         });
     }
-    showToast(m: any) {
+    markerClick(lLat: any, lLong: any, loc: any){
+        console.log(this.userPos); 
+        var distance = this.calcDistance(lLat, this.userPos.lat, lLong, this.userPos.lng); 
+        if(distance <= 100){
+            this.navCtrl.push(QuestionPage, {
+                data: loc
+            }); 
+        }
+        else{
+            this.showToast(m); 
+            var m = "You are currently " + distance + "meters from this point. You need to be within 100 meters!"; 
+        }
+    }
+    showToast(m: any){
         let toast = this.toastCtrl.create({
             message: m,
             duration: 5000,
@@ -58,47 +81,18 @@ export class MapPage {
         toast.present;
     }
 
-    addLocationMarkers() {
-        for (let loc of this.locations) {
-            if (loc.victorTeamID == -1) {
-                console.log(loc.question.points);
-                let ll = { lat: loc.latitude, lng: loc.longitude };
-                let icon = {
-                    size: new google.maps.Size(100, 100),
-                    origin: new google.maps.Point( 0, 0),
-                    scaledSize: new google.maps.Size(30.0, 30.0),
-                    anchor: new google.maps.Point(15, 15),
-                    url: "../../assets/icon/newMarker.png"
-                }
-                let marker = new google.maps.Marker({
-                    position: ll,
-                    map: this.map,
-                    label: loc.question.points.toString(),
-                    title: loc.locationName,
-                    icon: icon
-                });
-                try {
-                    console.log(this.calcDistance(this.playerPos.latitude, marker.latitude, this.playerPos.longitude, marker.longitude));
-                    marker.addListener('click', function(){
-                    var distance = this.calcDistance(marker.latitude, this.userPos.latitude, marker.longitude, this.userPos.longitude); 
-                    if(distance <= 100){
-                        this.navCtrl.push(QuestionPage, {
-                            data: loc.locationID
-                        }); 
-                    }
-                    else{
-                        var m = "You are currently " + distance + "meters from this point. You need to be within 100 meters!"; 
-                        this.showToast(m); 
-                    }
-                })
-                } catch (error) {
-                    
-                }
+    addLocationMarkers(){
+        try{
+            for (let loc of this.locations){
+                let ll = {lat:loc.latitude, lng:loc.longitude};
+                let marker = new google.maps.Marker({position: ll, map: this.map, title: loc.locationName});
             }
+        }catch{
+            console.log("Can't add markers.")
         }
     }
-
-    quitGame() {
+    
+    quitGame(){
         //quit game code here!
         console.log("QUIT GAME");
         this.navCtrl.pop();
@@ -158,6 +152,7 @@ export class MapPage {
                     position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude), 
                     icon: "../../assets/icon/userMarker.png"
                 });
+                console.log(this.userPos); 
             } else {
                 this.transition([position.coords.latitude, position.coords.longitude]);
                 //this.playerPos.setPosition(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));

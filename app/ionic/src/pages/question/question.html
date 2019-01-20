@@ -8,9 +8,9 @@
 <ion-content>
     <p class="q">{{question}}</p>
     <ion-item>  
-        <ion-input type="text" value="" placeholder="Answer"></ion-input>
+        <ion-input type="text" value="" placeholder="Answer" #answer></ion-input>
     </ion-item>
     
-    <button ion-button (click)="checkAnswer()">Check</button>
+    <button ion-button (click)="checkAnswer(answer.value)">Check</button>
 </ion-content>
 

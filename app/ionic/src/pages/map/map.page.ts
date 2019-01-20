@@ -44,19 +44,9 @@ export class MapPage {
     getLocations() {
         this.API.getAllLocations().subscribe(result => {
             this.locations = result;
-            console.log(this.locations); 
-                    marker.addListener('click', function(){
-                        console.log(this.userPos); 
-                        var distance = this.calcDistance(ll.lat, this.userPos.lat, ll.lng, this.userPos.lng); 
-                        if(distance <= 100){
-                            this.navCtrl.push(QuestionPage, {
-                                data: loc
-                            }); 
-                        }
-                        else{
-                            var m = "You are currently " + distance + "meters from this point. You need to be within 100 meters!"; 
-                            this.showToast(m); 
-                        }
+            console.log(this.locations);
+            this.addLocationMarkers();
+            setTimeout(() => this.getLocations(), 5000);
         });
     }
     markerClick(lLat: any, lLong: any, loc: any){
@@ -84,8 +74,34 @@ export class MapPage {
     addLocationMarkers(){
         try{
             for (let loc of this.locations){
-                let ll = {lat:loc.latitude, lng:loc.longitude};
-                let marker = new google.maps.Marker({position: ll, map: this.map, title: loc.locationName});
+                let ll = { lat: loc.latitude, lng: loc.longitude };
+                let icon = {
+                    size: new google.maps.Size(100, 100),
+                    origin: new google.maps.Point( 0, 0),
+                    scaledSize: new google.maps.Size(30.0, 30.0),
+                    anchor: new google.maps.Point(15, 15),
+                    url: "../../assets/icon/newMarker.png"
+                }
+                let marker = new google.maps.Marker({
+                    position: ll,
+                    map: this.map,
+                    label: loc.question.points.toString(),
+                    title: loc.locationName,
+                    icon: icon
+                });
+                marker.addListener('click', function(){
+                    console.log(this.userPos); 
+                    var distance = this.calcDistance(ll.lat, this.userPos.lat, ll.lng, this.userPos.lng); 
+                    if(distance <= 100){
+                        this.navCtrl.push(QuestionPage, {
+                            data: loc
+                        }); 
+                    }
+                    else{
+                        var m = "You are currently " + distance + "meters from this point. You need to be within 100 meters!"; 
+                        this.showToast(m); 
+                    }
+                });
             }
         }catch{
             console.log("Can't add markers.")
@@ -116,6 +132,7 @@ export class MapPage {
             }
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
             this.getLocations();
+            this.updatePlayerMarker();
         }, (err) => {
             console.log(err);
         });
@@ -146,11 +163,19 @@ export class MapPage {
             //if distance greater than 30 meters
             if (!this.playerPos) {
                 this.userPos = { lat: position.coords.latitude, lng: position.coords.longitude };
+                debugger;
+                let icon = {
+                    size: new google.maps.Size(100, 100),
+                    origin: new google.maps.Point( 0, 0),
+                    scaledSize: new google.maps.Size(30.0, 30.0),
+                    anchor: new google.maps.Point(15, 15),
+                    url: "../../assets/icon/userMarker.png"
+                }
                 this.playerPos = new google.maps.Marker({
                     map: this.map,
                     animation: google.maps.Animation.Drop,
                     position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude), 
-                    icon: "../../assets/icon/userMarker.png"
+                    icon: icon
                 });
                 console.log(this.userPos); 
             } else {

@@ -30,7 +30,14 @@ export class AlloutProvider {
     getGame(id: number): Observable<Game> {
         return this._http.get<Game>(this.url + "game/" + id);
     }
-
+    changeQuestionAnswered(id: number, answered: boolean){
+        this._http.put(this.url + "question/", {
+            questionID: id, 
+            isSolved: answered
+        }).subscribe((data: any) => {
+            console.log(data)
+        })
+    }
     getAllGames(): Observable<Game[]> {
         return this._http.get<Game[]>(this.url + "game/");
     }

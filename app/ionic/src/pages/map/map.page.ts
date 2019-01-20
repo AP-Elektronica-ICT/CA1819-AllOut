@@ -63,12 +63,19 @@ export class MapPage {
             if (loc.victorTeamID == -1) {
                 console.log(loc.question.points);
                 let ll = { lat: loc.latitude, lng: loc.longitude };
+                let icon = {
+                    size: new google.maps.Size(100, 100),
+                    origin: new google.maps.Point( 0, 0),
+                    scaledSize: new google.maps.Size(30.0, 30.0),
+                    anchor: new google.maps.Point(15, 15),
+                    url: "../../assets/icon/newMarker.png"
+                }
                 let marker = new google.maps.Marker({
                     position: ll,
                     map: this.map,
                     label: loc.question.points.toString(),
                     title: loc.locationName,
-                    icon: "../../assets/icon/newMarker.png"
+                    icon: icon
                 });
                 try {
                     console.log(this.calcDistance(this.playerPos.latitude, marker.latitude, this.playerPos.longitude, marker.longitude));
@@ -149,7 +156,7 @@ export class MapPage {
                     map: this.map,
                     animation: google.maps.Animation.Drop,
                     position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude), 
-                    icon: "../../assets/icon/newMarker.png"
+                    icon: "../../assets/icon/userMarker.png"
                 });
             } else {
                 this.transition([position.coords.latitude, position.coords.longitude]);

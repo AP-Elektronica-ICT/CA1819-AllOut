@@ -6,6 +6,7 @@ import { HomePage } from '../../pages/home/home.page';
 import * as API from '../../providers/AlloutAPI/AlloutAPI';
 import { QuestionPage } from '../question/question';
 import * as rxjs from "rxjs/Rx";
+import * as $ from 'jquery'
 
 declare var google;
 /**
@@ -22,6 +23,7 @@ declare var google;
 export class MapPage {
 
     @ViewChild('map') mapElement: ElementRef;
+    //mapMarker:any[];
     map: any;
     mapSubscription: rxjs.Subscription;
     playerPos: any;
@@ -72,17 +74,19 @@ export class MapPage {
     }
 
     addLocationMarkers(){
-        try{
             for (let loc of this.locations){
+                let mark = $("div[title|='" + loc.locationName + "'").remove();
+                mark.remove();
+                
                 let ll = { lat: loc.latitude, lng: loc.longitude };
                 let icon = {
                     size: new google.maps.Size(100, 100),
-                    origin: new google.maps.Point( 0, 0),
                     scaledSize: new google.maps.Size(30.0, 30.0),
-                    anchor: new google.maps.Point(15, 15),
+                    origin: new google.maps.Point(0,0),
+                    anchor: new google.maps.Point(0,0),
                     url: "../../assets/icon/newMarker.png"
                 }
-                let marker = new google.maps.Marker({
+                var marker = new google.maps.Marker({
                     position: ll,
                     map: this.map,
                     label: loc.question.points.toString(),
@@ -103,9 +107,9 @@ export class MapPage {
                     }
                 });
             }
-        }catch{
+        /*}catch{
             console.log("Can't add markers.")
-        }
+        }*/
     }
     
     quitGame(){
@@ -163,7 +167,6 @@ export class MapPage {
             //if distance greater than 30 meters
             if (!this.playerPos) {
                 this.userPos = { lat: position.coords.latitude, lng: position.coords.longitude };
-                debugger;
                 let icon = {
                     size: new google.maps.Size(100, 100),
                     origin: new google.maps.Point( 0, 0),

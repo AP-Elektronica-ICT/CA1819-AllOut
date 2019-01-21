@@ -50,7 +50,6 @@ export class JoinGamePage {
             TeamName: SlimmeJongens
         */
         for(let game of this.games){
-            console.log(game.gameCode)
             if (game.gameCode == this.gameCode){
                 this.game = game;
                 this.api.game = game;
@@ -58,7 +57,6 @@ export class JoinGamePage {
             }
         }
         for(let team of this.game.team){
-            console.log(team.teamName)
             if (team.teamName == this.teamName){
                 this.nameTaken = true;
                 var m = "That name is already taken!";
@@ -72,7 +70,7 @@ export class JoinGamePage {
             this.team.totalBoobyTraps = 2;
             this.team.totalPoints = 0;
             this.api.postTeam(this.team).subscribe(result =>{
-                console.log(result);
+                //console.log(result);
             });
             this.api.teamName = this.teamName;
             var m = "Succesfully joined the game!";

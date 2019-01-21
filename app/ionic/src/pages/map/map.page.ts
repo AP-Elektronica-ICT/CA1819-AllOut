@@ -55,11 +55,12 @@ export class MapPage {
                     if (loc.victorTeamID == -1 || loc.isBoobyTrapped) {
 
                         let ll = { lat: loc.latitude, lng: loc.longitude };
-                        var icon = {
-                            url: "../../assets/icon/monumentMarker.png",
-                            scaledSize: new google.maps.Size(50, 50),
+                        let icon = {
+                            size: new google.maps.Size(100, 100),
                             origin: new google.maps.Point(0, 0),
-                            anchor: new google.maps.Point(0, 0)
+                            scaledSize: new google.maps.Size(30.0, 30.0),
+                            anchor: new google.maps.Point(0, 0),
+                            url: "../../assets/icon/newMarker.png"
                         }
                         let marker = new google.maps.Marker({
                             position: ll,
@@ -182,11 +183,18 @@ export class MapPage {
             //if distance greater than 30 meters
             if (!this.playerPos) {
                 this.userPos = { lat: position.coords.latitude, lng: position.coords.longitude };
+                let icon = {
+                    size: new google.maps.Size(100, 100),
+                    origin: new google.maps.Point(0, 0),
+                    scaledSize: new google.maps.Size(30.0, 30.0),
+                    anchor: new google.maps.Point(0, 0),
+                    url: "../../assets/icon/userMarker.png"
+                }
                 this.playerPos = new google.maps.Marker({
                     map: this.map,
                     animation: google.maps.Animation.Drop,
                     position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
-                    icon: "../../assets/icon/newMarker.png"
+                    icon: icon
                 });
                 console.log("USERPOS: " + this.userPos);
             } else {

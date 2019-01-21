@@ -346,7 +346,6 @@ var JoinGamePage = /** @class */ (function () {
         */
         for (var _i = 0, _a = this.games; _i < _a.length; _i++) {
             var game = _a[_i];
-            console.log(game.gameCode);
             if (game.gameCode == this.gameCode) {
                 this.game = game;
                 this.api.game = game;
@@ -355,7 +354,6 @@ var JoinGamePage = /** @class */ (function () {
         }
         for (var _b = 0, _c = this.game.team; _b < _c.length; _b++) {
             var team = _c[_b];
-            console.log(team.teamName);
             if (team.teamName == this.teamName) {
                 this.nameTaken = true;
                 var m = "That name is already taken!";
@@ -369,7 +367,7 @@ var JoinGamePage = /** @class */ (function () {
             this.team.totalBoobyTraps = 2;
             this.team.totalPoints = 0;
             this.api.postTeam(this.team).subscribe(function (result) {
-                console.log(result);
+                //console.log(result);
             });
             this.api.teamName = this.teamName;
             var m = "Succesfully joined the game!";
@@ -684,11 +682,12 @@ var MapPage = /** @class */ (function () {
                     mark.remove();
                     if (loc.victorTeamID == -1 || loc.isBoobyTrapped) {
                         var ll_1 = { lat: loc.latitude, lng: loc.longitude };
-                        icon = {
-                            url: "../../assets/icon/monumentMarker.png",
-                            scaledSize: new google.maps.Size(50, 50),
+                        var icon = {
+                            size: new google.maps.Size(100, 100),
                             origin: new google.maps.Point(0, 0),
-                            anchor: new google.maps.Point(0, 0)
+                            scaledSize: new google.maps.Size(30.0, 30.0),
+                            anchor: new google.maps.Point(0, 0),
+                            url: "../../assets/icon/newMarker.png"
                         };
                         var marker = new google.maps.Marker({
                             position: ll_1,
@@ -721,7 +720,6 @@ var MapPage = /** @class */ (function () {
                         }
                     }
                 };
-                var icon;
                 for (var _i = 0, _a = _this.locations; _i < _a.length; _i++) {
                     var loc = _a[_i];
                     _loop_1(loc);
@@ -808,11 +806,18 @@ var MapPage = /** @class */ (function () {
             //if distance greater than 30 meters
             if (!_this.playerPos) {
                 _this.userPos = { lat: position.coords.latitude, lng: position.coords.longitude };
+                var icon = {
+                    size: new google.maps.Size(100, 100),
+                    origin: new google.maps.Point(0, 0),
+                    scaledSize: new google.maps.Size(30.0, 30.0),
+                    anchor: new google.maps.Point(0, 0),
+                    url: "../../assets/icon/userMarker.png"
+                };
                 _this.playerPos = new google.maps.Marker({
                     map: _this.map,
                     animation: google.maps.Animation.Drop,
                     position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
-                    icon: "../../assets/icon/newMarker.png"
+                    icon: icon
                 });
                 console.log("USERPOS: " + _this.userPos);
             }

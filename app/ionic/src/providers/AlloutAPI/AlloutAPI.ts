@@ -10,7 +10,7 @@ export class AlloutProvider {
     teamName:string;
 
     constructor(private _http: HttpClient) {
-        this.url = "http://localhost:33324/api/v1/"
+        this.url = "https://alloutapi20190121022729.azurewebsites.net/api/v1/"
     };
 
     postTeam(team: Team) {

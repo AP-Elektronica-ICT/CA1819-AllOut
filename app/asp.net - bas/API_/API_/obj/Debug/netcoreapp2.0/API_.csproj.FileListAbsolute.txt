@@ -1,0 +1,48 @@
+C:\Users\Gilian\OneDrive\School\3EA2_2018-2019\Module 1-2\Cloud Applications\API_\API_\bin\Debug\netcoreapp2.0\API_.deps.json
+C:\Users\Gilian\OneDrive\School\3EA2_2018-2019\Module 1-2\Cloud Applications\API_\API_\bin\Debug\netcoreapp2.0\API_.runtimeconfig.json
+C:\Users\Gilian\OneDrive\School\3EA2_2018-2019\Module 1-2\Cloud Applications\API_\API_\bin\Debug\netcoreapp2.0\API_.runtimeconfig.dev.json
+C:\Users\Gilian\OneDrive\School\3EA2_2018-2019\Module 1-2\Cloud Applications\API_\API_\bin\Debug\netcoreapp2.0\API_.dll
+C:\Users\Gilian\OneDrive\School\3EA2_2018-2019\Module 1-2\Cloud Applications\API_\API_\bin\Debug\netcoreapp2.0\API_.pdb
+C:\Users\Gilian\OneDrive\School\3EA2_2018-2019\Module 1-2\Cloud Applications\API_\API_\obj\Debug\netcoreapp2.0\API_.csprojResolveAssemblyReference.cache
+C:\Users\Gilian\OneDrive\School\3EA2_2018-2019\Module 1-2\Cloud Applications\API_\API_\obj\Debug\netcoreapp2.0\API_.csproj.CoreCompileInputs.cache
+C:\Users\Gilian\OneDrive\School\3EA2_2018-2019\Module 1-2\Cloud Applications\API_\API_\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\Gilian\OneDrive\School\3EA2_2018-2019\Module 1-2\Cloud Applications\API_\API_\obj\Debug\netcoreapp2.0\API_.AssemblyInfoInputs.cache
+C:\Users\Gilian\OneDrive\School\3EA2_2018-2019\Module 1-2\Cloud Applications\API_\API_\obj\Debug\netcoreapp2.0\API_.AssemblyInfo.cs
+C:\Users\Gilian\OneDrive\School\3EA2_2018-2019\Module 1-2\Cloud Applications\API_\API_\obj\Debug\netcoreapp2.0\API_.dll
+C:\Users\Gilian\OneDrive\School\3EA2_2018-2019\Module 1-2\Cloud Applications\API_\API_\obj\Debug\netcoreapp2.0\API_.pdb
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\API_\bin\Debug\netcoreapp2.0\API_.deps.json
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\API_\bin\Debug\netcoreapp2.0\API_.runtimeconfig.json
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\API_\bin\Debug\netcoreapp2.0\API_.runtimeconfig.dev.json
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\API_\bin\Debug\netcoreapp2.0\API_.dll
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\API_\bin\Debug\netcoreapp2.0\API_.pdb
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.csprojResolveAssemblyReference.cache
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.csproj.CoreCompileInputs.cache
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.AssemblyInfoInputs.cache
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.AssemblyInfo.cs
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.dll
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.pdb
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\API_\API_\bin\Debug\netcoreapp2.0\API_.deps.json
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\API_\API_\bin\Debug\netcoreapp2.0\API_.runtimeconfig.json
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\API_\API_\bin\Debug\netcoreapp2.0\API_.runtimeconfig.dev.json
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\API_\API_\bin\Debug\netcoreapp2.0\API_.dll
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\API_\API_\bin\Debug\netcoreapp2.0\API_.pdb
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.csprojResolveAssemblyReference.cache
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.csproj.CoreCompileInputs.cache
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.AssemblyInfoInputs.cache
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.AssemblyInfo.cs
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.dll
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.pdb
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\Gilian\Documents\School\3EA2_18-19\Cloud_Applications\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\User\Documents\School\Cloud Applications\CA1819-AllOut\app\asp.net\API_\API_\bin\Debug\netcoreapp2.0\API_.deps.json
+C:\Users\User\Documents\School\Cloud Applications\CA1819-AllOut\app\asp.net\API_\API_\bin\Debug\netcoreapp2.0\API_.runtimeconfig.json
+C:\Users\User\Documents\School\Cloud Applications\CA1819-AllOut\app\asp.net\API_\API_\bin\Debug\netcoreapp2.0\API_.runtimeconfig.dev.json
+C:\Users\User\Documents\School\Cloud Applications\CA1819-AllOut\app\asp.net\API_\API_\bin\Debug\netcoreapp2.0\API_.dll
+C:\Users\User\Documents\School\Cloud Applications\CA1819-AllOut\app\asp.net\API_\API_\bin\Debug\netcoreapp2.0\API_.pdb
+C:\Users\User\Documents\School\Cloud Applications\CA1819-AllOut\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.csprojAssemblyReference.cache
+C:\Users\User\Documents\School\Cloud Applications\CA1819-AllOut\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\School\Cloud Applications\CA1819-AllOut\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\User\Documents\School\Cloud Applications\CA1819-AllOut\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.AssemblyInfoInputs.cache
+C:\Users\User\Documents\School\Cloud Applications\CA1819-AllOut\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.AssemblyInfo.cs
+C:\Users\User\Documents\School\Cloud Applications\CA1819-AllOut\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.dll
+C:\Users\User\Documents\School\Cloud Applications\CA1819-AllOut\app\asp.net\API_\API_\obj\Debug\netcoreapp2.0\API_.pdb

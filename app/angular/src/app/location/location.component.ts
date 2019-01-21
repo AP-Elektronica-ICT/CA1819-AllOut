@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocationService, ILocation } from '../services/location.service';
 import { ActivatedRoute } from '@angular/router';
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-location',

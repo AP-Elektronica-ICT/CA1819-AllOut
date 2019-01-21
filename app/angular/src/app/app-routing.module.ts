@@ -9,7 +9,6 @@ import { NewquestionlistComponent } from './newquestionlist/newquestionlist.comp
 import { AreaComponent } from './area/area.component';
 import { LocationComponent } from './location/location.component';
 import { QuestionComponent } from './question/question.component';
-import { NewLocationComponent } from './newlocation/newlocation.component';
 
 const routes: Routes = [
   { 
@@ -27,13 +26,27 @@ const routes: Routes = [
     ]
    },
    { 
+    path: 'addquestion/:id', 
+    component: NewquestionlistComponent,
+    canActivate: [
+      AuthGuard
+    ]
+   },
+   { 
+    path: 'newgame', 
+    component: NewgameComponent,
+    canActivate: [
+      AuthGuard
+    ]
+   },
+   {
     path: 'area/:id', 
     component: AreaComponent,
     canActivate: [
       AuthGuard
     ]
    },
-   { 
+   {
     path: 'location/:id', 
     component: LocationComponent,
     canActivate: [
@@ -41,8 +54,8 @@ const routes: Routes = [
     ]
    },
    { 
-    path: 'newlocation/:id', 
-    component: NewLocationComponent,
+    path: 'editgame/:id', 
+    component: NewgameComponent,
     canActivate: [
       AuthGuard
     ]
@@ -60,7 +73,14 @@ const routes: Routes = [
     canActivate: [
       AuthGuard
     ]
-  },
+   },
+   { 
+    path: 'newlocation', 
+    component: NewLocationComponent,
+    canActivate: [
+      AuthGuard
+    ]
+   },
    {
     path: 'callback', 
       component: CallbackComponent,

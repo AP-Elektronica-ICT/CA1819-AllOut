@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LocationService, IQuestion } from '../services/location.service';
+import { LocationService } from '../services/location.service';
+import { QuestionService, IQuestion } from '../services/question.service';
 import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-question',
@@ -8,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class QuestionComponent implements OnInit {
 
-  constructor(private locationService : LocationService, private route : ActivatedRoute) { }
+  constructor(private locationService : LocationService, private questionService : QuestionService, private route : ActivatedRoute) { }
   locationID : number;
   questionID : number;
   questionType : number;
@@ -16,12 +17,15 @@ export class QuestionComponent implements OnInit {
   questionText : string;
   questionAnswer : string;
 
+  question : IQuestion;
+
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.locationID = params['id'];
     });
     this.locationService.getLocationById(this.locationID).subscribe(
       result => {
+        this.question = result.question;
         this.questionID = result.question.questionID;
         this.questionType = result.question.questionType;
         this.questionPoints = result.question.points;
@@ -31,10 +35,12 @@ export class QuestionComponent implements OnInit {
     );
   }
   updateQuestion(){
-    var updateQuestion : IQuestion ={
-      questionText : this.questionText,
-      questionType : this.questionType,
-    }
+    this.question.answer = this.questionAnswer;
+    this.question.points = this.questionPoints;
+    this.question.questionText = this.questionText;
+    this.question.questionType = this.questionType;
+    this.questionService.updateQuestion(this.question).subscribe();
+
   }
 
 }

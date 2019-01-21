@@ -18,8 +18,8 @@ import { AreaComponent } from './area/area.component';
 import { LocationComponent } from './location/location.component';
 import { LocationService } from './services/location.service';
 import { QuestionComponent } from './question/question.component';
-import { NewLocationComponent } from './newlocation/newlocation.component';
 import { AgmCoreModule } from '@agm/core';
+import { NewLocationComponent } from './newlocation/newlocation.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +33,8 @@ import { AgmCoreModule } from '@agm/core';
     LocationComponent,
     QuestionComponent,
     NewLocationComponent,
+    QuestionComponent,
+    NewLocationComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,7 @@ import { AgmCoreModule } from '@agm/core';
     FormsModule,
     MDBBootstrapModule.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDq6h3hme2-NyxtUUEx2O-G_cRoN0YChsg'
+      apiKey: 'AIzaSyB4HgIDhaV6sv3ddo_Xol9r4fDLj7RpOaU'
     })
   ],
   providers: [AuthService, AuthGuard, GameService, AreaService, LocationService],

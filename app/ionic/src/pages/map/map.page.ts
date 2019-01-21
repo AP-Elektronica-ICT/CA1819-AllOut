@@ -2,9 +2,11 @@ import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LocationTrackerProvider } from '../../providers/location-tracker/location-tracker';
-import { HomePage } from '../../pages/home/home.page';  
+import { HomePage } from '../../pages/home/home.page';
 import * as API from '../../providers/AlloutAPI/AlloutAPI';
 import { QuestionPage } from '../question/question';
+import * as rxjs from "rxjs/Rx";
+import * as $ from 'jquery'
 
 declare var google;
 /**
@@ -21,7 +23,9 @@ declare var google;
 export class MapPage {
 
     @ViewChild('map') mapElement: ElementRef;
+    //mapMarker:any[];
     map: any;
+    mapSubscription: rxjs.Subscription;
     playerPos: any;
     userPos: { lat: any, lng: any };
     deltaLat;
@@ -29,8 +33,8 @@ export class MapPage {
     numDeltas = 100;
     delay = 10; //milliseconds
     i = 0;
-    locations:API.Location[];
-    constructor(public navCtrl: NavController, public API:API.AlloutProvider, public geolocation: Geolocation, public locationTrackerProvider: LocationTrackerProvider, private toastCtrl: ToastController) {
+    locations: API.Location[];
+    constructor(public navCtrl: NavController, public API: API.AlloutProvider, public geolocation: Geolocation, public locationTrackerProvider: LocationTrackerProvider, private toastCtrl: ToastController) {
     }
 
     ionViewDidLoad() {
@@ -39,9 +43,8 @@ export class MapPage {
         this.locationTrackerProvider.startTracking();
     }
 
-    getLocations(){
-        console.log("get them all!"); 
-        this.API.getAllLocations().subscribe(result =>{
+    getLocations() {
+        this.API.getAllLocations().subscribe(result => {
             this.locations = result;
             console.log(this.locations); 
             try {
@@ -109,17 +112,17 @@ export class MapPage {
 
     showToast(m: any){
         let toast = this.toastCtrl.create({
-            message: m, 
-            duration: 5000, 
+            message: m,
+            duration: 5000,
             position: 'top'
-        }); 
-        toast.present; 
+        });
+        toast.present;
     }
     
     quitGame(){
         //quit game code here!
-        console.log("QUIT GAME"); 
-        this.navCtrl.pop(); 
+        console.log("QUIT GAME");
+        this.navCtrl.pop();
     }
 
     loadMap() {
@@ -139,7 +142,7 @@ export class MapPage {
                 fullscreenControl: false
             }
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
+            this.getLocations();
             this.updatePlayerMarker();
         }, (err) => {
             console.log(err);
@@ -176,7 +179,7 @@ export class MapPage {
                     map: this.map,
                     animation: google.maps.Animation.Drop,
                     position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude), 
-                    icon: "../../assets/icon/newMarker.png"
+                    icon: icon
                 });
                 console.log("USERPOS          " + this.userPos); 
             } else {
@@ -198,7 +201,7 @@ export class MapPage {
     }
     moveMarker() {
         if (this.userPos) {
-            console.log(this.userPos); 
+            console.log(this.userPos);
             this.userPos.lat += this.deltaLat;
             this.userPos.lng += this.deltaLng;
             var latlng = new google.maps.LatLng(this.userPos.lat, this.userPos.lng);

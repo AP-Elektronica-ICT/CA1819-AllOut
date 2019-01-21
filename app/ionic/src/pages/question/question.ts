@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AlloutProvider, Game, Team, Question, Location } from '../../providers/AlloutAPI/AlloutAPI';
+import * as API from '../../providers/AlloutAPI/AlloutAPI';
 
 /**
  * Generated class for the QuestionPage page.

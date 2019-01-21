@@ -2,7 +2,7 @@
 <form *ngIf="this.questionID">
     <div class="form-group">
       <label>Question ID:</label>
-      <input type="input" name="questionID" class="form-control mb-4" [(ngModel)]="questionID">
+      <input type="input" disabled name="questionID" class="form-control mb-4" [(ngModel)]="questionID">
     </div>
     <div class="form-group">
         <label>Type:</label>
@@ -21,6 +21,6 @@
         <input type="input" name="questionAnswer" class="form-control mb-4" [(ngModel)]="questionAnswer">
     </div>
     <div class="form-group">
-        <input class="btn btn-info btn-block" type="submit" value="Bijwerken" (click)="postList(); $event.preventDefault()">
+        <input class="btn btn-info btn-block" type="submit" value="Bijwerken" (click)="updateQuestion(); $event.preventDefault()">
     </div>
   </form>

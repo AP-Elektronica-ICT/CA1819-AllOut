@@ -1,16 +1,44 @@
+
 <div class="container">
-    <nav class="navbar navbar-default">
-      <div class="navbar-header">
-      </div>
-      <ul class="nav navbar-nav">
-        <li>
-          <a routerLink="/dashboard" *ngIf="auth.isAuthenticated()" routerLinkActive="active">Dashboard</a>
-        </li>
-        <li>
-          <a (click)="auth.logout()" routerLink="#" *ngIf="auth.isAuthenticated()" routerLinkActive="active">Logout</a>
-        </li>
-      </ul>
-    </nav>
+
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark blue">
+
+    <!-- Navbar brand -->
+    <mdb-navbar-brand><a class="navbar-brand" href="#">ALL-OUT</a></mdb-navbar-brand>
+
+    <!-- Collapsible content -->
+    <links>
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+            <li>
+              <a class="nav-link waves-light" routerLink="/dashboard" mdbWavesEffect *ngIf="auth.isAuthenticated()">Dashboard</a>
+            </li>
+            <li>
+              <a class="nav-link waves-light" (click)="auth.logout()" mdbWavesEffect routerLink="#" *ngIf="auth.isAuthenticated()">Logout</a>
+            </li>
+
+            <!-- Dropdown 
+            <li class="nav-item dropdown" dropdown>
+                <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+                Basic dropdown<span class="caret"></span></a>
+                <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Another action</a>
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>
+                    <div class="divider dropdown-divider"></div>
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
+                </div>
+            </li>
+            -->
+
+        </ul>
+
+    </links>
+
+</mdb-navbar>
+<!--/.Navbar-->
     <div class="col-sm-12 content card">
       <router-outlet></router-outlet>
     </div>

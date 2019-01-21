@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LocationService, ILocation } from '../services/location.service';
+import { AreaService, IArea, ILocation } from '../services/area.service';
 import { ActivatedRoute } from '@angular/router';
 import {Router} from "@angular/router";
 
@@ -10,7 +10,12 @@ import {Router} from "@angular/router";
 })
 export class NewLocationComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private locationservice : LocationService, private router : Router) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private areaService : AreaService, 
+    private router : Router) { }
+
+  area : IArea;
 
   areaID : number;
   location : ILocation;
@@ -22,6 +27,11 @@ export class NewLocationComponent implements OnInit {
       this.route.params.subscribe(params => {
         this.areaID = params['id'];
       });
+      this.areaService.getAreaById(this.areaID).subscribe(
+        result => {
+          this.area = result;
+        }
+      );
     }
     addLocation(){
       var loc : ILocation = {
@@ -29,7 +39,9 @@ export class NewLocationComponent implements OnInit {
         latitude: this.latitude,
         longitude: this.longitude
       }
-      this.locationservice.postLocation(loc).subscribe(
+      this.area.locations.push(loc);
+
+      this.areaService.updateArea(this.area).subscribe(
         result => {
           console.log(result);
         }

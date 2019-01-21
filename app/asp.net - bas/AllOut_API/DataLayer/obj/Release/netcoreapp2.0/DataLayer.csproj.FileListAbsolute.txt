@@ -1,0 +1,9 @@
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\bin\Release\netcoreapp2.0\DataLayer.deps.json
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\bin\Release\netcoreapp2.0\DataLayer.dll
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\bin\Release\netcoreapp2.0\DataLayer.pdb
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\obj\Release\netcoreapp2.0\DataLayer.csprojResolveAssemblyReference.cache
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\obj\Release\netcoreapp2.0\DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\obj\Release\netcoreapp2.0\DataLayer.AssemblyInfoInputs.cache
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\obj\Release\netcoreapp2.0\DataLayer.AssemblyInfo.cs
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\obj\Release\netcoreapp2.0\DataLayer.dll
+C:\Users\Bas\Documents\School\3EA2\CA\app\asp.net\AllOut_API\DataLayer\obj\Release\netcoreapp2.0\DataLayer.pdb

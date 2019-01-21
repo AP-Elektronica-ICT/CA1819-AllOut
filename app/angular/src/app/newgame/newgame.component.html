@@ -5,8 +5,8 @@
   </div>
   <div class="form-group">
     <label>Regio:</label>
-    <select name="region" class="form-control mb-4" [(ngModel)]="region">
-      <option *ngFor="let value of this.areas" value="{{value.AreaID}}">{{value.name}}</option>
+    <select name="region" class="form-control mb-4" [(ngModel)]="region" (ngModelChange)="selectArea($event)">
+      <option *ngFor="let value of this.areas" value="{{value.areaID}}">{{value.name}}</option>
     </select>
   </div>
   <div class="form-group">

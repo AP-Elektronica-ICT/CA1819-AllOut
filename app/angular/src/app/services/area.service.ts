@@ -27,22 +27,22 @@ export class AreaService {
 }
 
 export interface IQuestion {
-  questionID: number;
+  questionID?: number;
   questionType: number;
   questionText: string;
   points: number;
-  isSolved: boolean;
+  isSolved?: boolean;
   answer: string;
 }
 
 export interface ILocation {
-  locationID: number;
+  locationID?: number;
   locationName: string;
   latitude: number;
   longitude: number;
-  question: IQuestion;
-  isBoobyTrapped: boolean;
-  victorTeamID: number;
+  question?: IQuestion;
+  isBoobyTrapped?: boolean;
+  victorTeamID?: number;
 }
 
 export interface IArea {

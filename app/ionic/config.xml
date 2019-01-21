@@ -3,7 +3,7 @@
     <name>app</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://192.168.25.156:8101" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -86,4 +86,7 @@
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
     <plugin name="cordova-plugin-mauron85-background-geolocation" spec="2.3.6" />
+    <allow-navigation href="http://192.168.25.156:8100" sessionid="b3163b68" />
+    <allow-navigation href="http://192.168.25.156:8101" sessionid="5fdcba70" />
+    <engine name="android" spec="7.1.4" />
 </widget>

@@ -22,17 +22,14 @@ export class LocationService {
   updateLocation(loc : ILocation){
     return this.http.put<ILocation>(this.url, loc);
   }
-  postLocation(name : ILocation){
-    return this.http.post<ILocation>(this.url, name);
-  }
 }
 
 export interface IQuestion {
-  questionID: number;
+  questionID?: number;
   questionType: number;
   questionText: string;
   points: number;
-  isSolved: boolean;
+  isSolved?: boolean;
   answer: string;
 }
 

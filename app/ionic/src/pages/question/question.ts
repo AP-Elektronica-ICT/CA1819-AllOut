@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AlloutProvider, Game, Team, Question, Location } from '../../providers/AlloutAPI/AlloutAPI';
+import { MapPage } from '../map/map.page';
 
 /**
  * Generated class for the QuestionPage page.
@@ -18,7 +19,7 @@ export class QuestionPage {
   l:Location; 
   team:Team; 
 
-  constructor(public navCtrl: NavController, public API:AlloutProvider, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public API:AlloutProvider, public navParams: NavParams, private toastCtrl: ToastController) {
     this.l = navParams.get('data'); 
     this.q = this.l.question; 
     console.log(this.l); 
@@ -35,17 +36,31 @@ export class QuestionPage {
     console.log(this.q.questionText + " has " + this.q.points + " points on it."); 
   }
 
+  showToast(m: any) {
+    let toast = this.toastCtrl.create({
+        message: m,
+        duration: 5000,
+        position: 'top'
+    });
+    toast.present;
+}
   checkAnswer(answer: any){
     this.API.getLocation(this.q.questionID).subscribe(result =>{
       if(answer == result.question.answer){
         this.API.changeQuestionAnswered(this.q.questionID, true); 
         this.team.totalPoints += this.q.points; 
         console.log(this.team); 
-        //this.API.putTeamPoints(this.team); 
-        console.log("it was true"); 
+        this.API.putTeamPoints(this.team);
+        var m = "That's correct!";
+        console.log(m);
+        this.showToast(m);
+
+        this.navCtrl.push(MapPage)
       }
       else{
-        console.log("it was false"); 
+        var m = "Wrong answer!"
+        console.log(m); 
+        this.showToast(m);
       }
     })
   }

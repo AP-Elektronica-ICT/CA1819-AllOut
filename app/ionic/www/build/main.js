@@ -1,239 +1,5 @@
 webpackJsonp([0],{
 
-/***/ 102:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_location_tracker_location_tracker__ = __webpack_require__(204);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_AlloutAPI_AlloutAPI__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__question_question__ = __webpack_require__(103);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-/**
- * Generated class for the MapPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var MapPage = /** @class */ (function () {
-    function MapPage(navCtrl, API, geolocation, locationTrackerProvider, toastCtrl) {
-        this.navCtrl = navCtrl;
-        this.API = API;
-        this.geolocation = geolocation;
-        this.locationTrackerProvider = locationTrackerProvider;
-        this.toastCtrl = toastCtrl;
-        this.numDeltas = 100;
-        this.delay = 10; //milliseconds
-        this.i = 0;
-    }
-    MapPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad MapPage');
-        this.loadMap();
-        this.locationTrackerProvider.startTracking();
-    };
-    MapPage.prototype.getLocations = function () {
-        var _this = this;
-        console.log("get them all!");
-        this.API.getAllLocations().subscribe(function (result) {
-            _this.locations = result;
-            console.log(_this.locations);
-            try {
-                console.log("try");
-                var _loop_1 = function (loc) {
-                    console.log(loc.question.points);
-                    var ll = { lat: loc.latitude, lng: loc.longitude };
-                    icon = {
-                        url: "../../assets/icon/monumentMarker.png",
-                        scaledSize: new google.maps.Size(50, 50),
-                        origin: new google.maps.Point(0, 0),
-                        anchor: new google.maps.Point(0, 0)
-                    };
-                    var marker = new google.maps.Marker({
-                        position: ll,
-                        map: _this.map,
-                        label: loc.question.points.toString(),
-                        title: loc.locationName,
-                        icon: icon
-                    });
-                    console.log("CalcDistance(): " + _this.calcDistance(ll.lat, ll.lng));
-                    marker.addListener('click', function (event) {
-                        console.log(_this.calcDistance(ll.lat, ll.lng));
-                        var distance = _this.calcDistance(ll.lat, ll.lng);
-                        console.log("distance binnen clicker: " + distance);
-                        if (distance <= 1000) {
-                            console.log(loc);
-                            _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__question_question__["a" /* QuestionPage */], {
-                                data: loc
-                            });
-                        }
-                        else {
-                            var m = "You are currently " + Math.round(distance) + " meters from this point. You need to be within 100 meters!";
-                            console.log(m);
-                            var toast = _this.toastCtrl.create({
-                                message: m,
-                                duration: 2000,
-                                position: 'top'
-                            });
-                            toast.present();
-                        }
-                        console.log("why u skip eh?");
-                    });
-                };
-                var icon;
-                for (var _i = 0, _a = _this.locations; _i < _a.length; _i++) {
-                    var loc = _a[_i];
-                    _loop_1(loc);
-                }
-            }
-            catch (err) {
-                console.log("getLocations(): " + err);
-            }
-        });
-    };
-    MapPage.prototype.markerClick = function (lLat, lLong, loc) {
-        console.log(this.userPos);
-        var distance = this.calcDistance(this.userPos.lat, this.userPos.lng);
-        if (distance <= 100) {
-            this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__question_question__["a" /* QuestionPage */], {
-                data: loc
-            });
-        }
-        else {
-            var m = "You are currently " + distance + "meters from this point. You need to be within 100 meters!";
-            this.showToast(m);
-        }
-    };
-    MapPage.prototype.showToast = function (m) {
-        var toast = this.toastCtrl.create({
-            message: m,
-            duration: 5000,
-            position: 'top'
-        });
-        toast.present;
-    };
-    MapPage.prototype.quitGame = function () {
-        //quit game code here!
-        console.log("QUIT GAME");
-        this.navCtrl.pop();
-    };
-    MapPage.prototype.loadMap = function () {
-        var _this = this;
-        this.geolocation.getCurrentPosition().then(function (position) {
-            var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            var mapOptions = {
-                center: latLng,
-                zoom: 15,
-                mapTypeId: 'roadmap',
-                zoomControl: false,
-                mapTypeControl: false,
-                scaleControl: false,
-                streetViewControl: false,
-                rotateControl: false,
-                fullscreenControl: false
-            };
-            _this.map = new google.maps.Map(_this.mapElement.nativeElement, mapOptions);
-            _this.updatePlayerMarker();
-        }, function (err) {
-            console.log(err);
-        });
-    };
-    MapPage.prototype.calcDistance = function (lat2, lon2) {
-        var R = 6371e3; // metres
-        var lat1 = this.userPos.lat;
-        var φ1 = lat1 * Math.PI / 180;
-        var φ2 = lat2 * Math.PI / 180;
-        var Δφ = (lat2 - this.userPos.lat) * ((Math.PI) / 180);
-        var Δλ = (lon2 - this.userPos.lng) * ((Math.PI) / 180);
-        var a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-            Math.cos(φ1) * Math.cos(φ2) *
-                Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        var d = R * c;
-        console.log(d);
-        return d;
-    };
-    MapPage.prototype.updatePlayerMarker = function () {
-        var _this = this;
-        var watchOptions = {
-            enableHighAccuracy: true
-        };
-        this.geolocation.watchPosition(watchOptions).subscribe(function (position) {
-            //check distance between new coordinate and this.playerPos
-            //if distance greater than 30 meters
-            if (!_this.playerPos) {
-                _this.userPos = { lat: position.coords.latitude, lng: position.coords.longitude };
-                _this.playerPos = new google.maps.Marker({
-                    map: _this.map,
-                    animation: google.maps.Animation.Drop,
-                    position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
-                    icon: "../../assets/icon/newMarker.png"
-                });
-                console.log("USERPOS          " + _this.userPos);
-            }
-            else {
-                _this.transition([position.coords.latitude, position.coords.longitude]);
-                //this.playerPos.setPosition(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
-            }
-            _this.getLocations();
-        }, function (error) {
-            console.log('Error getting location', error);
-        });
-    };
-    MapPage.prototype.transition = function (result) {
-        this.i = 0;
-        this.deltaLat = (result[0] - this.userPos.lat) / this.numDeltas;
-        this.deltaLng = (result[1] - this.userPos.lng) / this.numDeltas;
-        this.moveMarker();
-    };
-    MapPage.prototype.moveMarker = function () {
-        if (this.userPos) {
-            console.log(this.userPos);
-            this.userPos.lat += this.deltaLat;
-            this.userPos.lng += this.deltaLng;
-            var latlng = new google.maps.LatLng(this.userPos.lat, this.userPos.lng);
-            if (this.playerPos) {
-                this.playerPos.setPosition(latlng);
-                if (this.i != this.numDeltas) {
-                    this.i++;
-                    setTimeout(this.moveMarker, this.delay);
-                }
-            }
-        }
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
-    ], MapPage.prototype, "mapElement", void 0);
-    MapPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-map',template:/*ion-inline-start:"D:\Documenten\School\AP Hogeschool\3EA3\Cloud Applications\app\ionic\src\pages\map\map.page.html"*/'<ion-header>\n\n	<ion-navbar>\n\n		<ion-buttons end>\n\n			<button ion-button (click)="quitGame()">Quit game</button>\n\n		</ion-buttons>\n\n	</ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n	<div #map id="map"></div>\n\n</ion-content>'/*ion-inline-end:"D:\Documenten\School\AP Hogeschool\3EA3\Cloud Applications\app\ionic\src\pages\map\map.page.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_4__providers_AlloutAPI_AlloutAPI__["a" /* AlloutProvider */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_3__providers_location_tracker_location_tracker__["a" /* LocationTrackerProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ToastController */]])
-    ], MapPage);
-    return MapPage;
-}());
-
-//# sourceMappingURL=map.page.js.map
-
-/***/ }),
-
 /***/ 103:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -242,6 +8,7 @@ var MapPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_AlloutAPI_AlloutAPI__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__map_map_page__ = __webpack_require__(52);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -251,6 +18,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -261,10 +29,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var QuestionPage = /** @class */ (function () {
-    function QuestionPage(navCtrl, API, navParams) {
+    function QuestionPage(navCtrl, API, navParams, toastCtrl) {
         this.navCtrl = navCtrl;
         this.API = API;
         this.navParams = navParams;
+        this.toastCtrl = toastCtrl;
         this.l = navParams.get('data');
         this.q = this.l.question;
         console.log(this.l);
@@ -279,6 +48,14 @@ var QuestionPage = /** @class */ (function () {
         });*/
         console.log(this.q.questionText + " has " + this.q.points + " points on it.");
     };
+    QuestionPage.prototype.showToast = function (m) {
+        var toast = this.toastCtrl.create({
+            message: m,
+            duration: 5000,
+            position: 'top'
+        });
+        toast.present;
+    };
     QuestionPage.prototype.checkAnswer = function (answer) {
         var _this = this;
         this.API.getLocation(this.q.questionID).subscribe(function (result) {
@@ -286,11 +63,16 @@ var QuestionPage = /** @class */ (function () {
                 _this.API.changeQuestionAnswered(_this.q.questionID, true);
                 _this.team.totalPoints += _this.q.points;
                 console.log(_this.team);
-                //this.API.putTeamPoints(this.team); 
-                console.log("it was true");
+                _this.API.putTeamPoints(_this.team);
+                var m = "That's correct!";
+                console.log(m);
+                _this.showToast(m);
+                _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__map_map_page__["a" /* MapPage */]);
             }
             else {
-                console.log("it was false");
+                var m = "Wrong answer!";
+                console.log(m);
+                _this.showToast(m);
             }
         });
     };
@@ -298,7 +80,7 @@ var QuestionPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-question',template:/*ion-inline-start:"D:\Documenten\School\AP Hogeschool\3EA3\Cloud Applications\app\ionic\src\pages\question\question.html"*/'<ion-header>\n\n    <ion-navbar>\n\n        <ion-title>\n\n            Question\n\n        </ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n    <p class="q">{{q.questionText}}</p>\n\n    <ion-item>  \n\n        <ion-input type="text" value="" placeholder="Answer" #answer></ion-input>\n\n    </ion-item>\n\n    \n\n    <button ion-button (click)="checkAnswer(answer.value)">Check</button>\n\n</ion-content>'/*ion-inline-end:"D:\Documenten\School\AP Hogeschool\3EA3\Cloud Applications\app\ionic\src\pages\question\question.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_AlloutAPI_AlloutAPI__["a" /* AlloutProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_AlloutAPI_AlloutAPI__["a" /* AlloutProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ToastController */]])
     ], QuestionPage);
     return QuestionPage;
 }());
@@ -348,7 +130,7 @@ webpackEmptyAsyncContext.id = 157;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__map_map_page__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__map_map_page__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__joingame_joingame_page__ = __webpack_require__(205);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__question_question__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_AlloutAPI_AlloutAPI__ = __webpack_require__(41);
@@ -428,7 +210,7 @@ var HomePage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LocationTrackerProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_background_geolocation__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_filter__ = __webpack_require__(281);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_filter__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -513,7 +295,7 @@ var LocationTrackerProvider = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_AlloutAPI_AlloutAPI__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__map_map_page__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__map_map_page__ = __webpack_require__(52);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -528,9 +310,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var JoinGamePage = /** @class */ (function () {
-    function JoinGamePage(api, navCtrl) {
+    function JoinGamePage(api, navCtrl, toastCtrl) {
         this.api = api;
         this.navCtrl = navCtrl;
+        this.toastCtrl = toastCtrl;
         this.team = {
             teamID: 0,
             gameID: 0,
@@ -546,6 +329,14 @@ var JoinGamePage = /** @class */ (function () {
             _this.games = result;
         });
     };
+    JoinGamePage.prototype.showToast = function (m) {
+        var toast = this.toastCtrl.create({
+            message: m,
+            duration: 5000,
+            position: 'top'
+        });
+        toast.present;
+    };
     JoinGamePage.prototype.joinGame = function () {
         var selGame;
         var gameID;
@@ -559,17 +350,20 @@ var JoinGamePage = /** @class */ (function () {
             if (game.gameCode == this.gameCode) {
                 this.game = game;
                 this.api.game = game;
+                console.log("Game found...");
             }
         }
         for (var _b = 0, _c = this.game.team; _b < _c.length; _b++) {
             var team = _c[_b];
+            console.log(team.teamName);
             if (team.teamName == this.teamName) {
                 this.nameTaken = true;
+                var m = "That name is already taken!";
+                console.log(m);
+                this.showToast(m);
             }
         }
-        if (this.nameTaken)
-            this.message = "That name is already taken.";
-        else {
+        if (!this.nameTaken) {
             this.team.gameID = this.game.gameLogicID;
             this.team.teamName = this.teamName;
             this.team.totalBoobyTraps = 2;
@@ -578,7 +372,9 @@ var JoinGamePage = /** @class */ (function () {
                 console.log(result);
             });
             this.api.teamName = this.teamName;
-            this.message = "Succesfully joined the game!";
+            var m = "Succesfully joined the game!";
+            console.log(m);
+            this.showToast(m);
             this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__map_map_page__["a" /* MapPage */]);
         }
     };
@@ -586,7 +382,7 @@ var JoinGamePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-joingame',template:/*ion-inline-start:"D:\Documenten\School\AP Hogeschool\3EA3\Cloud Applications\app\ionic\src\pages\joingame\joingame.page.html"*/'<ion-header>\n\n    <ion-navbar>\n\n        <ion-title>\n\n            Join Game\n\n        </ion-title>\n\n        <ion-buttons end>\n\n            <button ion-button>\n\n                <ion-icon></ion-icon>Join Game</button>\n\n        </ion-buttons>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <form>\n\n        <ion-item> \n\n            <ion-label stacked>Game Code</ion-label>\n\n            <ion-input type="text" name="code" [(ngModel)]="gameCode"></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label stacked>Teamname</ion-label>\n\n            <ion-input type="text" name="team" [(ngModel)]="teamName"></ion-input>\n\n        </ion-item>\n\n        <br>\n\n        <button ion-button (click)="joinGame()">\n\n            <ion-icon></ion-icon>Join Game</button>\n\n    </form>\n\n        <p>{{message}}</p>\n\n</ion-content>'/*ion-inline-end:"D:\Documenten\School\AP Hogeschool\3EA3\Cloud Applications\app\ionic\src\pages\joingame\joingame.page.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_AlloutAPI_AlloutAPI__["a" /* AlloutProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_AlloutAPI_AlloutAPI__["a" /* AlloutProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ToastController */]])
     ], JoinGamePage);
     return JoinGamePage;
 }());
@@ -619,12 +415,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(197);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_background_geolocation__ = __webpack_require__(200);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_common_http__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_component__ = __webpack_require__(280);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_home_home_page__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_map_map_page__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_map_map_page__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_joingame_joingame_page__ = __webpack_require__(205);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_question_question__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_location_tracker_location_tracker__ = __webpack_require__(204);
@@ -801,6 +597,11 @@ var AlloutProvider = /** @class */ (function () {
             console.log(data);
         });
     };
+    AlloutProvider.prototype.putTeamPoints = function (team) {
+        this._http.put(this.url + "team/", team).subscribe(function (data) {
+            console.log(data);
+        });
+    };
     AlloutProvider.prototype.getAllGames = function () {
         return this._http.get(this.url + "game/");
     };
@@ -815,6 +616,260 @@ var AlloutProvider = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=AlloutAPI.js.map
+
+/***/ }),
+
+/***/ 52:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_location_tracker_location_tracker__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_AlloutAPI_AlloutAPI__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__question_question__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jquery__ = __webpack_require__(282);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_jquery__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+/**
+ * Generated class for the MapPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var MapPage = /** @class */ (function () {
+    function MapPage(navCtrl, API, geolocation, locationTrackerProvider, toastCtrl) {
+        this.navCtrl = navCtrl;
+        this.API = API;
+        this.geolocation = geolocation;
+        this.locationTrackerProvider = locationTrackerProvider;
+        this.toastCtrl = toastCtrl;
+        this.numDeltas = 100;
+        this.delay = 10; //milliseconds
+        this.i = 0;
+    }
+    MapPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad MapPage');
+        this.APIcopy = this.API;
+        this.loadMap();
+        this.locationTrackerProvider.startTracking();
+    };
+    MapPage.prototype.getLocations = function () {
+        var _this = this;
+        console.log("get them all!");
+        this.API = this.APIcopy;
+        this.API.getAllLocations().subscribe(function (result) {
+            _this.locations = result;
+            console.log(_this.locations);
+            try {
+                var _loop_1 = function (loc) {
+                    var mark = __WEBPACK_IMPORTED_MODULE_6_jquery__("div[title|='" + loc.locationName + "'").remove();
+                    mark.remove();
+                    if (loc.victorTeamID == -1 || loc.isBoobyTrapped) {
+                        var ll_1 = { lat: loc.latitude, lng: loc.longitude };
+                        icon = {
+                            url: "../../assets/icon/monumentMarker.png",
+                            scaledSize: new google.maps.Size(50, 50),
+                            origin: new google.maps.Point(0, 0),
+                            anchor: new google.maps.Point(0, 0)
+                        };
+                        var marker = new google.maps.Marker({
+                            position: ll_1,
+                            map: _this.map,
+                            label: loc.question.points.toString(),
+                            title: loc.locationName,
+                            icon: icon
+                        });
+                        console.log("CalcDistance(): " + _this.calcDistance(ll_1.lat, ll_1.lng));
+                        try {
+                            console.log("API3: " + _this.API);
+                            marker.addListener('click', function (event) {
+                                var distance = _this.calcDistance(ll_1.lat, ll_1.lng);
+                                console.log("distance binnen clicker: " + distance);
+                                if (distance <= 1000) {
+                                    console.log(loc);
+                                    _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__question_question__["a" /* QuestionPage */], {
+                                        data: loc
+                                    });
+                                }
+                                else {
+                                    var m = "You are currently " + Math.round(distance) + " meters from this point. You need to be within 100 meters!";
+                                    _this.showToast(m);
+                                }
+                            });
+                            console.log("API2: " + _this.API);
+                        }
+                        catch (err) {
+                            console.log("marker.addListener(): " + err);
+                        }
+                    }
+                };
+                var icon;
+                for (var _i = 0, _a = _this.locations; _i < _a.length; _i++) {
+                    var loc = _a[_i];
+                    _loop_1(loc);
+                }
+            }
+            catch (err) {
+                console.log("getLocations(): " + err);
+            }
+            setTimeout(function () { return _this.getLocations(); }, 5000);
+        });
+    };
+    /*
+    markerClick(lLat: any, lLong: any, loc: any) {
+        console.log(this.userPos);
+        var distance = this.calcDistance(this.userPos.lat, this.userPos.lng);
+        if (distance <= 100) {
+            this.navCtrl.push(QuestionPage, {
+                data: loc
+            });
+        }
+        else {
+            var m = "You are currently " + distance + "meters from this point. You need to be within 100 meters!";
+            this.showToast(m);
+        }
+    }*/
+    MapPage.prototype.quitGame = function () {
+        //quit game code here!
+        console.log("QUIT GAME");
+        this.navCtrl.pop();
+    };
+    MapPage.prototype.showToast = function (m) {
+        var toast = this.toastCtrl.create({
+            message: m,
+            duration: 5000,
+            position: 'top'
+        });
+        toast.present;
+    };
+    MapPage.prototype.loadMap = function () {
+        var _this = this;
+        this.geolocation.getCurrentPosition().then(function (position) {
+            var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            var mapOptions = {
+                center: latLng,
+                zoom: 15,
+                mapTypeId: 'roadmap',
+                zoomControl: false,
+                mapTypeControl: false,
+                scaleControl: false,
+                streetViewControl: false,
+                rotateControl: false,
+                fullscreenControl: false
+            };
+            _this.map = new google.maps.Map(_this.mapElement.nativeElement, mapOptions);
+            _this.updatePlayerMarker();
+        }, function (err) {
+            console.log(err);
+        });
+    };
+    MapPage.prototype.calcDistance = function (lat2, lon2) {
+        var R = 6371e3; // metres
+        var lat1 = this.userPos.lat;
+        var φ1 = lat1 * Math.PI / 180;
+        var φ2 = lat2 * Math.PI / 180;
+        var Δφ = (lat2 - this.userPos.lat) * ((Math.PI) / 180);
+        var Δλ = (lon2 - this.userPos.lng) * ((Math.PI) / 180);
+        var a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+            Math.cos(φ1) * Math.cos(φ2) *
+                Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c;
+        console.log(d);
+        console.log("API4: " + this.API);
+        return d;
+    };
+    MapPage.prototype.updatePlayerMarker = function () {
+        var _this = this;
+        var watchOptions = {
+            enableHighAccuracy: true
+        };
+        console.log("API4: " + this.API);
+        this.geolocation.watchPosition(watchOptions).subscribe(function (position) {
+            //check distance between new coordinate and this.playerPos
+            //if distance greater than 30 meters
+            if (!_this.playerPos) {
+                _this.userPos = { lat: position.coords.latitude, lng: position.coords.longitude };
+                _this.playerPos = new google.maps.Marker({
+                    map: _this.map,
+                    animation: google.maps.Animation.Drop,
+                    position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+                    icon: "../../assets/icon/newMarker.png"
+                });
+                console.log("USERPOS: " + _this.userPos);
+            }
+            else {
+                _this.transition([position.coords.latitude, position.coords.longitude]);
+                //this.playerPos.setPosition(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+            }
+            if (_this.API.game) {
+                _this.getLocations();
+                console.log("API5: " + _this.API);
+            }
+            else {
+                var m = "You are not currently in a game, the map will be empty except for you.";
+                _this.showToast(m);
+                console.log(m);
+                console.log("API6: " + _this.API);
+            }
+        }, function (error) {
+            console.log('Error getting location', error);
+        });
+    };
+    MapPage.prototype.transition = function (result) {
+        this.i = 0;
+        this.deltaLat = (result[0] - this.userPos.lat) / this.numDeltas;
+        this.deltaLng = (result[1] - this.userPos.lng) / this.numDeltas;
+        this.moveMarker();
+    };
+    MapPage.prototype.moveMarker = function () {
+        if (this.userPos) {
+            console.log(this.userPos);
+            this.userPos.lat += this.deltaLat;
+            this.userPos.lng += this.deltaLng;
+            var latlng = new google.maps.LatLng(this.userPos.lat, this.userPos.lng);
+            console.log("API7: " + this.API);
+            if (this.playerPos) {
+                this.playerPos.setPosition(latlng);
+                if (this.i != this.numDeltas) {
+                    this.i++;
+                    setTimeout(this.moveMarker, this.delay);
+                }
+            }
+        }
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+    ], MapPage.prototype, "mapElement", void 0);
+    MapPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-map',template:/*ion-inline-start:"D:\Documenten\School\AP Hogeschool\3EA3\Cloud Applications\app\ionic\src\pages\map\map.page.html"*/'<ion-header>\n\n	<ion-navbar>\n\n		<ion-buttons end>\n\n			<button ion-button (click)="quitGame()">Quit game</button>\n\n		</ion-buttons>\n\n	</ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n	<div #map id="map"></div>\n\n</ion-content>'/*ion-inline-end:"D:\Documenten\School\AP Hogeschool\3EA3\Cloud Applications\app\ionic\src\pages\map\map.page.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_4__providers_AlloutAPI_AlloutAPI__["a" /* AlloutProvider */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */], __WEBPACK_IMPORTED_MODULE_3__providers_location_tracker_location_tracker__["a" /* LocationTrackerProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ToastController */]])
+    ], MapPage);
+    return MapPage;
+}());
+
+//# sourceMappingURL=map.page.js.map
 
 /***/ })
 

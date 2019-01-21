@@ -12,7 +12,6 @@ export class AlloutProvider {
     constructor(private _http: HttpClient) {
         this.url = "https://alloutapi20190121022729.azurewebsites.net/api/v1/"
     };
-
     postTeam(team: Team) {
         console.log(this.url + "game/team")
         console.log(JSON.stringify(team))
@@ -53,9 +52,17 @@ export class AlloutProvider {
             console.log(data)
         })
     }
+
+    putTeamPoints(team: Team) {
+        this._http.put(this.url + "team/", team).subscribe((data: any) =>{
+            console.log(data); 
+        }); 
+    }
+
     getAllGames(): Observable<Game[]> {
         return this._http.get<Game[]>(this.url + "game/")
     }
+
     getLocationPoints(id:number): Observable<Location[]>{
         return this._http.get<Location[]>(this.url + "location/" + id)
     }

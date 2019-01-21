@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 import { AlloutProvider, Game, Team } from '../../providers/AlloutAPI/AlloutAPI';
 import { MapPage } from '../map/map.page';
 
@@ -23,7 +23,7 @@ export class JoinGamePage {
     message:string;
     nameTaken:boolean;
 
-    constructor(private api:AlloutProvider, private navCtrl: NavController){
+    constructor(private api:AlloutProvider, private navCtrl: NavController, private toastCtrl: ToastController){
     }
 
     ngOnInit(){
@@ -31,6 +31,15 @@ export class JoinGamePage {
             console.log(result)
             this.games = result;
         });
+    }
+
+    showToast(m: any) {
+        let toast = this.toastCtrl.create({
+            message: m,
+            duration: 5000,
+            position: 'top'
+        });
+        toast.present;
     }
 
     joinGame(){
@@ -45,16 +54,19 @@ export class JoinGamePage {
             if (game.gameCode == this.gameCode){
                 this.game = game;
                 this.api.game = game;
+                console.log("Game found...")
             }
         }
         for(let team of this.game.team){
+            console.log(team.teamName)
             if (team.teamName == this.teamName){
                 this.nameTaken = true;
+                var m = "That name is already taken!";
+                console.log(m);
+                this.showToast(m);
             }
         }
-        if (this.nameTaken)
-            this.message = "That name is already taken."
-        else {
+        if (!this.nameTaken){
             this.team.gameID = this.game.gameLogicID;
             this.team.teamName = this.teamName;
             this.team.totalBoobyTraps = 2;
@@ -62,9 +74,10 @@ export class JoinGamePage {
             this.api.postTeam(this.team).subscribe(result =>{
                 console.log(result);
             });
-            
             this.api.teamName = this.teamName;
-            this.message = "Succesfully joined the game!"
+            var m = "Succesfully joined the game!";
+            console.log(m);
+            this.showToast(m);
             this.navCtrl.push(MapPage);
         }
     }

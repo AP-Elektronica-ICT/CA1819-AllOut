@@ -16,11 +16,13 @@ export class AlloutProvider {
     postTeam(team: Team) {
         console.log(this.url + "team")
         console.log(JSON.stringify(team))
-        return this._http.post(this.url + "team", team);
+        return this._http.post(this.url + "team/", team);
     }
 
     putTeamPoints(team: Team) {
-        return this._http.put(this.url + "team", team); 
+        this._http.put(this.url + "team/", team).subscribe((data: any) =>{
+            console.log(data); 
+        }); 
     }
 
     getLocation(id: number): Observable<Location> {

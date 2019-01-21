@@ -6,11 +6,10 @@
     </ion-navbar>
 </ion-header>
 <ion-content>
-    <p class="q">{{question}}</p>
+    <p class="q">{{q.questionText}}</p>
     <ion-item>  
         <ion-input type="text" value="" placeholder="Answer" #answer></ion-input>
     </ion-item>
     
     <button ion-button (click)="checkAnswer(answer.value)">Check</button>
 </ion-content>
-

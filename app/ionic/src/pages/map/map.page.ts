@@ -23,7 +23,7 @@ export class MapPage {
     @ViewChild('map') mapElement: ElementRef;
     map: any;
     playerPos: any;
-    userPos: { lat: number, lng: number };
+    userPos: { lat: any, lng: any };
     deltaLat;
     deltaLng;
     numDeltas = 100;
@@ -37,7 +37,6 @@ export class MapPage {
         console.log('ionViewDidLoad MapPage');
         this.loadMap();
         this.locationTrackerProvider.startTracking();
-        this.getLocations(); 
     }
 
     getLocations(){
@@ -46,31 +45,57 @@ export class MapPage {
             this.locations = result;
             console.log(this.locations); 
             try {
+                console.log("try"); 
                 for (let loc of this.locations){
                     console.log(loc.question.points); 
                     let ll = {lat:loc.latitude, lng:loc.longitude};
-                    var marker = new google.maps.Marker({
+                    var icon = {
+                        url: "../../assets/icon/monumentMarker.png", 
+                        scaledSize: new google.maps.Size(50,50), 
+                        origin: new google.maps.Point(0,0), 
+                        anchor: new google.maps.Point(0,0)
+                    }
+                    let marker = new google.maps.Marker({
                         position: ll, 
                         map: this.map, 
                         label: loc.question.points.toString(), 
                         title: loc.locationName, 
-                        icon: "../../assets/icon/monumentMarker.png"
+                        icon: icon
                     });
-                    //console.log(this.calcDistance(this.playerPos.latitude, marker.latitude, this.playerPos.longitude, marker.longitude));
-                    console.log(ll); 
-                    marker.addListener('click', function(){
-                        this.markerClick(ll.lat, ll.lng, loc.locationID); 
+                    console.log("CalcDistance(): " + this.calcDistance(ll.lat, ll.lng)); 
+                    marker.addListener('click', event => {
+                        console.log(this.calcDistance(ll.lat, ll.lng)); 
+                        var distance = this.calcDistance(ll.lat, ll.lng); 
+                        console.log("distance binnen clicker: " + distance); 
+                        if(distance <= 1000){ 
+                            console.log(loc); 
+                            this.navCtrl.push(QuestionPage, {
+                                data: loc
+                            }); 
+                        }
+                        else{  
+                            var m = "You are currently " + Math.round(distance) + " meters from this point. You need to be within 100 meters!"; 
+                            console.log(m); 
+                            let toast = this.toastCtrl.create({
+                                message: m, 
+                                duration: 2000, 
+                                position: 'top'
+                            }); 
+                            toast.present(); 
+                        }
+                        console.log("why u skip eh?"); 
                     })
+                    
                 }
                 
-            } catch{
-                console.log("Can't add markers!"); 
+            } catch (err){
+                console.log("getLocations(): " + err); 
             }
         });
     }
     markerClick(lLat: any, lLong: any, loc: any){
         console.log(this.userPos); 
-        var distance = this.calcDistance(lLat, this.userPos.lat, lLong, this.userPos.lng); 
+        var distance = this.calcDistance(this.userPos.lat, this.userPos.lng); 
         if(distance <= 100){
             this.navCtrl.push(QuestionPage, {
                 data: loc
@@ -120,20 +145,21 @@ export class MapPage {
             console.log(err);
         });
     }
-    calcDistance(lat1: any, lat2: any, lon1: any, lon2: any){
+    calcDistance(lat2: any, lon2: any){
         var R = 6371e3; // metres
-        var φ1 = lat1.toRadians();
-        var φ2 = lat2.toRadians();
-        var Δφ = (lat2-lat1) * ((Math.PI)/180); 
+        var lat1 = this.userPos.lat; 
+        var φ1 = lat1 * Math.PI/180; 
+        var φ2 = lat2 * Math.PI/180; 
+        var Δφ = (lat2-this.userPos.lat) * ((Math.PI)/180); 
 
-        var Δλ = (lon2-lon1) * ((Math.PI)/180);
+        var Δλ = (lon2-this.userPos.lng) * ((Math.PI)/180);
 
         var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
                 Math.cos(φ1) * Math.cos(φ2) *
                 Math.sin(Δλ/2) * Math.sin(Δλ/2);
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-
-        var d = R * c;
+        var d = R * c; 
+        console.log(d); 
         return d; 
     }
     updatePlayerMarker() {
@@ -145,21 +171,24 @@ export class MapPage {
             //check distance between new coordinate and this.playerPos
             //if distance greater than 30 meters
             if (!this.playerPos) {
-                this.userPos = { lat: position.coords.latitude, lng: position.coords.longitude };
+                this.userPos = { lat: position.coords.latitude, lng: position.coords.longitude }; 
                 this.playerPos = new google.maps.Marker({
                     map: this.map,
                     animation: google.maps.Animation.Drop,
                     position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude), 
                     icon: "../../assets/icon/newMarker.png"
                 });
-                console.log(this.userPos); 
+                console.log("USERPOS          " + this.userPos); 
             } else {
                 this.transition([position.coords.latitude, position.coords.longitude]);
                 //this.playerPos.setPosition(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
             }
+            this.getLocations(); 
         }, (error) => {
             console.log('Error getting location', error);
         });
+
+        
     }
     transition(result) {
         this.i = 0;

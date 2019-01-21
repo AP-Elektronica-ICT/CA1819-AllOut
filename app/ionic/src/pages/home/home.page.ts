@@ -4,7 +4,7 @@ import { MapPage } from '../map/map.page';
 import { JoinGamePage } from '../joingame/joingame.page';
 import { QuestionPage } from '../question/question';
 import { identifierModuleUrl } from '@angular/compiler';
-import * as API from '../../providers/AlloutAPI/AlloutAPI';
+import { AlloutProvider, Game, Team, Question } from '../../providers/AlloutAPI/AlloutAPI';
 
 @Component({
     selector: 'page-home',
@@ -12,13 +12,32 @@ import * as API from '../../providers/AlloutAPI/AlloutAPI';
 })
 export class HomePage {
 
-    constructor(public navCtrl: NavController, public API:API.AlloutProvider) {
+    q:Question = {
+        questionID: 0, 
+        questionText: "",
+        questionType:0,
+        isSolved: false,
+        points: 0,
+        answer: ""
+      }
+      team:Team = {
+        teamID: 0,
+        gameID: 0,
+        teamName: "",
+        totalBoobyTraps: 0,
+        totalPoints: 0
+    };
+    
+    constructor(public navCtrl: NavController, public API:AlloutProvider) {
     }
-    id; 
-    question; 
-    answer; 
-    questionPoints; 
-
+    ionViewDidLoad() {
+        this.API.getLocation(1).subscribe(result =>{
+            this.q = result.question; 
+        });
+        this.API.getGame(1).subscribe(result =>{
+            this.team = result.team[0]; 
+        });
+    }
     public toMap(event) {
         this.navCtrl.push(MapPage);
     }
@@ -26,17 +45,9 @@ export class HomePage {
         this.navCtrl.push(JoinGamePage); 
     }
     public toQuestion(event) {
-        this.API.getLocation(1).subscribe(result =>{
-            this.id = result.locationID; 
-            this.question = result.question.questionText; 
-            this.answer = result.question.answer; 
-            this.questionPoints = result.question.points; 
-            this.navCtrl.push(QuestionPage, {
-                data: this.id, 
-                question: this.question, 
-                answer: this.answer, 
-                questionPoints: this.questionPoints
-            });
-        }) 
+        this.navCtrl.push(QuestionPage, {
+            question: this.q, 
+            team: this.team
+        });
     }
 }

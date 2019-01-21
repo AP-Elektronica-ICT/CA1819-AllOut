@@ -36,6 +36,7 @@ export class MapPage {
     ionViewDidLoad() {
         console.log('ionViewDidLoad MapPage');
         this.loadMap();
+        
         this.locationTrackerProvider.startTracking();
     }
 

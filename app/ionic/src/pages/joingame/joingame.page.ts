@@ -26,6 +26,13 @@ export class JoinGamePage {
     constructor(private api:AlloutProvider, private navCtrl: NavController){
     }
 
+    ngOnInit(){
+        this.api.getAllGames().subscribe(result =>{
+            console.log(result)
+            this.games = result;
+        });
+    }
+
     joinGame(){
         let selGame:Game[];
         let gameID:number;
@@ -60,12 +67,5 @@ export class JoinGamePage {
             this.message = "Succesfully joined the game!"
             this.navCtrl.push(MapPage);
         }
-    }
-
-    ngOnInit(){
-        this.api.getAllGames().subscribe(result =>{
-            console.log(result)
-            this.games = result;
-        });
     }
 }

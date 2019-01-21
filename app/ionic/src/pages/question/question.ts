@@ -41,7 +41,7 @@ export class QuestionPage {
         this.API.changeQuestionAnswered(this.q.questionID, true); 
         this.team.totalPoints += this.q.points; 
         console.log(this.team); 
-        this.API.putTeamPoints(this.team); 
+        //this.API.putTeamPoints(this.team); 
         console.log("it was true"); 
       }
       else{

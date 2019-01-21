@@ -14,7 +14,7 @@ export class AlloutProvider {
     };
 
     postTeam(team: Team) {
-        console.log(this.url + "game/team")
+        console.log(this.url + "team")
         console.log(JSON.stringify(team))
         return this._http.post(this.url + "game/team", team)
     }
@@ -31,6 +31,15 @@ export class AlloutProvider {
 
     getAllLocations(): Observable<Location[]> {
         return this._http.get<Location[]>(this.url + "location/")
+    }
+
+    changeQuestionAnswered(id: number, answered: boolean){
+        this._http.put(this.url + "question/", {
+            questionID: id, 
+            isSolved: answered
+        }).subscribe((data: any) => {
+            console.log(data)
+        })
     }
 
     getGame(id: number): Observable<Game> {

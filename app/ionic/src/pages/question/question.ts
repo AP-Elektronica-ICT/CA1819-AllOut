@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AlloutProvider, Game, Team } from '../../providers/AlloutAPI/AlloutAPI';
+import * as API from '../../providers/AlloutAPI/AlloutAPI';
 
 /**
  * Generated class for the QuestionPage page.
@@ -14,42 +14,34 @@ import { AlloutProvider, Game, Team } from '../../providers/AlloutAPI/AlloutAPI'
   templateUrl: 'question.html',
 })
 export class QuestionPage {
-  id: number; 
-  question: string; 
-  questionPoints: number; 
-  answer: string; 
-
-  team:Team = {
-    teamID: 0,
-    gameID: 0,
-    teamName: "",
-    totalBoobyTraps: 0,
-    totalPoints: 0
-};
-
+  q:Question;
+  l:Location; 
+  team:Team; 
 
   constructor(public navCtrl: NavController, public API:AlloutProvider, public navParams: NavParams) {
-    this.id = navParams.get('data'); 
-    this.question = navParams.get('question'); 
-    this.questionPoints = navParams.get('questionPoints'); 
-    this.answer = navParams.get('answer'); 
+    this.l = navParams.get('data'); 
+    this.q = this.l.question; 
+    console.log(this.l); 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad QuestionPage');
-    console.log(this.id); 
+    console.log(this.q.questionID); 
     /*
     this.API.getLocation(this.id).subscribe(result =>{
       this.question = result.question.questionText; 
       this.questionPoints = result.question.points;
     });*/
-    console.log(this.question + " has " + this.questionPoints + " points on it."); 
+    console.log(this.q.questionText + " has " + this.q.points + " points on it."); 
   }
 
   checkAnswer(answer: any){
-    this.API.getLocation(this.id).subscribe(result =>{
+    this.API.getLocation(this.q.questionID).subscribe(result =>{
       if(answer == result.question.answer){
-        this.API.changeQuestionAnswered(this.id, true); 
+        this.API.changeQuestionAnswered(this.q.questionID, true); 
+        this.team.totalPoints += this.q.points; 
+        console.log(this.team); 
+        this.API.putTeamPoints(this.team); 
         console.log("it was true"); 
       }
       else{

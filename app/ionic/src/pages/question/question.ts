@@ -55,7 +55,7 @@ export class QuestionPage {
         //console.log(m);
         this.showToast(m);
 
-        this.navCtrl.push(MapPage)
+        this.navCtrl.pop(); 
       }
       else{
         var m = "Wrong answer!"

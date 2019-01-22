@@ -13,14 +13,14 @@ export class AlloutProvider {
         this.url = "https://alloutapi20190121022729.azurewebsites.net/api/v1/"
     };
     postTeam(team: Team) {
-        console.log(this.url + "game/team")
-        console.log(JSON.stringify(team))
+        //console.log(this.url + "game/team")
+        //console.log(JSON.stringify(team))
         return this._http.post(this.url + "game/team", team)
     }
 
     putLocation(location: Location){
-        console.log(this.url + "location")
-        console.log(JSON.stringify(location))
+        //console.log(this.url + "location")
+        //console.log(JSON.stringify(location))
         return this._http.put(this.url + "location", location)
     }
 
@@ -49,13 +49,13 @@ export class AlloutProvider {
             questionID: id, 
             isSolved: answered
         }).subscribe((data: any) => {
-            console.log(data)
+            //console.log(data)
         })
     }
 
     putTeamPoints(team: Team) {
         this._http.put(this.url + "team/", team).subscribe((data: any) =>{
-            console.log(data); 
+            //console.log(data); 
         }); 
     }
 

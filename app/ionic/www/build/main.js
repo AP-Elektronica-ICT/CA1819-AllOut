@@ -36,17 +36,17 @@ var QuestionPage = /** @class */ (function () {
         this.toastCtrl = toastCtrl;
         this.l = navParams.get('data');
         this.q = this.l.question;
-        console.log(this.l);
+        //console.log(this.l); 
     }
     QuestionPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad QuestionPage');
-        console.log(this.q.questionID);
+        //console.log('ionViewDidLoad QuestionPage');
+        //console.log(this.q.questionID); 
         /*
         this.API.getLocation(this.id).subscribe(result =>{
           this.question = result.question.questionText;
           this.questionPoints = result.question.points;
         });*/
-        console.log(this.q.questionText + " has " + this.q.points + " points on it.");
+        //console.log(this.q.questionText + " has " + this.q.points + " points on it."); 
     };
     QuestionPage.prototype.showToast = function (m) {
         var toast = this.toastCtrl.create({
@@ -54,7 +54,7 @@ var QuestionPage = /** @class */ (function () {
             duration: 5000,
             position: 'top'
         });
-        toast.present;
+        toast.present();
     };
     QuestionPage.prototype.checkAnswer = function (answer) {
         var _this = this;
@@ -62,16 +62,16 @@ var QuestionPage = /** @class */ (function () {
             if (answer == result.question.answer) {
                 _this.API.changeQuestionAnswered(_this.q.questionID, true);
                 _this.team.totalPoints += _this.q.points;
-                console.log(_this.team);
+                //console.log(this.team); 
                 _this.API.putTeamPoints(_this.team);
                 var m = "That's correct!";
-                console.log(m);
+                //console.log(m);
                 _this.showToast(m);
                 _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__map_map_page__["a" /* MapPage */]);
             }
             else {
                 var m = "Wrong answer!";
-                console.log(m);
+                //console.log(m); 
                 _this.showToast(m);
             }
         });
@@ -325,7 +325,7 @@ var JoinGamePage = /** @class */ (function () {
     JoinGamePage.prototype.ngOnInit = function () {
         var _this = this;
         this.api.getAllGames().subscribe(function (result) {
-            console.log(result);
+            //console.log(result)
             _this.games = result;
         });
     };
@@ -335,7 +335,7 @@ var JoinGamePage = /** @class */ (function () {
             duration: 5000,
             position: 'top'
         });
-        toast.present;
+        toast.present();
     };
     JoinGamePage.prototype.joinGame = function () {
         var selGame;
@@ -346,10 +346,10 @@ var JoinGamePage = /** @class */ (function () {
         */
         for (var _i = 0, _a = this.games; _i < _a.length; _i++) {
             var game = _a[_i];
-            if (game.gameCode == this.gameCode) {
+            if (game.gameCode.toUpperCase() == this.gameCode) {
                 this.game = game;
                 this.api.game = game;
-                console.log("Game found...");
+                //console.log("Game found...")
             }
         }
         for (var _b = 0, _c = this.game.team; _b < _c.length; _b++) {
@@ -357,7 +357,7 @@ var JoinGamePage = /** @class */ (function () {
             if (team.teamName == this.teamName) {
                 this.nameTaken = true;
                 var m = "That name is already taken!";
-                console.log(m);
+                //console.log(m);
                 this.showToast(m);
             }
         }
@@ -371,7 +371,7 @@ var JoinGamePage = /** @class */ (function () {
             });
             this.api.teamName = this.teamName;
             var m = "Succesfully joined the game!";
-            console.log(m);
+            //console.log(m);
             this.showToast(m);
             this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__map_map_page__["a" /* MapPage */]);
         }
@@ -560,13 +560,13 @@ var AlloutProvider = /** @class */ (function () {
     }
     ;
     AlloutProvider.prototype.postTeam = function (team) {
-        console.log(this.url + "game/team");
-        console.log(JSON.stringify(team));
+        //console.log(this.url + "game/team")
+        //console.log(JSON.stringify(team))
         return this._http.post(this.url + "game/team", team);
     };
     AlloutProvider.prototype.putLocation = function (location) {
-        console.log(this.url + "location");
-        console.log(JSON.stringify(location));
+        //console.log(this.url + "location")
+        //console.log(JSON.stringify(location))
         return this._http.put(this.url + "location", location);
     };
     AlloutProvider.prototype.getLocation = function (id) {
@@ -592,12 +592,12 @@ var AlloutProvider = /** @class */ (function () {
             questionID: id,
             isSolved: answered
         }).subscribe(function (data) {
-            console.log(data);
+            //console.log(data)
         });
     };
     AlloutProvider.prototype.putTeamPoints = function (team) {
         this._http.put(this.url + "team/", team).subscribe(function (data) {
-            console.log(data);
+            //console.log(data); 
         });
     };
     AlloutProvider.prototype.getAllGames = function () {
@@ -664,18 +664,18 @@ var MapPage = /** @class */ (function () {
         this.i = 0;
     }
     MapPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad MapPage');
+        //console.log('ionViewDidLoad MapPage');
         this.APIcopy = this.API;
         this.loadMap();
         this.locationTrackerProvider.startTracking();
     };
     MapPage.prototype.getLocations = function () {
         var _this = this;
-        console.log("get them all!");
+        //console.log("get them all!");
         this.API = this.APIcopy;
         this.API.getAllLocations().subscribe(function (result) {
             _this.locations = result;
-            console.log(_this.locations);
+            //console.log(this.locations);
             try {
                 var _loop_1 = function (loc) {
                     var mark = __WEBPACK_IMPORTED_MODULE_6_jquery__("div[title|='" + loc.locationName + "'").remove();
@@ -696,14 +696,13 @@ var MapPage = /** @class */ (function () {
                             title: loc.locationName,
                             icon: icon
                         });
-                        console.log("CalcDistance(): " + _this.calcDistance(ll_1.lat, ll_1.lng));
+                        //console.log("CalcDistance(): " + this.calcDistance(ll.lat, ll.lng));
                         try {
-                            console.log("API3: " + _this.API);
                             marker.addListener('click', function (event) {
                                 var distance = _this.calcDistance(ll_1.lat, ll_1.lng);
-                                console.log("distance binnen clicker: " + distance);
+                                //console.log("distance binnen clicker: " + distance);
                                 if (distance <= 1000) {
-                                    console.log(loc);
+                                    //console.log(loc);
                                     _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__question_question__["a" /* QuestionPage */], {
                                         data: loc
                                     });
@@ -747,7 +746,7 @@ var MapPage = /** @class */ (function () {
     }*/
     MapPage.prototype.quitGame = function () {
         //quit game code here!
-        console.log("QUIT GAME");
+        //console.log("QUIT GAME");
         this.navCtrl.pop();
     };
     MapPage.prototype.showToast = function (m) {
@@ -756,7 +755,7 @@ var MapPage = /** @class */ (function () {
             duration: 5000,
             position: 'top'
         });
-        toast.present;
+        toast.present();
     };
     MapPage.prototype.loadMap = function () {
         var _this = this;
@@ -791,8 +790,7 @@ var MapPage = /** @class */ (function () {
                 Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         var d = R * c;
-        console.log(d);
-        console.log("API4: " + this.API);
+        //console.log(d);
         return d;
     };
     MapPage.prototype.updatePlayerMarker = function () {
@@ -800,7 +798,6 @@ var MapPage = /** @class */ (function () {
         var watchOptions = {
             enableHighAccuracy: true
         };
-        console.log("API4: " + this.API);
         this.geolocation.watchPosition(watchOptions).subscribe(function (position) {
             //check distance between new coordinate and this.playerPos
             //if distance greater than 30 meters
@@ -819,7 +816,7 @@ var MapPage = /** @class */ (function () {
                     position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
                     icon: icon
                 });
-                console.log("USERPOS: " + _this.userPos);
+                //console.log("USERPOS: " + this.userPos);
             }
             else {
                 _this.transition([position.coords.latitude, position.coords.longitude]);
@@ -827,16 +824,14 @@ var MapPage = /** @class */ (function () {
             }
             if (_this.API.game) {
                 _this.getLocations();
-                console.log("API5: " + _this.API);
             }
             else {
                 var m = "You are not currently in a game, the map will be empty except for you.";
                 _this.showToast(m);
-                console.log(m);
-                console.log("API6: " + _this.API);
+                //console.log(m);
             }
         }, function (error) {
-            console.log('Error getting location', error);
+            //console.log('Error getting location', error);
         });
     };
     MapPage.prototype.transition = function (result) {
@@ -847,11 +842,10 @@ var MapPage = /** @class */ (function () {
     };
     MapPage.prototype.moveMarker = function () {
         if (this.userPos) {
-            console.log(this.userPos);
+            //console.log(this.userPos);
             this.userPos.lat += this.deltaLat;
             this.userPos.lng += this.deltaLng;
             var latlng = new google.maps.LatLng(this.userPos.lat, this.userPos.lng);
-            console.log("API7: " + this.API);
             if (this.playerPos) {
                 this.playerPos.setPosition(latlng);
                 if (this.i != this.numDeltas) {

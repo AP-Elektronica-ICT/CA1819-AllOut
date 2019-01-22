@@ -28,7 +28,7 @@ export class JoinGamePage {
 
     ngOnInit(){
         this.api.getAllGames().subscribe(result =>{
-            console.log(result)
+            //console.log(result)
             this.games = result;
         });
     }
@@ -39,7 +39,7 @@ export class JoinGamePage {
             duration: 5000,
             position: 'top'
         });
-        toast.present;
+        toast.present();
     }
 
     joinGame(){
@@ -50,17 +50,17 @@ export class JoinGamePage {
             TeamName: SlimmeJongens
         */
         for(let game of this.games){
-            if (game.gameCode == this.gameCode){
+            if (game.gameCode.toUpperCase() == this.gameCode){
                 this.game = game;
                 this.api.game = game;
-                console.log("Game found...")
+                //console.log("Game found...")
             }
         }
         for(let team of this.game.team){
             if (team.teamName == this.teamName){
                 this.nameTaken = true;
                 var m = "That name is already taken!";
-                console.log(m);
+                //console.log(m);
                 this.showToast(m);
             }
         }
@@ -74,7 +74,7 @@ export class JoinGamePage {
             });
             this.api.teamName = this.teamName;
             var m = "Succesfully joined the game!";
-            console.log(m);
+            //console.log(m);
             this.showToast(m);
             this.navCtrl.push(MapPage);
         }

@@ -36,18 +36,18 @@ export class MapPage {
     locations: API.Location[];
     APIcopy: API.AlloutProvider
     ionViewDidLoad() {
-        console.log('ionViewDidLoad MapPage');
+        //console.log('ionViewDidLoad MapPage');
         this.APIcopy = this.API;
         this.loadMap();
         this.locationTrackerProvider.startTracking();
     }
 
     getLocations() {
-        console.log("get them all!");
+        //console.log("get them all!");
         this.API = this.APIcopy;
         this.API.getAllLocations().subscribe(result => {
             this.locations = result;
-            console.log(this.locations);
+            //console.log(this.locations);
             try {
                 for (let loc of this.locations) {
                     let mark = $("div[title|='" + loc.locationName + "'").remove();
@@ -69,14 +69,13 @@ export class MapPage {
                             title: loc.locationName,
                             icon: icon
                         });
-                        console.log("CalcDistance(): " + this.calcDistance(ll.lat, ll.lng));
+                        //console.log("CalcDistance(): " + this.calcDistance(ll.lat, ll.lng));
                         try {
-                            console.log("API3: " + this.API);
                             marker.addListener('click', event => {
                                 var distance = this.calcDistance(ll.lat, ll.lng);
-                                console.log("distance binnen clicker: " + distance);
+                                //console.log("distance binnen clicker: " + distance);
                                 if (distance <= 1000) {
-                                    console.log(loc);
+                                    //console.log(loc);
                                     this.navCtrl.push(QuestionPage, {
                                         data: loc
                                     });
@@ -118,7 +117,7 @@ export class MapPage {
 
     quitGame() {
         //quit game code here!
-        console.log("QUIT GAME");
+        //console.log("QUIT GAME");
         this.navCtrl.pop();
     }
 
@@ -128,7 +127,7 @@ export class MapPage {
             duration: 5000,
             position: 'top'
         });
-        toast.present;
+        toast.present();
     }
 
     loadMap() {
@@ -168,8 +167,7 @@ export class MapPage {
             Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         var d = R * c;
-        console.log(d);
-        console.log("API4: " + this.API);
+        //console.log(d);
         return d;
     }
     updatePlayerMarker() {
@@ -177,7 +175,6 @@ export class MapPage {
             enableHighAccuracy: true
         };
 
-        console.log("API4: " + this.API);
         this.geolocation.watchPosition(watchOptions).subscribe((position) => {
             //check distance between new coordinate and this.playerPos
             //if distance greater than 30 meters
@@ -196,23 +193,21 @@ export class MapPage {
                     position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
                     icon: icon
                 });
-                console.log("USERPOS: " + this.userPos);
+                //console.log("USERPOS: " + this.userPos);
             } else {
                 this.transition([position.coords.latitude, position.coords.longitude]);
                 //this.playerPos.setPosition(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
             }
             if (this.API.game) {
                 this.getLocations();
-                console.log("API5: " + this.API);
             }
             else {
                 var m = "You are not currently in a game, the map will be empty except for you.";
                 this.showToast(m);
-                console.log(m);
-                console.log("API6: " + this.API);
+                //console.log(m);
             }
         }, (error) => {
-            console.log('Error getting location', error);
+            //console.log('Error getting location', error);
         });
 
 
@@ -225,11 +220,10 @@ export class MapPage {
     }
     moveMarker() {
         if (this.userPos) {
-            console.log(this.userPos);
+            //console.log(this.userPos);
             this.userPos.lat += this.deltaLat;
             this.userPos.lng += this.deltaLng;
             var latlng = new google.maps.LatLng(this.userPos.lat, this.userPos.lng);
-            console.log("API7: " + this.API);
             if (this.playerPos) {
                 this.playerPos.setPosition(latlng);
                 if (this.i != this.numDeltas) {

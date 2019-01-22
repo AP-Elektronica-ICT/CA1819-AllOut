@@ -22,18 +22,18 @@ export class QuestionPage {
   constructor(public navCtrl: NavController, public API:AlloutProvider, public navParams: NavParams, private toastCtrl: ToastController) {
     this.l = navParams.get('data'); 
     this.q = this.l.question; 
-    console.log(this.l); 
+    //console.log(this.l); 
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad QuestionPage');
-    console.log(this.q.questionID); 
+    //console.log('ionViewDidLoad QuestionPage');
+    //console.log(this.q.questionID); 
     /*
     this.API.getLocation(this.id).subscribe(result =>{
       this.question = result.question.questionText; 
       this.questionPoints = result.question.points;
     });*/
-    console.log(this.q.questionText + " has " + this.q.points + " points on it."); 
+    //console.log(this.q.questionText + " has " + this.q.points + " points on it."); 
   }
 
   showToast(m: any) {
@@ -42,24 +42,24 @@ export class QuestionPage {
         duration: 5000,
         position: 'top'
     });
-    toast.present;
+    toast.present();
 }
   checkAnswer(answer: any){
     this.API.getLocation(this.q.questionID).subscribe(result =>{
       if(answer == result.question.answer){
         this.API.changeQuestionAnswered(this.q.questionID, true); 
         this.team.totalPoints += this.q.points; 
-        console.log(this.team); 
+        //console.log(this.team); 
         this.API.putTeamPoints(this.team);
         var m = "That's correct!";
-        console.log(m);
+        //console.log(m);
         this.showToast(m);
 
         this.navCtrl.push(MapPage)
       }
       else{
         var m = "Wrong answer!"
-        console.log(m); 
+        //console.log(m); 
         this.showToast(m);
       }
     })

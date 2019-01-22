@@ -118,7 +118,7 @@ export class MapPage {
     quitGame() {
         //quit game code here!
         //console.log("QUIT GAME");
-        this.navCtrl.pop();
+        window.close();
     }
 
     showToast(m: any) {

@@ -74,7 +74,7 @@ export class MapPage {
                             marker.addListener('click', event => {
                                 var distance = this.calcDistance(ll.lat, ll.lng);
                                 //console.log("distance binnen clicker: " + distance);
-                                if (distance <= 1000) {
+                                if (distance <= 100) {
                                     //console.log(loc);
                                     this.navCtrl.push(QuestionPage, {
                                         data: loc

@@ -71,18 +71,18 @@ export class JoinGamePage {
                         //console.log(result);
                     });
                     this.api.teamName = this.teamName;
-                    var m = "Succesfully joined the game!";
+                    var b  = "Succesfully joined the game!";
                     //console.log(m);
-                    this.showToast(m);
+                    this.showToast(b);
                     this.navCtrl.push(MapPage);
                 }
             }
         }
         if (!this.foundGame)
         {
-            var m = "Invalid code!";
+            var a = "Invalid code!";
             //console.log(m);
-            this.showToast(m);
+            this.showToast(a);
         }
     }
 }

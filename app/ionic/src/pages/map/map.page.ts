@@ -24,7 +24,6 @@ export class MapPage {
     @ViewChild('map') mapElement: ElementRef;
     constructor(public navCtrl: NavController, public API: API.AlloutProvider, public geolocation: Geolocation, public locationTrackerProvider: LocationTrackerProvider, private toastCtrl: ToastController) {
     }
-
     map: any;
     playerPos: any;
     userPos: { lat: any, lng: any };

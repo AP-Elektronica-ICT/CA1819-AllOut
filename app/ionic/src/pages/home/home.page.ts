@@ -12,6 +12,7 @@ import { AlloutProvider, Game, Team, Question } from '../../providers/AlloutAPI/
 })
 export class HomePage {
 
+    teamPoints: Number;
     q:Question = {
         questionID: 0, 
         questionText: "",

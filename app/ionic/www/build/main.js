@@ -344,50 +344,52 @@ var JoinGamePage = /** @class */ (function () {
             GameCode: X35H0
             TeamName: SlimmeJongens
         */
+        this.foundGame = false;
         for (var _i = 0, _a = this.games; _i < _a.length; _i++) {
-            var game = _a[_i];
-            if (game.gameCode.toUpperCase() == this.gameCode) {
-                this.game = game;
-                this.api.game = game;
+            var futureGame = _a[_i];
+            if (futureGame.gameCode.toUpperCase() == this.gameCode.toUpperCase()) {
+                this.foundGame = true;
+                this.api.game = futureGame;
                 //console.log("Game found...")
-            }
-            else {
-                var m = "That code is invalid!";
-                //console.log(m);
-                this.showToast(m);
+                for (var _b = 0, _c = this.api.game.team; _b < _c.length; _b++) {
+                    var team = _c[_b];
+                    if (team.teamName == this.teamName) {
+                        this.nameTaken = true;
+                        var m = "That name is already taken!";
+                        //console.log(m);
+                        this.showToast(m);
+                    }
+                }
+                if (!this.nameTaken) {
+                    this.team.gameID = this.api.game.gameLogicID;
+                    this.team.teamName = this.teamName;
+                    this.team.totalBoobyTraps = 2;
+                    this.team.totalPoints = 0;
+                    this.api.postTeam(this.team).subscribe(function (result) {
+                        //console.log(result);
+                    });
+                    this.api.teamName = this.teamName;
+                    var m = "Succesfully joined the game!";
+                    //console.log(m);
+                    this.showToast(m);
+                    this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__map_map_page__["a" /* MapPage */]);
+                }
             }
         }
-        for (var _b = 0, _c = this.game.team; _b < _c.length; _b++) {
-            var team = _c[_b];
-            if (team.teamName == this.teamName) {
-                this.nameTaken = true;
-                var m = "That name is already taken!";
-                //console.log(m);
-                this.showToast(m);
-            }
-        }
-        if (!this.nameTaken) {
-            this.team.gameID = this.game.gameLogicID;
-            this.team.teamName = this.teamName;
-            this.team.totalBoobyTraps = 2;
-            this.team.totalPoints = 0;
-            this.api.postTeam(this.team).subscribe(function (result) {
-                //console.log(result);
-            });
-            this.api.teamName = this.teamName;
-            var m = "Succesfully joined the game!";
+        if (!this.foundGame) {
+            var m = "Invalid code!";
             //console.log(m);
             this.showToast(m);
-            this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__map_map_page__["a" /* MapPage */]);
         }
     };
     JoinGamePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-joingame',template:/*ion-inline-start:"D:\Documenten\School\AP Hogeschool\3EA3\Cloud Applications\app\ionic\src\pages\joingame\joingame.page.html"*/'<ion-header>\n\n    <ion-navbar>\n\n        <ion-title>\n\n            Join Game\n\n        </ion-title>\n\n        <ion-buttons end>\n\n            <button ion-button>\n\n                <ion-icon></ion-icon>Join Game</button>\n\n        </ion-buttons>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <form>\n\n        <ion-item> \n\n            <ion-label stacked>Game Code</ion-label>\n\n            <ion-input type="text" name="code" [(ngModel)]="gameCode"></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n            <ion-label stacked>Teamname</ion-label>\n\n            <ion-input type="text" name="team" [(ngModel)]="teamName"></ion-input>\n\n        </ion-item>\n\n        <br>\n\n        <button ion-button (click)="joinGame()">\n\n            <ion-icon></ion-icon>Join Game</button>\n\n    </form>\n\n        <p>{{message}}</p>\n\n</ion-content>'/*ion-inline-end:"D:\Documenten\School\AP Hogeschool\3EA3\Cloud Applications\app\ionic\src\pages\joingame\joingame.page.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_AlloutAPI_AlloutAPI__["a" /* AlloutProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ToastController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__providers_AlloutAPI_AlloutAPI__["a" /* AlloutProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_AlloutAPI_AlloutAPI__["a" /* AlloutProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ToastController */]) === "function" && _c || Object])
     ], JoinGamePage);
     return JoinGamePage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=joingame.page.js.map

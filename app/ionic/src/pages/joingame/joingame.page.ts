@@ -7,27 +7,26 @@ import { MapPage } from '../map/map.page';
     selector: 'page-joingame',
     templateUrl: 'joingame.page.html'
 })
- 
+
 export class JoinGamePage {
-    games:Game[];
-    gameCode:string;
-    teamName:string;
-    team:Team = {
+    games: Game[];
+    gameCode: string;
+    teamName: string;
+    team: Team = {
         teamID: 0,
         gameID: 0,
         teamName: "",
         totalBoobyTraps: 0,
         totalPoints: 0
     };
-    game:Game;
-    message:string;
-    nameTaken:boolean;
-
-    constructor(private api:AlloutProvider, private navCtrl: NavController, private toastCtrl: ToastController){
+    message: string;
+    nameTaken: boolean;
+    foundGame:boolean;
+    constructor(private api: AlloutProvider, private navCtrl: NavController, private toastCtrl: ToastController) {
     }
 
-    ngOnInit(){
-        this.api.getAllGames().subscribe(result =>{
+    ngOnInit() {
+        this.api.getAllGames().subscribe(result => {
             //console.log(result)
             this.games = result;
         });
@@ -42,47 +41,48 @@ export class JoinGamePage {
         toast.present();
     }
 
-    joinGame(){
-        let selGame:Game[];
-        let gameID:number;
+    joinGame() {
+        let selGame: Game[];
+        let gameID: number;
         /*
             GameCode: X35H0
             TeamName: SlimmeJongens
         */
-        for(let game of this.games){
-            if (game.gameCode.toUpperCase() == this.gameCode){
-                this.game = game;
-                this.api.game = game;
+        this.foundGame = false;
+        for (let futureGame of this.games) {
+            if (futureGame.gameCode.toUpperCase() == this.gameCode.toUpperCase()) {
+                this.foundGame = true;
+                this.api.game = futureGame;
                 //console.log("Game found...")
-            }
-            else
-            {
-                var m = "That code is invalid!";
-                //console.log(m);
-                this.showToast(m);
+                for (let team of this.api.game.team) {
+                    if (team.teamName == this.teamName) {
+                        this.nameTaken = true;
+                        var m = "That name is already taken!";
+                        //console.log(m);
+                        this.showToast(m);
+                    }
+                }
+                if (!this.nameTaken) {
+                    this.team.gameID = this.api.game.gameLogicID;
+                    this.team.teamName = this.teamName;
+                    this.team.totalBoobyTraps = 2;
+                    this.team.totalPoints = 0;
+                    this.api.postTeam(this.team).subscribe(result => {
+                        //console.log(result);
+                    });
+                    this.api.teamName = this.teamName;
+                    var m = "Succesfully joined the game!";
+                    //console.log(m);
+                    this.showToast(m);
+                    this.navCtrl.push(MapPage);
+                }
             }
         }
-        for(let team of this.game.team){
-            if (team.teamName == this.teamName){
-                this.nameTaken = true;
-                var m = "That name is already taken!";
-                //console.log(m);
-                this.showToast(m);
-            }
-        }
-        if (!this.nameTaken){
-            this.team.gameID = this.game.gameLogicID;
-            this.team.teamName = this.teamName;
-            this.team.totalBoobyTraps = 2;
-            this.team.totalPoints = 0;
-            this.api.postTeam(this.team).subscribe(result =>{
-                //console.log(result);
-            });
-            this.api.teamName = this.teamName;
-            var m = "Succesfully joined the game!";
+        if (!this.foundGame)
+        {
+            var m = "Invalid code!";
             //console.log(m);
             this.showToast(m);
-            this.navCtrl.push(MapPage);
         }
     }
 }

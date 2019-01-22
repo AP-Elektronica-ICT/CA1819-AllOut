@@ -55,6 +55,12 @@ export class JoinGamePage {
                 this.api.game = game;
                 //console.log("Game found...")
             }
+            else
+            {
+                var m = "That code is invalid!";
+                //console.log(m);
+                this.showToast(m);
+            }
         }
         for(let team of this.game.team){
             if (team.teamName == this.teamName){

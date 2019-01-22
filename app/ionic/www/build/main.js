@@ -351,6 +351,11 @@ var JoinGamePage = /** @class */ (function () {
                 this.api.game = game;
                 //console.log("Game found...")
             }
+            else {
+                var m = "That code is invalid!";
+                //console.log(m);
+                this.showToast(m);
+            }
         }
         for (var _b = 0, _c = this.game.team; _b < _c.length; _b++) {
             var team = _c[_b];
